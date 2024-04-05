@@ -82,7 +82,7 @@ const routes = [
         }
     },
     {
-        path: '/provider-profile',
+        path: '/provider-profile/:id',
         name: 'provider-profile',
         component: () => import ('@/views/providerProfile.vue'),
         meta: {

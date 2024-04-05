@@ -134,10 +134,10 @@ let first_name = ref(null);
 let email = ref(null);
 let phone = ref(null);
 let password = ref(null);
-let minChars = ref(6);
+// let minChars = ref(6);
 // let maxChars = ref(10);
 
-let validateForm = (e) => {
+let validateForm = () => {
   // e.preventDefault();
   // formErrors.value = [];
   // if (!first_name.value) {

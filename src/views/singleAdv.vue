@@ -39,7 +39,7 @@
                             </div><!-- End Author Img-->
                             <!-- Start Author Information -->
                             <div class="author-information">
-                                <a href="#" class="author-name">محمد الهاشم</a>
+                                <router-link to="/provider-profile/1" class="author-name">محمد الهاشم</router-link>
                                 <div class="author-rating">
                                     <span class="author-rating-text">4.5</span>
                                     <fa icon="star" />

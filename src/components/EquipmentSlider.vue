@@ -14,7 +14,7 @@
         <!-- Start Post -->
         <div class="post">
           <div class="post-img">
-            <router-link to="/workers/:id">
+            <router-link :to="'/workers/'+equipment.id">
               <img :src="equipment.first_image"
             /></router-link>
             <div class="add-favorite">
