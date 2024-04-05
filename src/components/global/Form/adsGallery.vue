@@ -21,8 +21,10 @@
                 
             </div>
             <span v-else class="select">ارفع هنا</span>
-            <input name="file " type="file" class="file" ref="fileInput" 
+            <form ref="images">
+                <input name="images[]" type="file" class="file" ref="fileInput" 
             multiple @change="onFileSelect">
+            </form>
         </div><!-- End Drag Area -->
         <!-- Start All Images -->
         <div class="all-images">
@@ -33,13 +35,27 @@
             </div><!-- End Image -->
         </div><!-- End All Images -->
     </div><!-- End Card-->
+
+     <div class="main_submit">
+        <button class="global-button" @click.prevent="submitAdd" :disabled="disabled">
+            نشر الاعلان
+        </button>
+    </div>
+    <Toast />
+
 </template>
 <script>
+import Toast from 'primevue/toast';
+
+import axios from 'axios';
+
 export default(await import('vue')).defineComponent({
     data(){
         return{
             images: [],
-            isDragging: false
+            isDragging: false,
+            adsImages: [],
+            disabled : false
         }
     },
     methods:{
@@ -48,14 +64,38 @@ export default(await import('vue')).defineComponent({
         },
         onFileSelect(event){
             const files = event.target.files;
+            this.adsImages = files;
             if(files.length === 0) return;
-            for(let i = 0; i < files.length; i++ ){
+            for (let i = 0; i < files.length; i++){
+                // this.adsImages.push(files[i])
                 if(files[i].type.split("/")[0] != "image") continue;
                 if(!this.images.some((e)=> e.name === files[i].name)){
                     this.images.push({name: files[i].name, url:URL.createObjectURL(files[i])})
                 }
+                         
+                // console.log()
             }
-            console.log(this.images)
+            
+            const fileListArray = Array.from(files).map(file => ({
+                name: file.name,
+                type: file.type,
+                size: file.size,
+                lastModified: file.lastModified,
+                lastModifiedDate: file.lastModifiedDate,
+                webkitRelativePath: file.webkitRelativePath,
+                // Add other properties if needed
+            }));
+
+
+    
+    // Now you have the files in an array, you can proceed with your logic
+    console.log(fileListArray);
+            // for (let x = 0; x < fileListArray.length; x++){
+                localStorage.setItem('images', JSON.stringify(fileListArray))
+            //         console.log(fileListArray[x])
+
+            // }
+
         },
         deleteImage(index){
             this.images.splice(index, 1);
@@ -79,11 +119,60 @@ export default(await import('vue')).defineComponent({
                     this.images.push({name: files[i].name, url:URL.createObjectURL(files[i])})
                 }
             }
+        },
+
+        async submitAdd() {
+            this.disabled = true;
+            const fd = new FormData(this.$refs.images);
+            fd.append('lang', localStorage.getItem('locale'))
+            fd.append('user_id', localStorage.getItem('entity_id'))
+            fd.append('desc_ar', localStorage.getItem('desc_ar'))
+            fd.append('short_desc_ar', localStorage.getItem('short_desc_ar'))
+            fd.append('title_ar', localStorage.getItem('title_ar'))
+            fd.append('price', localStorage.getItem('price'))
+            fd.append('type', localStorage.getItem('type'))
+            // var images = [];
+            fd.append('user_id', JSON.parse(sessionStorage.getItem('user')).data.id)
+           
+            await axios.post('https://dashboard.mueadaat.info/test-mode/api/store-service', fd, {
+                headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+
+            })
+            .then( (res)=>{
+                if (res.data.key == 1) {
+                this.$toast.add({ severity: 'success', summary: res.data.msg, life: 3000 });
+                } else {
+                this.$toast.add({ severity: 'error', summary: res.data.msg, life: 3000 });
+                }
+                console.log(res)
+               this.disabled = false;
+            } )
+
         }
+
+    },
+    components: {
+        Toast
     }
 })
 </script>
+
+<style>
+.global-button:disabled{
+    opacity: .7;
+    cursor: not-allowed
+}
+</style>
 <style scoped>
+.main_submit{
+        display: flex;
+    justify-content: center;
+    /* margin-top: 100px; */
+    transform: translateY(82px);
+
+}
 .card{
     padding: 32px;
     overflow: hidden;

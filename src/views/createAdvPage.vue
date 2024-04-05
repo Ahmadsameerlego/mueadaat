@@ -7,7 +7,7 @@
                 <p class="choose-description">اختر نوع اعلانك من فضلك !</p>
                 <ul class="sections-items">
                     <li>
-                        <router-link data-bs-toggle="modal" to="#confirmBefore" role="button">
+                        <router-link @click="storeStype('worker')" data-bs-toggle="modal" to="#confirmBefore" role="button">
                             <div class="section-icon workers">
                                 <img src="../assets/icons/workers.png" />
                             </div>
@@ -15,7 +15,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link data-bs-toggle="modal" to ="#confirmBefore" role="button">
+                        <router-link @click="storeStype('item')" data-bs-toggle="modal" to ="#confirmBefore" role="button">
                             <div class="section-icon">
                                 <img src="../assets/icons/equipments.png" />
                             </div>
@@ -30,6 +30,9 @@
 </template>
 <script setup>
 import modalConfirmBefore from '../components/global/modal/modalConfirmBefore.vue'
+const storeStype = (tyoe) => {
+    localStorage.setItem('type', tyoe)
+}
 </script>
 <style scoped>
 .create-adv{

@@ -6,6 +6,17 @@ import i18n from './i18n'
 import App from './App.vue';
 import router from './router/index.js';
 
+// import primevue 
+import PrimeVue from 'primevue/config';
+//theme
+import "primevue/resources/themes/lara-light-indigo/theme.css";     
+    
+//core
+import "primevue/resources/primevue.min.css";
+
+import ToastService from 'primevue/toastservice';
+
+
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -15,4 +26,12 @@ import vuelidate from 'vuelidate';
 import { createPinia } from 'pinia';
 
 library.add(fas);
-createApp(App).use(router).use(i18n).use(createPinia()).use(vuelidate).component("fa", FontAwesomeIcon).mount('#app')
+createApp(App)
+  .use(router)
+  .use(i18n)
+  .use(PrimeVue)
+  .use(ToastService)
+  .use(createPinia())
+  .use(vuelidate)
+  .component("fa", FontAwesomeIcon)
+  .mount("#app");

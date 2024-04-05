@@ -8,7 +8,7 @@
           name="fullName"
           class="form-item-input"
           id="fullName"
-          v-model="email"
+          v-model="title_ar"
           placeholder="ادخل اسمك"
         />
       </div>
@@ -20,7 +20,7 @@
             name="email"
             class="form-item-input"
             id="email"
-            v-model="email"
+            v-model="short_desc_ar"
             placeholder="name@example.com"
           />
         </div>
@@ -31,8 +31,8 @@
             name="email"
             class="form-item-input"
             id="mobileNumber"
-            v-model="email"
-            placeholder="ادخل رقم جوالك"
+            v-model="price"
+            placeholder="ادخل السعر"
           />
         </div>
       </div>
@@ -41,12 +41,12 @@
         <label class="form-item-label">نظام التكلفة</label>
         <div class="flex-this">
           <div class="form-check">
-            <input type="checkbox" />
+            <input type="radio" v-model="unit" value="daily"/>
             <label>التكلفة باليوم</label>
           </div>
 
           <div class="form-check">
-            <input type="checkbox" />
+            <input type="radio" v-model="unit"  value="total" />
             <label>التكلفة بالساعة</label>
           </div>
         </div>
@@ -58,10 +58,39 @@
           name="details"
           class="form-item-input"
           id="message"
-          v-model="details"
+          v-model="desc_ar"
         ></textarea>
       </div>
     </form>
   </div>
 </template>
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      title_ar: '',
+        desc_ar : '',
+      unit: '',
+      price: '',
+        short_desc_ar : ''
+    }
+  },
+  watch: {
+    title_ar(){
+      localStorage.setItem('title_ar', this.title_ar)
+    },
+    desc_ar(){
+      localStorage.setItem('desc_ar', this.desc_ar)
+    },
+    price(){
+      localStorage.setItem('price', this.price)
+    },
+    short_desc_ar(){
+      localStorage.setItem('short_desc_ar', this.short_desc_ar)
+    },
+    unit(){
+      localStorage.setItem('unit', this.unit)
+    },
+  }
+}
+</script>

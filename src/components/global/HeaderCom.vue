@@ -71,9 +71,9 @@
 
 </div>
 
-  <button type="button" class="global-button" @click="signout"  role="button">
+  <button type="button" class="global-button" @click="signout" :disabled="disabled"  role="button">
           {{ $t('Sign out') }}
-        </button>
+      </button>
 </div>
           
         </div>
@@ -92,6 +92,8 @@
   <modalVerfication />
   <modalChangePassword />
   <modalResetPassword />
+
+  <Toast />
 </template>
 <script setup>
 import LangCom from './LangCom.vue';
@@ -101,12 +103,19 @@ import modalForgetPassword from './modal/modalForgetPassword.vue';
 import modalVerfication from './modal/modalVerfication.vue';
 import modalChangePassword from './modal/modalChangePassword.vue';
 import modalResetPassword from './modal/modalResetPassword.vue';
+
+// import { useToast } from "primevue/usetoast";
+// const toast = useToast();
+
 </script>
 <script>
+import Toast from 'primevue/toast';
+
 export default {
   data() {
     return{
-      user: null
+      user: null,
+      disabled : false
     }
   },
   mounted() {
@@ -116,10 +125,18 @@ export default {
     }
   },
   methods:{
-    signout(){
-      sessionStorage.removeItem('user');
-      this.user = null;
+    signout() {
+      this.disabled = true ;
+      setTimeout(() => {
+          sessionStorage.removeItem('user');
+          this.user = null;
+                          this.$toast.add({ severity: 'success', summary: 'تم تسجيل الخروج بنجاح', life: 3000 });
+
+      }, 1000);
     }
+  },
+  components:{
+    Toast
   }
 }
 </script>

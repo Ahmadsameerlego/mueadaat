@@ -19,11 +19,11 @@
           </div>
           <!-- End Heading -->
           <form action="#" method="post" @submit="validateForm">
-            <div class="error-list">
+            <!-- <div class="error-list">
               <div class="error" v-for="error in formErrors" :key="error.id">
                 {{ error }}
               </div>
-            </div>
+            </div> -->
             <!-- <div class="form-item">
               <label for="email" class="form-item-label">{{
                 $t("Email")
@@ -74,7 +74,7 @@
             </div>
 
             <div class="form-item">
-              <input type="submit" value="تسجيل الدخول" class="global-button" />
+              <button type="submit" :disabled="disabled" class="global-button">تسجيل الدخول </button>
             </div>
           </form>
 
@@ -107,17 +107,24 @@
   >
     انشاء حساب
   </button>
+        <Toast />
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthSrore";
 import axios from "axios";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
+import Toast from 'primevue/toast';
 
-let { setAuthData  , setAuthOPT} = useAuthStore();
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
+
+
+let { setAuthData, setAuthOPT } = useAuthStore();
 
 let data = ref(null);
 let formErrors = ref([]);
+const disabled = ref(false)
 // let email = ref(null);
 let phone = ref(null);
 let password = ref(null);
@@ -150,8 +157,9 @@ let validateForm = (e) => {
 
 let login = () => {
   const btn = document.getElementById("btn_forget_model");
+  disabled.value = true;
   axios
-    .post("https://mueadaat.info/test-mode/api/login", {
+    .post("https://dashboard.mueadaat.info/test-mode/api/login", {
       // email: email.value,
       phone: phone.value,
       password: password.value,
@@ -163,36 +171,48 @@ let login = () => {
     })
     .then(() => {
       if (data.value.key === 1) {
+                        toast.add({ severity: 'success', summary: data.value.msg, life: 3000 });
+
         if (data.value.status == "active") {
           sessionStorage.setItem("user", JSON.stringify(data.value));
           console.log(
             "logged in user",
             JSON.parse(sessionStorage.getItem("user"))
           );
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         } else {
           console.log(data.value.data.id);
           axios
-            .post("https://mueadaat.info/test-mode/api/resend-code", {
+            .post("https://dashboard.mueadaat.info/test-mode/api/resend-code", {
               user_id: data.value.data.id,
               lang: locale.value,
             })
             .then((res) => {
               setAuthData(res.data);
-              setAuthOPT(data.value.data.id)
+              setAuthOPT(data.value.data.id);
               btn.click();
             });
-          }
-          // email.value = null
-          password.value = null
-          phone.value = null
+        }
+        // email.value = null
+        password.value = null;
+        phone.value = null;
       } else {
+        toast.add({ severity: 'error', summary: data.value.msg, life: 3000 });
         formErrors.value.push(data.value.msg);
       }
+
+      disabled.value = false;
     })
     .catch((error) => {
       // handle error
       console.error("Error fetching data:", error);
     });
 };
+// components:{
+//   Toast
+// }
+
+
 </script>

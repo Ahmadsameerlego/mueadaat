@@ -21,7 +21,7 @@
           <!-- End Heading -->
           <form action="#" @submit.prevent="validateForm">
             <div class="error-list">
-              <div class="error" v-for="error in formErrors" :key="error.id">
+              <div class="error text-danger" v-for="error in formErrors" :key="error.id">
                 {{ error }}
               </div>
             </div>
@@ -33,7 +33,7 @@
               <input
                 type="text"
                 name="first_name"
-                class="form-item-input is-invaild"
+                class="form-item-input"
                 id="first_name"
                 v-model="first_name"
                 placeholder="ادخل اسمك"
@@ -80,7 +80,7 @@
             </div>
 
             <div class="form-item">
-              <button class="global-button">انشاء حساب</button>
+              <button class="global-button" :disabled="disabled">انشاء حساب</button>
             </div>
           </form>
 
@@ -111,6 +111,7 @@
   >
     انشاء حساب
   </button>
+  <Toast />
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthSrore";
@@ -118,7 +119,14 @@ import axios from "axios";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 
-let { setAuthData , setAuthOPT} = useAuthStore();
+import Toast from 'primevue/toast';
+
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
+const disabled = ref(false);
+
+
+let { setAuthData, setAuthOPT } = useAuthStore();
 let { locale } = useI18n();
 let data = ref(null);
 let formErrors = ref(null);
@@ -130,36 +138,36 @@ let minChars = ref(6);
 // let maxChars = ref(10);
 
 let validateForm = (e) => {
-  e.preventDefault();
-  formErrors.value = [];
-  if (!first_name.value) {
-    formErrors.value.push("name can't be empty");
-  }
-  // Check if Emil is Empty
-  if (!email.value) {
-    formErrors.value.push("Email can't be empty");
-  }
-  if (!phone.value) {
-    formErrors.value.push("Email can't be empty");
-  }
-  if (!password.value) {
-    formErrors.value.push("Password can't be empty");
-  }
-  if (password.value && password.value.length < minChars.value) {
-    formErrors.value.push(
-      "Password can't be akal" + minChars.value + "Charchs"
-    );
-  }
-  if (!formErrors.value.length) {
+  // e.preventDefault();
+  // formErrors.value = [];
+  // if (!first_name.value) {
+  //   formErrors.value.push("name can't be empty");
+  // }
+  // // Check if Emil is Empty
+  // if (!email.value) {
+  //   formErrors.value.push("Email can't be empty");
+  // }
+  // if (!phone.value) {
+  //   formErrors.value.push("Email can't be empty");
+  // }
+  // if (!password.value) {
+  //   formErrors.value.push("Password can't be empty");
+  // }
+  // if (password.value && password.value.length < minChars.value) {
+  //   formErrors.value.push(
+  //     "Password can't be akal" + minChars.value + "Charchs"
+  //   );
+  // }
+  // if (formErrors.value.length) {
     signUp();
-  }
+  // }
 };
 
 let signUp = () => {
   const btn = document.getElementById("btn_forget_model");
-
+  disabled.value = true;
   axios
-    .post("https://mueadaat.info/test-mode/api/register", {
+    .post("https://dashboard.mueadaat.info/test-mode/api/register", {
       first_name: first_name.value,
       email: email.value,
       phone: phone.value,
@@ -170,6 +178,7 @@ let signUp = () => {
       // handle success
       data.value = response.data;
       if (data.value.key === 1) {
+        toast.add({ severity: 'success', summary: data.value.msg, life: 3000 });
         // sessionStorage.setItem("user", JSON.stringify(data.value.data));
         // console.log(
         //   "logged in user",
@@ -178,11 +187,13 @@ let signUp = () => {
         // window.location.reload();
         //router.push('/');
         setAuthData(data.value.data);
-        setAuthOPT(data.value.data.id)
+        setAuthOPT(data.value.data.id);
         btn.click();
       } else {
-        formErrors.value.push(data.value.msg);
+        toast.add({ severity: 'error', summary: data.value.msg, life: 3000 });
+        // formErrors.value.push(data.value.msg);
       }
+      disabled.value = false;
     })
     .catch((error) => {
       // handle error

@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-item">
-          <input type="submit" class="global-button" value="ارسال" />
+          <button type="submit" class="global-button" :disabled="disabled"> ارسال</button>
         </div>
       </form>
     </div>
@@ -58,6 +58,7 @@
   >
     انشاء حساب
   </button>
+  <Toast />
 </template>
 
 <script setup>
@@ -70,15 +71,19 @@ import { storeToRefs } from "pinia";
 
 let store = useAuthStore();
 
-let {setAuthOPT} = store
-let {OPT} = storeToRefs(store)
+let { setAuthOPT } = store;
+let { OPT } = storeToRefs(store);
+const disabled = ref(false)
+import Toast from 'primevue/toast';
+
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
 
 let formErrors = ref([]);
 // let data = ref(null);
 const otpInput = ref(null);
 const bindModal = ref("");
-let {locale} = useI18n()
-
+let { locale } = useI18n();
 
 // let validateForm = (e) => {
 //   e.preventDefault();
@@ -93,27 +98,36 @@ let {locale} = useI18n()
 // };
 
 const handleOnComplete = (value) => {
-  if(OPT.value){
+  disabled.value = true;
+  if (OPT.value) {
     axios
-    .post("https://mueadaat.info/test-mode/api/active-account", {
-      code: value,
-      lang: locale.value,
-      user_id:OPT.value
-    }).then((res)=>{
-      sessionStorage.setItem("user", JSON.stringify(res.data));
-          console.log(
-            "logged in user",
-            JSON.parse(sessionStorage.getItem("user"))
-          );
+      .post("https://dashboard.mueadaat.info/test-mode/api/active-account", {
+        code: value,
+        lang: locale.value,
+        user_id: OPT.value,
+      })
+      .then((res) => {
+        if (res.data.key === 1) {
+                  sessionStorage.setItem("user", JSON.stringify(res.data));
+        
+        toast.add({ severity: 'success', summary: res.data.msg, life: 3000 });
+        setTimeout(() => {
           window.location.reload();
-    })
-  }else{
+        }, 2000);
+
+        } else {
+                  toast.add({ severity: 'error', summary: res.data.msg, life: 3000 });
+
+        }
+        disabled.value = false;
+      });
+  } else {
     const btn = document.getElementById("btn_reset_model");
     setAuthOPT(value);
     btn.click();
   }
   // axios
-  //   .post("https://mueadaat.info/test-mode/api/forget-password", {
+  //   .post("https://dashboard.mueadaat.info/test-mode/api/forget-password", {
   //     code: value,
   //     lang: locale.value,
   //   })
@@ -141,7 +155,7 @@ const handleOnComplete = (value) => {
 
 // let resendCode = () => {
 //   axios
-//     .post("https://mueadaat.info/test-mode/api/forget-password", {
+//     .post("https://dashboard.mueadaat.info/test-mode/api/forget-password", {
 //       phone: authData.phone,
 //       lang: useI18n().locale.value,
 //     })

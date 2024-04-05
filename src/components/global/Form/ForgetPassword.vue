@@ -13,9 +13,9 @@
       <!-- End Heading -->
       <form action="/about" method="post" @submit="validateForm">
         <div class="error-list">
-          <div class="error" v-for="error in formErrors" :key="error.id">
+          <!-- <div class="error" v-for="error in formErrors" :key="error.id">
             {{ error }}
-          </div>
+          </div> -->
         </div>
         <div class="form-item">
           <label for="phone" class="form-item-label">{{ $t("Phone") }}</label>
@@ -30,13 +30,12 @@
         {{ msg }}
 
         <div class="form-item">
-          <input type="submit" class="global-button" value="ارسال" />
+          <button type="submit" class="global-button" :disabled="disabled"> ارسال</button>
         </div>
       </form>
     </div>
     <!-- End form Content -->
   </div>
-
 
   <button
     v-show="false"
@@ -48,15 +47,20 @@
   >
     انشاء حساب
   </button>
+  <Toast />
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthSrore";
 import axios from "axios";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
+import Toast from 'primevue/toast';
+
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
 
 let { setAuthData } = useAuthStore();
-
+const disabled = ref(false);
 let data = ref(null);
 let formErrors = ref([]);
 let phone = ref(null);
@@ -75,9 +79,10 @@ let validateForm = (e) => {
 };
 
 let forgetPassord = () => {
+  disabled.value = true;
   const btn = document.getElementById("btn_forget_model");
   axios
-    .post("https://mueadaat.info/test-mode/api/forget-password", {
+    .post("https://dashboard.mueadaat.info/test-mode/api/forget-password", {
       phone: phone.value,
       lang: locale.value,
     })
@@ -92,10 +97,16 @@ let forgetPassord = () => {
         );
         setAuthData(data.value.data);
         btn.click();
+
+                                toast.add({ severity: 'success', summary: data.value.msg, life: 3000 });
+
       } else {
         formErrors.value.push(data.value.msg);
         console.log("success", response);
+                                toast.add({ severity: 'error', summary: data.value.msg, life: 3000 });
+
       }
+      disabled.value = false;
     })
     .catch((error) => {
       // handle error

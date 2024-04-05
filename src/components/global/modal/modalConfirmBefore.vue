@@ -13,13 +13,25 @@
   <div class="form-check">
   <input type="checkbox">
   <label>تصميم الهويات البصرية</label>
-  <router-link to="/steps" class="global-button">تواصل</router-link>
+  <router-link to="/steps" class="global-button" @click="removePopUp">تواصل</router-link>
 </div>
   
       </div>
     </div>
   </div>
 </template>
-<script setup>
-
+<script >
+  export default{
+  data() {
+      
+  },
+    methods:{
+      removePopUp() {
+        setTimeout(() => {
+          document.querySelector('.modal-backdrop').style.display = 'none';
+          window.location.reload()
+        }, 1000);
+      }
+    }
+  }
 </script>
