@@ -1,0 +1,26 @@
+[class*="eicon-"] {
+    display: block !important;
+    fill: green !important
+}
+  [class*="eicon-"]:before{
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background-repeat: no-repeat !important;
+    background-size: contain;
+    -webkit-background-size: contain;
+    color: #ccc !important;
+    
+  }
+  .eicon-heart{
+    background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.8314 12.7036L12.5 20.6562L20.1686 12.7036C21.0211 11.8196 21.5 10.6205 21.5 9.3703C21.5 6.7668 19.4648 4.65625 16.9543 4.65625C15.7487 4.65625 14.5925 5.15291 13.74 6.03696L12.5 7.32292L11.26 6.03696C10.4075 5.15291 9.25128 4.65625 8.04569 4.65625C5.53517 4.65625 3.5 6.7668 3.5 9.3703C3.5 10.6205 3.97892 11.8196 4.8314 12.7036Z' stroke='%23EDEDED' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  }
+  /* ==========================================
+  Single-colored icons can be modified like so:
+  .icon-name {
+    font-size: 32px;
+    color: red;
+  }
+  ========================================== */
+  

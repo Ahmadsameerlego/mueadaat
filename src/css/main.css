@@ -1,0 +1,98 @@
+
+@font-face {
+    font-family: 'Tajawal-Regular';
+    src: url('@/assets/fonts/Tajawal-Regular.woff2') format('woff2'),
+        url('@/assets/fonts/Tajawal-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tajawal-bold';
+    src: url('../assets/fonts/Tajawal-Bold.woff2') format('woff2'),
+        url('../assets/fonts/Tajawal-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tajawal-medium';
+    src: url('@/assets/fonts/Tajawal-Medium.woff2') format('woff2'),
+        url('@/assets/fonts/Tajawal-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+.user-head{
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.user-head svg{
+    margin-left: 10px;
+}
+.user-head .title{
+    font-size: 20px;
+}
+.dropdown-menu{
+    position: absolute !important;
+    z-index: +9;
+}
+.otp-input {
+    margin: 0px 0.5rem;
+  border-radius: 50%;
+  border-width: 0px;
+  background-color: antiquewhite;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.otp-input:focus {
+    outline: none;
+}
+
+
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.center-this{
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.create-image{
+    width: 100%;
+    height: 100%;
+}
+.create-image img{
+    width: 100%;
+    height: 100%;
+}
+.create-ads{
+    background-image: url("../assets/pattern-orange.png");
+    background-repeat: repeat;
+    background-color: #FCAC62;
+    padding: 60px 0;
+
+}
+.create-container{
+    background-color: #fff;
+    padding: 0 !important;
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgb(0 0 0 / 22%);
+}

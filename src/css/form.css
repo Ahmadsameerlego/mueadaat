@@ -1,0 +1,104 @@
+.form-items .no-padding{
+    padding: 0;
+  }
+  .form-items .form-image{
+    width: 100%;
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 1px 1px 50px 2px rgb(0 0 0 / 17%);
+    height: 580px;
+  }
+  .form-items .grid-two{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+  }
+  .ltr .form-items .form-image{
+      border-right: 10px solid #FCAC62 !important;
+  }
+  .rtl .form-items .form-image{
+      border-left: 10px solid #FCAC62 !important;
+  }
+  .form-items .form-image img{
+    width: 100%;
+  }
+  .form-items .form-content{
+    padding: 32px;
+  }
+  .form-heading{
+    margin-bottom: 32px;
+  }
+  .form-items .form-item{
+    margin-bottom: 32px;
+  }
+  .form-items .form-item-label{
+    display: block;
+    font-size: 15px;
+    color: #212121 !important;
+  }
+  .form-items .form-item-input{
+    display: block;
+    width: 100%;
+    border: 2px solid #e5e5e5;
+    border-radius: 25px;
+    padding: 8px 16px;
+    transition: all 0.5s !important;
+  }
+  .form-items .form-item-input.is-invaild{
+    border-color: red;
+  }
+  .form-items .form-item-input:focus{
+    border: 2px solid #FCAC62 !important;
+  }
+  .form-items .form-item-input:focus-visible{
+    outline: none;
+  }
+  .form-items .global-button{
+    width: 100%;
+    border: 0;
+    padding: 12px 0 !important;
+  }
+  .form-items .forget-button{
+    border: 0;
+    background-color: transparent;
+    outline: 0;
+    color: #FCAC62;
+    display: block;
+    width: 100%;
+    text-align: left;
+    transition: all 0.3s;
+    font-size: 15px;
+    padding: 0;
+  }
+  .form-items .forget-button:hover{
+    color: #212121;
+  }
+  .form-items .new-account{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+  }
+  .form-items .new-account .go-to{
+    padding: 0 !important;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    margin-right: 8px;
+    color: #FCAC62;
+    transition: all 0.3s;
+  }
+  .form-items .new-account .go-to:hover{
+    color: #212121;
+  }
+  .form-check{
+    display: flex !important;
+  }
+  .form-check input[type="checkbox"]{
+    display: inline-block;
+  }
+  .flex-this{
+    display: flex;
+    align-items: center;
+  }

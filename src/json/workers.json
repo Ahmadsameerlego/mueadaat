@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "title": "عمالة متوفرة في الرياض",
+        "description": "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ ",
+        "img": "https://picsum.photos/id/30/300/300",
+        "isAdded": false,
+        "url": "https://www.google.com/",
+        "city": " الرياض",
+        "date": "منذ شهرين",
+        "detection": true
+    },
+    {
+        "id": 2,
+        "title": "عمالة منخفضة في مكة المكرمة",
+        "description": " يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام",
+        "img": "https://picsum.photos/id/100/300/300",
+        "isAdded": false,
+        "url": "https://www.google.com/",
+        "city": "Makkah",
+        "date": "from one months",
+        "detection": false
+    },
+    {
+        "id": 3,
+        "title": "عمالة في المدينة المنورة",
+        "description": "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء",
+        "img": "https://picsum.photos/id/120/300/300",
+        "isAdded": false,
+        "url": "https://www.google.com/",
+        "city": "المدينة المنورة",
+        "date": "منذ 6 أيام",
+        "detection": true
+    },
+    {
+        "id": 4,
+        "title": "أبها توفر عمالة منخفضة",
+        "description": "العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص",
+        "img": "https://picsum.photos/id/7/300/300",
+        "isAdded": false,
+        "url": "https://www.google.com/",
+        "city": "أبها",
+        "date": "منذ 3 أيام",
+        "detection": true
+    },
+    {
+        "id": 5,
+        "title": "لدينا عمالة منخفضة بجازان",
+        "description": "إذا قمت بإدخال لوريم ايبسوم في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث",
+        "img": "https://picsum.photos/id/12/300/300",
+        "isAdded": true,
+        "url": "https://www.google.com/",
+        "city": "الرياض",
+        "date": "منذ 5 أيام",
+        "detection": true
+    },
+    {
+        "id": 6,
+        "title": "اسعار مخفضة على كل عامل",
+        "description": "على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة",
+        "img": "https://picsum.photos/id/200/300/300",
+        "isAdded": false,
+        "url": "https://www.google.com/",
+        "city": "المدينة المنورة",
+        "date": "منذ شهر",
+        "detection": true
+    },
+    {
+        "id": 7,
+        "title": "عمالة هندية متوفرة لدينا",
+        "description": "افاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد، مما يجعله أكثر من 2000 عام في القدم",
+        "img": "https://picsum.photos/id/4/300/300",
+        "isAdded": true,
+        "url": "https://www.google.com/",
+        "city": "أبها",
+        "date": "منذ اسبوع",
+        "detection": true
+    },
+    {
+        "id": 8,
+        "title": "لدينا عمالة مختلطة الجنسيات",
+        "description": "لوريم إيبسوم وهي consectetur، وخلال تتبعه لهذه الكلمة في الأدب اللاتيني اكتشف المصدر الغير قابل للشك",
+        "img": "https://picsum.photos/id/22/300/300",
+        "isAdded": true,
+        "url": "https://www.google.com/",
+        "city": "الرياض",
+        "date": "منذ 10 أيام",
+        "detection": true
+    },
+    {
+        "id": 9,
+        "title": "تطبيق معدات للعمالة والمعدات",
+        "description": "لوريم إيبسوم وهي consectetur، وخلال تتبعه لهذه الكلمة في الأدب اللاتيني اكتشف المصدر الغير قابل للشك",
+        "img": "https://picsum.photos/id/180/300/300",
+        "isAdded": false,
+        "url": "https://www.google.com/",
+        "city": "الرياض",
+        "date": "منذ يومين",
+        "detection": true
+    }
+]
