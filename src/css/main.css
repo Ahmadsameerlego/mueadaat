@@ -112,3 +112,6 @@ input::-webkit-inner-spin-button {
 .otp-input-container{
     justify-content: center !important;
 }
+.main-color{
+    color: #FCAC62 !important;
+}

@@ -33,7 +33,13 @@
     "ResetTitle": "تغيير كلمة المرور",
     "ResetDesc": "ادخل كلمة المرور بالأدنى وأعدة بالنموزج أدناه من فضلك",
     "companyNameLabel": "اسم المؤسسة",
-    "myPlaceLabel": "موقعي"
-
+    "myPlaceLabel": "موقعي",
+    "getItTitle": "احصل على تطبيق",
+    "siteNmae": "معداتي و عمالي",
+    "getItFrom" : "احصل عليه من",
+    "googlePlay" : "جوجل بلاي",
+    "appStore" : "آب ستور",
+    "knowUsMore" : "تعرف علينا أكثر"
+    
     
 }
