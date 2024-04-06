@@ -35,7 +35,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      sliders: [],
+      sliders: null,
     };
   },
   mounted() {
