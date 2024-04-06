@@ -202,7 +202,7 @@ let login = () => {
         password.value = null;
         phone.value = null;
       } else {
-        toast.add({ severity: "error", summary: data.value.msg, life: 31000 });
+        toast.add({ severity: "error", summary: data.value.msg, life: 3000 });
         formErrors.value.push(data.value.msg);
       }
 

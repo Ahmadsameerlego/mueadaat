@@ -1,67 +1,28 @@
 <template>
-  <!-- <div
-    id="carouselExampleControlsNoTouching"
-    class="carousel slide"
-    data-bs-touch="false"
-    data-bs-interval="false"
+  <swiper
+    class="mySwiper"
+        :modules="modules"
+    :spaceBetween="30"
+    :centeredSlides="true"
+    :loop="true"
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
   >
-    <div class="carousel-inner" v-if="responseData">
-      <div class="carousel-item" v-for="item in responseData" :key="item.id">
-        <img :src="item.image" />
-      </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleControlsNoTouching"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleControlsNoTouching"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div> -->
-  <Carousel
-    :value="responseData"
-    :numVisible="1"
-    :numScroll="1"
-    :responsiveOptions="responsiveOptions"
-  >
-    <template #item="slotProps">
-      <div class="border-1 surface-border border-round m-2 p-3">
-        <div class="mb-3">
-          <div class="relative mx-auto">
-            <img
-              :src="slotProps.data.image"
-              :alt="slotProps.data.name"
-              class="w-full border-round"
-              style="width: 100%; height: 400px; object-fit: cover"
-            />
-          </div>
-        </div>
-        <!-- <div class="mb-3 font-medium">{{ slotProps.data.name }}</div>
-                    <div class="flex justify-content-between align-items-center">
-                        <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
-                        <span>
-                            <Button icon="pi pi-heart" severity="secondary" outlined />
-                            <Button icon="pi pi-shopping-cart" class="ml-2"/>
-                        </span>
-                    </div> -->
-      </div>
-    </template>
-  </Carousel>
+    <swiper-slide v-for="image in responseData" :key="image">
+      <img :src="image.image" alt="" style="width:100%;height:400px;object-fit:cover" class="slide-image" />
+    </swiper-slide>
+  </swiper>
 </template>
 <script>
 import axios from "axios";
-import Carousel from "primevue/carousel";
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
 
 export default {
   data() {
@@ -70,7 +31,8 @@ export default {
     };
   },
   components: {
-    Carousel,
+    Swiper,
+    SwiperSlide,
   },
   mounted() {
     axios
@@ -84,11 +46,16 @@ export default {
         console.error("Error fetching data:", error);
       });
   },
+
+  setup() {
+    return {
+      modules: [Autoplay],
+    };
+  },
 };
 </script>
 
 <style scoped>
-
 .carousel-inner,
 .carousel-item {
   width: 100%;
@@ -107,7 +74,15 @@ export default {
 }
 </style>
 <style>
-.p-carousel{
-      direction: ltr !important;
+.slide-image{
+  border-top-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+}
+.p-carousel {
+  direction: ltr !important;
+}
+.p-carousel-next,
+.p-carousel-prev {
+  display: none !important  ;
 }
 </style>

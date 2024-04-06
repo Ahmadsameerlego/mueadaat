@@ -3,9 +3,9 @@
     class="navbar navbar-expand-lg custom-nav"
     :dir="$i18n.locale == 'ar' ? 'rtl' : 'ltr'"
   >
-    <div class="container">
+    <div class="container" style="    max-width: 1250px;"> 
       <router-link class="navbar-brand" to="/">
-        <img src="../../assets/logo.png" />
+        <img src="../../assets/logo.png" width="120" />
       </router-link>
 
       <button
@@ -82,30 +82,82 @@
         </ul>
 
         <div v-if="user">
-         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img :src="user.data.avatar" alt="" width="30" height="30" style="border-radius:50%">
-                <span>
-                  {{  user.data.first_name  }}
-                </span>
+          <div class="dropdown">
+            <button
+              class="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                :src="user.data.avatar"
+                alt=""
+                width="30"
+                height="30"
+                style="border-radius: 50%"
+              />
+              <span>
+                {{ user.data.first_name }}
+              </span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">
-                 <button
-              type="button"
-              class=""
-              @click="signout"
-              :disabled="disabled"
-              role="button"
-            >
-              {{ $t("Sign out") }}
-            </button>
-              </a></li>
+              <li>
+                <router-link class="dropdown-item d-flex" to="/profile">
+                  <div class="drop-image">
+                    <i class="fa-regular fa-user"></i>
+                  </div>
+                  <span class="mx-2"> حسابي </span>
+                </router-link>
+              </li>
+              <li>
+                <router-link class="dropdown-item d-flex" to="/profile">
+                  <div class="drop-image">
+                    <i class="fa-regular fa-square"></i>
+                  </div>
+                  <span class="mx-2"> استعراض القوانين </span>
+                </router-link>
+              </li>
+              <li>
+                <router-link class="dropdown-item d-flex" to="/profile">
+                  <div class="drop-image">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </div>
+                  <span class="mx-2"> معاهدة الاستخدام </span>
+                </router-link>
+              </li>
+              <li>
+                <router-link class="dropdown-item d-flex" to="/profile">
+                  <div class="drop-image">
+                    <i class="fa-solid fa-file"></i>
+                  </div>
+                  <span class="mx-2"> سياسة الخصوصية </span>
+                </router-link>
+              </li>
+              <li>
+                <router-link class="dropdown-item d-flex" to="/profile">
+                  <div class="drop-image">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <span class="mx-2"> المفضلة </span>
+                </router-link>
+              </li>
+              <li>
+                <div class="dropdown-item d-flex">
+                  <div class="drop-image">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                  </div>
+                  <span
+                    class="mx-2"
+                    @click="signout"
+                    :disabled="disabled"
+                  >
+                    تسجيل الخروج
+                  </span>
+                </div>
+              </li>
             </ul>
           </div>
-       
         </div>
         <div v-else>
           <button
@@ -114,11 +166,33 @@
             data-bs-toggle="modal"
             href="#exampleModalToggle"
             role="button"
+            style="background-color: #000;"
           >
-            {{ $t("SignIn") }}
+            <i class="fa-regular fa-user"></i>
+            <span class="mx-2">
+              {{ $t("SignIn") }}
+            </span>
           </button>
         </div>
-        <LangCom />
+        <LangCom class="mx-2" />
+
+        <div  v-if="user">
+          <button  style="width:33px;height:33px;border-radius:50%" class="px-0 global-button drop-image mx-2 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-comment-dots"></i>
+          </button>
+        </div>
+
+        <div  v-if="user">
+          <button style="width:33px;height:33px" class="drop-image mx-2">
+            <i class="fa-regular fa-bell"></i>
+          </button>
+        </div>
+
+        <div>
+          <button style="width:33px;height:33px" class="drop-image mx-2">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
@@ -178,4 +252,25 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style>
+.dropdown-menu {
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 10px #3333336e;
+  text-align: right;
+}
+.drop-image {
+  width: 25px;
+  height: 25px;
+  background-color: #000;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.dropdown-item {
+  border-bottom: 1px solid #ccc !important;
+}
+</style>

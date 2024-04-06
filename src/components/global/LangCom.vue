@@ -1,9 +1,20 @@
 <template>
+  
     <div v-if="currentLang === 'en'">
-      <button  @click="switchLanguage()" class="switch-lang">العربية</button>
+      <button  @click="switchLanguage()" class="switch-lang px-2">
+        <i class="fa-solid fa-globe"></i>
+        <span class="mx-2">
+          العربية
+        </span>
+      </button>
     </div>
     <div v-else>
-      <button  @click="switchLanguage()" class="switch-lang">English</button>
+      <button  @click="switchLanguage()" class="switch-lang px-2">
+        <i class="fa-solid fa-globe"></i>
+        <span class="mx-2">
+          English
+        </span>
+      </button>
     </div>
 
 
