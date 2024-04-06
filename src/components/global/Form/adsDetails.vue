@@ -61,6 +61,27 @@
           v-model="desc_ar"
         ></textarea>
       </div>
+
+      <div class="form-item">
+        <label for="details" class="form-label">تفاصيل الإعلان</label>
+        <textarea
+          name="details"
+          class="form-item-input"
+          id="message"
+          v-model="desc_ar"
+        ></textarea>
+      </div>
+      <div class="form-item">
+        <label for="details" class="form-label">تفاصيل الإعلان</label>
+        <textarea
+          name="details"
+          class="form-item-input"
+          id="message"
+          v-model="desc_ar"
+        ></textarea>
+      </div>
+
+
     </form>
   </div>
 </template>
