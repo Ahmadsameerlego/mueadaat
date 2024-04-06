@@ -60,12 +60,7 @@
     </div>
 
     <div class="form-group">
-      <button
-        type="submit"
-        class="global-button"
-        :disabled="disabled"
-        
-      >
+      <button type="submit" class="global-button" :disabled="disabled">
         ارسال
       </button>
     </div>
@@ -74,7 +69,7 @@
   <Toast />
 </template>
 <script setup>
-import { reactive , ref} from "vue";
+import { reactive, ref } from "vue";
 import Toast from "primevue/toast";
 import axios from "axios";
 
@@ -102,15 +97,15 @@ const save = () => {
     })
     .then((res) => {
       if (res.data.key == 1) {
-          toast.add({ severity: "success", summary: res.data.msg, life: 3000 });
-        formData.username = ''
-formData.email= ''
-formData.subject= ''
-formData.message= ''
-formData.mobileNumber= ''
+        toast.add({ severity: "success", summary: res.data.msg, life: 3000 });
+        formData.username = "";
+        formData.email = "";
+        formData.subject = "";
+        formData.message = "";
+        formData.mobileNumber = "";
       } else {
         toast.add({ severity: "error", summary: res.data.msg, life: 3000 });
-        }
+      }
       disabled.value = false;
     });
 };

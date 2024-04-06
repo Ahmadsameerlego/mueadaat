@@ -98,8 +98,11 @@ input::-webkit-inner-spin-button {
 }
 
 
-p-toast{
-    z-index: 9999999999999 !important;
+.p-toast{
+ z-index: 9999999999999 !important;
+    left: 100px !important;
+    right: auto !important;
+    top: 4px !important;
 }
 
 .p-toast .p-toast-message .p-toast-message-content {

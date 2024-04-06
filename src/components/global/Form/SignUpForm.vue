@@ -21,7 +21,11 @@
           <!-- End Heading -->
           <form action="#" @submit.prevent="validateForm">
             <div class="error-list">
-              <div class="error text-danger" v-for="error in formErrors" :key="error.id">
+              <div
+                class="error text-danger"
+                v-for="error in formErrors"
+                :key="error.id"
+              >
                 {{ error }}
               </div>
             </div>
@@ -37,6 +41,7 @@
                 id="first_name"
                 v-model="first_name"
                 placeholder="ادخل اسمك"
+                required
               />
             </div>
             <div class="form-item">
@@ -50,6 +55,7 @@
                 id="email"
                 v-model="email"
                 placeholder="name@example.com"
+                required
               />
             </div>
             <div class="form-item">
@@ -63,6 +69,7 @@
                 id="phone"
                 v-model="phone"
                 placeholder="ادخل رقم جوالك"
+                required
               />
             </div>
             <div class="form-item">
@@ -76,11 +83,14 @@
                 name="password"
                 v-model="password"
                 placeholder="ادخل كلمة االمرور"
+                required
               />
             </div>
 
             <div class="form-item">
-              <button class="global-button" :disabled="disabled">انشاء حساب</button>
+              <button class="global-button" :disabled="disabled">
+                انشاء حساب
+              </button>
             </div>
           </form>
 
@@ -119,12 +129,11 @@ import axios from "axios";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 
-import Toast from 'primevue/toast';
+import Toast from "primevue/toast";
 
 import { useToast } from "primevue/usetoast";
 const toast = useToast();
 const disabled = ref(false);
-
 
 let { setAuthData, setAuthOPT } = useAuthStore();
 let { locale } = useI18n();
@@ -159,7 +168,7 @@ let validateForm = () => {
   //   );
   // }
   // if (formErrors.value.length) {
-    signUp();
+  signUp();
   // }
 };
 
@@ -178,7 +187,7 @@ let signUp = () => {
       // handle success
       data.value = response.data;
       if (data.value.key === 1) {
-        toast.add({ severity: 'success', summary: data.value.msg, life: 3000 });
+        toast.add({ severity: "success", summary: data.value.msg, life: 3000 });
         // sessionStorage.setItem("user", JSON.stringify(data.value.data));
         // console.log(
         //   "logged in user",
@@ -190,7 +199,7 @@ let signUp = () => {
         setAuthOPT(data.value.data.id);
         btn.click();
       } else {
-        toast.add({ severity: 'error', summary: data.value.msg, life: 3000 });
+        toast.add({ severity: "error", summary: data.value.msg, life: 3000 });
         // formErrors.value.push(data.value.msg);
       }
       disabled.value = false;

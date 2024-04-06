@@ -1,9 +1,9 @@
 <template>
     <Carousel id="gallery" :items-to-show="1"
      :wrap-around="false" v-model="currentSlide">
-      <Slide v-for="galleryImg in galleryImgs" :key="galleryImg.id">
+      <Slide v-for="galleryImg in images" :key="galleryImg.id">
         <div class="carousel__item main-img">
-        <img :src="galleryImg.imgSrc" />    
+        <img :src="galleryImg.image" />    
         </div>
       </Slide>
     </Carousel>
@@ -15,9 +15,9 @@
       v-model="currentSlide"
       ref="carousel"
     >
-      <Slide v-for="galleryImg in galleryImgs" :key="galleryImg.id">
+      <Slide v-for="galleryImg in images" :key="galleryImg.id">
         <div class="carousel__item group-img-slider" @click="slideTo(galleryImg.id)">
-            <img :src="galleryImg.imgSrc" />  
+            <img :src="galleryImg.image" />  
         </div>
       </Slide>
       <Navigation />
@@ -36,6 +36,9 @@
       Carousel,
       Slide,
       Navigation,
+    },
+    props: {
+        images : Array
     },
     data: () => ({
       currentSlide: 0,

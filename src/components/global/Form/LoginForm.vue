@@ -47,6 +47,7 @@
                 id="phone"
                 v-model="phone"
                 :placeholder="$t('enterPhone')"
+                required
               />
             </div>
             <div class="form-item">
@@ -60,6 +61,7 @@
                 name="password"
                 v-model="password"
                 :placeholder="$t('enterPassword')"
+                required
               />
             </div>
             <div class="form-item">
@@ -74,7 +76,9 @@
             </div>
 
             <div class="form-item">
-              <button type="submit" :disabled="disabled" class="global-button">تسجيل الدخول </button>
+              <button type="submit" :disabled="disabled" class="global-button">
+                تسجيل الدخول
+              </button>
             </div>
           </form>
 
@@ -107,28 +111,27 @@
   >
     انشاء حساب
   </button>
-        <Toast />
+  <Toast />
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthSrore";
 import axios from "axios";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import Toast from 'primevue/toast';
+import Toast from "primevue/toast";
 
 import { useToast } from "primevue/usetoast";
 const toast = useToast();
-
 
 let { setAuthData, setAuthOPT } = useAuthStore();
 
 let data = ref(null);
 let formErrors = ref([]);
-const disabled = ref(false)
+const disabled = ref(false);
 // let email = ref(null);
 let phone = ref(null);
 let password = ref(null);
-let minChars = ref(6);
+// let minChars = ref(6);
 let { locale } = useI18n();
 // let maxChars = ref(10);
 
@@ -138,21 +141,21 @@ let validateForm = (e) => {
   // Check if Emil is Empty
   // if (!email.value) {
   //   formErrors.value.push("Email can't be empty");
+  // // }
+  // if (!phone.value) {
+  //   formErrors.value.push("Email can't be empty");
   // }
-  if (!phone.value) {
-    formErrors.value.push("Email can't be empty");
-  }
-  if (!password.value) {
-    formErrors.value.push("Password can't be empty");
-  }
-  if (password.value && password.value.length < minChars.value) {
-    formErrors.value.push(
-      "Password can't be akal" + minChars.value + "Charchs"
-    );
-  }
-  if (!formErrors.value.length) {
-    login();
-  }
+  // if (!password.value) {
+  //   formErrors.value.push("Password can't be empty");
+  // }
+  // if (password.value && password.value.length < minChars.value) {
+  //   formErrors.value.push(
+  //     "Password can't be akal" + minChars.value + "Charchs"
+  //   );
+  // }
+  // if (!formErrors.value.length) {
+  login();
+  // }
 };
 
 let login = () => {
@@ -171,7 +174,7 @@ let login = () => {
     })
     .then(() => {
       if (data.value.key === 1) {
-                        toast.add({ severity: 'success', summary: data.value.msg, life: 3000 });
+        toast.add({ severity: "success", summary: data.value.msg, life: 3000 });
 
         if (data.value.status == "active") {
           sessionStorage.setItem("user", JSON.stringify(data.value));
@@ -199,7 +202,7 @@ let login = () => {
         password.value = null;
         phone.value = null;
       } else {
-        toast.add({ severity: 'error', summary: data.value.msg, life: 3000 });
+        toast.add({ severity: "error", summary: data.value.msg, life: 31000 });
         formErrors.value.push(data.value.msg);
       }
 
@@ -213,6 +216,6 @@ let login = () => {
 // components:{
 //   Toast
 // }
-
-
 </script>
+
+

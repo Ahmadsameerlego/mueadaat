@@ -47,7 +47,7 @@
   >
     انشاء حساب
   </button>
-  <Toast />
+  <Toast/>
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthSrore";

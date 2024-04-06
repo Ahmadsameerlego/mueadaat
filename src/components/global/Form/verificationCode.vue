@@ -41,7 +41,9 @@
         </div>
 
         <div class="form-item">
-          <button type="submit" class="global-button" :disabled="disabled"> ارسال</button>
+          <button type="submit" class="global-button" :disabled="disabled">
+            ارسال
+          </button>
         </div>
       </form>
     </div>
@@ -73,8 +75,8 @@ let store = useAuthStore();
 
 let { setAuthOPT } = store;
 let { OPT } = storeToRefs(store);
-const disabled = ref(false)
-import Toast from 'primevue/toast';
+const disabled = ref(false);
+import Toast from "primevue/toast";
 
 import { useToast } from "primevue/usetoast";
 const toast = useToast();
@@ -108,16 +110,14 @@ const handleOnComplete = (value) => {
       })
       .then((res) => {
         if (res.data.key === 1) {
-                  sessionStorage.setItem("user", JSON.stringify(res.data));
-        
-        toast.add({ severity: 'success', summary: res.data.msg, life: 3000 });
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+          sessionStorage.setItem("user", JSON.stringify(res.data));
 
+          toast.add({ severity: "success", summary: res.data.msg, life: 3000 });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         } else {
-                  toast.add({ severity: 'error', summary: res.data.msg, life: 3000 });
-
+          toast.add({ severity: "error", summary: res.data.msg, life: 3000 });
         }
         disabled.value = false;
       });
