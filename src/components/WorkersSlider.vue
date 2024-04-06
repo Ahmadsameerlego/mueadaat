@@ -23,23 +23,12 @@
                 <div class="add-favorite">
                   <button
                     :class="{ added: isAdded }"
-                    @click="addWish($event, 'added')"
+                    @click="is_favourite($event, 'added')"
                   >
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 25 25"
-                      fill="#fff"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.8314 12.7036L12.5 20.6562L20.1686 12.7036C21.0211 11.8196 21.5 10.6205 21.5 9.3703C21.5 6.7668 19.4648 4.65625 16.9543 4.65625C15.7487 4.65625 14.5925 5.15291 13.74 6.03696L12.5 7.32292L11.26 6.03696C10.4075 5.15291 9.25128 4.65625 8.04569 4.65625C5.53517 4.65625 3.5 6.7668 3.5 9.3703C3.5 10.6205 3.97892 11.8196 4.8314 12.7036Z"
-                        stroke="#EDEDED"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                  <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.3314 9.04738L10 17L17.6686 9.04738C18.5211 8.16332 19 6.96429 19 5.71405C19 3.11055 16.9648 1 14.4543 1C13.2487 1 12.0925 1.49666 11.24 2.38071L10 3.66667L8.75997 2.38071C7.90749 1.49666 6.75128 1 5.54569 1C3.03517 1 1 3.11055 1 5.71405C1 6.96429 1.47892 8.16332 2.3314 9.04738Z" stroke="#EDEDED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
                   </button>
                 </div>
               </div>
@@ -128,7 +117,7 @@ export default defineComponent({
     },
   }),
   methods: {
-    addWish: function (event, theclass) {
+    is_favourite: function (event, theclass) {
       event.target.classList.toggle(theclass);
     },
   },
@@ -153,8 +142,8 @@ export default defineComponent({
 .carousel__slide--next[data-v-7b327ef6],
 .carousel__slide {
   transform: none;
-  margin-right: 16px;
-  margin-left: 16px;
+  margin-right: 16px !important;
+  margin-left: 16px !important;
   width: 30.4% !important;
 }
 

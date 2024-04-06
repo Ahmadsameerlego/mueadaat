@@ -20,9 +20,12 @@
             <div class="add-favorite">
               <button
                 :class="{ added: isAdded }"
-                @click="addWish($event, 'added')"
+                @click="is_favourite($event, 'added')"
               >
-                <fa icon="heart" />
+              <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.3314 9.04738L10 17L17.6686 9.04738C18.5211 8.16332 19 6.96429 19 5.71405C19 3.11055 16.9648 1 14.4543 1C13.2487 1 12.0925 1.49666 11.24 2.38071L10 3.66667L8.75997 2.38071C7.90749 1.49666 6.75128 1 5.54569 1C3.03517 1 1 3.11055 1 5.71405C1 6.96429 1.47892 8.16332 2.3314 9.04738Z" stroke="#EDEDED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
               </button>
             </div>
           </div>
@@ -44,26 +47,22 @@
           <!-- End Post Data -->
           <!-- Start Post Info -->
           <div class="post-info">
-            <div class="row">
-              <div class="col-sm-8">
-                <!-- Start Post Place -->
-                <span class="post-place text-body">
-                  <fa icon="heart" /> {{ equipment.city_title }}</span
-                >
-                <!-- Start Post Date -->
+                <div class="default-flex">
+                  <div class="display-info">
+                    <!-- Start Post Place -->
+                    <div class="post-place text-body">
+                      <placeIcon />{{ equipment.city_title }}
+                    </div>
+                    <!-- Start Post Date -->
 
-                <span class="post-date text-body"
-                  ><fa icon="heart" /> {{ equipment.unit }}</span
-                >
+                    <div class="post-date text-body">
+                      <dateICon /> {{ equipment.duration }}
+                    </div>
+                  </div>
+                  <div class="detection">{{ equipment.short_desc }}</div>
+                </div>
               </div>
-              <div class="col-sm-4">
-                <!-- Start Post Detection -->
-
-                <span class="detection">{{ equipment.short_desc }}</span>
-              </div>
-            </div>
-          </div>
-          <!-- End Post Info -->
+              <!-- End Post Info -->
         </div>
         <!-- End Post -->
       </div>
@@ -81,13 +80,16 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 //import equipments from '../json/equipments.json'
 import axios from "axios";
-
+import placeIcon from "./Icons/placeIcon.vue";
+import dateICon from "./Icons/dateICon.vue";
 export default defineComponent({
   name: "EquipmentSlider",
   components: {
     Carousel,
     Slide,
     Navigation,
+    placeIcon,
+    dateICon
   },
   data: () => ({
     fav_item: [],
@@ -111,13 +113,14 @@ export default defineComponent({
     },
   }),
   methods: {
-    addWish: function (event, theclass) {
+    is_favourite: function (event, theclass) {
       event.target.classList.toggle(theclass);
     },
   },
   mounted() {
+    var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.fav_item = response.data.data;
@@ -134,8 +137,8 @@ export default defineComponent({
 .carousel__slide--next[data-v-7b327ef6],
 .carousel__slide {
   transform: none;
-  margin-right: 16px;
-  margin-left: 16px;
+  margin-right: 16px !important;
+  margin-left: 16px !important;
   width: 30.4% !important;
 }
 
@@ -147,10 +150,6 @@ export default defineComponent({
     margin-left: 0 !important;
     width: 100% !important;
   }
-}
-.carousel__slide {
-  justify-content: normal;
-  align-items: normal;
 }
 .carousel__slide {
   justify-content: normal;

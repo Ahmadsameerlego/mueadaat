@@ -5,8 +5,8 @@
     data-bs-touch="false"
     data-bs-interval="false"
   >
-    <div class="carousel-inner" v-if="responseData">
-      <div class="carousel-item" v-for="item in responseData" :key="item.id">
+    <div class="carousel-inner" v-if="sliders">
+      <div class="carousel-item" v-for="item in sliders" :key="item.id">
         <img :src="item.image" />
       </div>
     </div>
@@ -35,15 +35,16 @@ import axios from "axios";
 export default {
   data() {
     return {
-      responseData: null,
+      sliders: null,
     };
   },
   mounted() {
+    var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
       .then((response) => {
         // handle success
-        this.responseData = response.data;
+        this.sliders = response.data.data;
       })
       .catch((error) => {
         // handle error

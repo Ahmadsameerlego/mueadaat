@@ -33,5 +33,11 @@
     "ResetTitle": "Change Password",
     "ResetDesc": "Please enter your password below and return the form below",
     "companyNameLabel": "Company Name",
-    "myPlaceLabel": "My Place"
+    "myPlaceLabel": "My Place",
+    "getItTitle": "Get an app",
+    "siteNmae": "Equipment and Workers",
+    "getItFrom" : "Get it from",
+    "googlePlay" : "Google Play",
+    "appStore" : "App Store",
+    "knowUsMore" : "know us more"
 }

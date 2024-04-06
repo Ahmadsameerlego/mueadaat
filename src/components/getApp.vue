@@ -2,12 +2,12 @@
   <section class="getApp">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div class="section-heading">
-            <span class="section-title">{{ $t("TestimonialsTitle") }}</span>
-            <h1 class="section-description">{{ $t("TestimonialsDesc") }}</h1>
+            <span class="section-title">{{ $t("getItTitle") }}</span>
+            <h1 class="section-description main-color">{{ $t("siteNmae") }}</h1>
           </div>
-          <p class="text-body">
+          <p class="text-body desc">
             {{ get_app.desc }}
           </p>
           <ul class="download-app-list">
@@ -41,8 +41,8 @@
                     </svg>
                   </div>
                   <div class="app-type">
-                    <span class="get-it">احصل عليه من</span>
-                    <h4 class="app-name">جوجل بلاي</h4>
+                    <span class="get-it">{{ $t('getItFrom') }}</span>
+                    <h4 class="app-name">{{ $t('googlePlay') }}</h4>
                   </div>
                 </div>
               </a>
@@ -89,16 +89,18 @@
                     </svg>
                   </div>
                   <div class="app-type">
-                    <span class="get-it">احصل عليه من</span>
-                    <h4 class="">أب ستور</h4>
+                    <span class="get-it">{{ $t('getItFrom') }}</span>
+                    <h4 class="app-name">{{ $t('appStore') }} </h4>
                   </div>
                 </div>
               </a>
             </li>
           </ul>
         </div>
-        <div class="col-md-6">
-          <img src="../assets/getapp.png" />
+        <div class="col-md-7">
+          <div class="app-imag">
+            <img src="../assets/getapp.png" />
+          </div>
         </div>
       </div>
     </div>
@@ -113,8 +115,9 @@ export default {
     get_app: {},
   }),
   mounted() {
+    var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.get_app = response.data.data.get_app;
@@ -131,20 +134,31 @@ export default {
 .download-app-list {
   display: flex;
   list-style: none;
+  padding: 0 !important;
+  margin-top: 32px !important;
 }
-.rtl .download-app-list .item:first-child {
-  margin-left: 16px;
-}
-.ltr .download-app-list .item:first-child {
-  margin-right: 16px;
-}
+
 .download-app-list .item a {
   background-color: #000;
   padding: 5px 20px;
-  display: block;
+  display: flex;
   color: #fff;
   text-decoration: none;
   border-radius: 16px;
+  transition: all 0.4s;
+}
+.download-app-list .item a:hover{
+  opacity: 0.7;
+}
+.download-app-list .item{
+  padding: 0 !important;
+}
+
+.rtl .download-app-list .item:first-child{
+  margin-left: 16px !important;
+}
+.ltr .download-app-list .item:first-child{
+  margin-right: 16px !important;
 }
 .download-app-list .item a.google-play {
   background-color: #fcac62 !important;
@@ -154,10 +168,31 @@ export default {
 .download-app-list .item a .flex-link {
   display: flex !important;
 }
+.rtl .download-app-list .item a .flex-link .icon{
+  margin-left: 10px;
+}
+.ltr .download-app-list .item a .flex-link .icon{
+  margin-right: 10px;
+}
 .get-it {
   font-size: 13px;
+  display: block;
 }
 .app-name {
-  font-size: 16px;
+  font-size: 20px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+.app-imag{
+  width: 100%;
+  height: 100%;
+}
+.app-imag img{
+  width: 100%;
+  height: 100%;
+}
+.text-body{
+  color: #74757E !important;
+  line-height: 28px;
 }
 </style>
