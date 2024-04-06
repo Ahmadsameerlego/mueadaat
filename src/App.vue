@@ -56,6 +56,12 @@ h3{
 }
 ul, li{
     list-style: none;
+    
+
+}
+li{
+    padding: 0 !important;
+    margin: 0 !important;
 }
 a{
     text-decoration: none !important;
@@ -119,14 +125,38 @@ button, input [type="submit"]{
     margin-bottom: 16px;
         
 }
-    .post .post-info{
+    .rtl .post .post-info{
         direction: rtl !important;
     }
 
+    .ltr .post .post-info{
+        direction: ltr !important;
+    }
     .post .display-info{
         display: flex;
     }
- 
+    .rtl .post .post-info .post-place{
+        margin-left: 10px;
+    }
+    .ltr .post .post-info .post-place{
+        margin-right: 10px;
+    }
+    .post .post-info .post-place,
+    .post .post-info .post-date {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #74757E !important;
+    }
+
+    .rtl .post .post-info .post-place svg,
+    .rtl .post .post-info .post-date svg {
+        margin-left: 2px;
+    }
+    .ltr .post .post-info .post-place svg,
+    .ltr .post .post-info .post-date svg {
+        margin-right: 2px;
+    }
     .post .default-flex{
         display: flex;
         align-items: center;
@@ -187,6 +217,13 @@ button, input [type="submit"]{
     .add-favorite button.added, .add-favorite button:hover{
         background-color: #FCAC62;
     }
+    .detection{
+        background-color: #FCAC62;
+        padding: 5px 15px;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 13px;
+    }
 
 
 .global-button{
@@ -200,6 +237,7 @@ button, input [type="submit"]{
         transition: all 0.3s;
         font-family: 'Tajawal-medium';
         border: 0;
+        box-shadow: 0 0 20px rgb(252 172 98 / 53%);
         
     }
     .global-button:disabled{

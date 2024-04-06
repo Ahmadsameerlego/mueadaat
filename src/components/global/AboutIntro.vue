@@ -7,12 +7,13 @@
             <div class="section-heading">
               <span class="section-title">{{ $t("About") }}</span>
               <h1 class="section-description">{{ about_us.title }}</h1>
-              <h1 class="site-name">معداتي وعمالي</h1>
+              <h1 class="site-name">{{$t('siteNmae')}}</h1>
             </div>
             <div class="about-text">
               <p class="text-body">{{ about_us.desc }}</p>
             </div>
-            <a href="#" class="global-button" v-show="showButton">تعرف علينا</a>
+            <router-link to="/about" class="global-button" v-show="showButton">
+              {{$t('knowUsMore')}}</router-link>
           </div>
         </div>
         <div class="col-md-6">

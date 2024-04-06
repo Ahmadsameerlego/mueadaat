@@ -20,9 +20,18 @@
               <h4 class="testimonial-username">{{ item.user_name }}</h4>
               <div class="testimonial-address">
                 <span class="testimonial-address-text">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 10.5C10.2426 10.5 11.25 9.49264 11.25 8.25C11.25 7.00736 10.2426 6 9 6C7.75736 6 6.75 7.00736 6.75 8.25C6.75 9.49264 7.75736 10.5 9 10.5Z" stroke="#74757E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 15.75C12.3137 14.25 15 11.5637 15 8.25C15 4.93629 12.3137 2.25 9 2.25C5.68629 2.25 3 4.93629 3 8.25C3 11.5637 5.68629 14.25 9 15.75Z" stroke="#74757E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
                   {{ item.city_title }}</span
                 >
               </div>
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.5 12.0417L4.25 14.1667L5.3125 9.91667L2.125 6.375L6.72917 6.02083L8.5 2.125L10.2708 6.02083L14.875 6.375L11.6875 9.91667L12.75 14.1667L8.5 12.0417Z" stroke="#FCAC62" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
               {{ item.rate }}
             </div>
           </div>
@@ -72,8 +81,9 @@ export default defineComponent({
   }),
 
   mounted() {
+    var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.reviews = response.data.data;
@@ -91,12 +101,16 @@ export default defineComponent({
 }
 .testimonial-block {
   background-color: #fff;
-  box-shadow: 1px 1px 5px 2px rgb(0 0 0 / 17%);
-  transition: all 0.3s;
+  box-shadow: 0 0 10px rgb(0 0 0 / 8%);
+  transition: all 0.4s;
   position: relative;
   margin-bottom: 16px;
   border-radius: 50px 20px;
   padding: 32px;
+  margin-top: 32px;
+}
+.testimonial-block:hover{
+  box-shadow: 0 0 30px rgb(0 0 0 / 8%);
 }
 .reviews-text {
   font-size: 15px;
@@ -106,17 +120,30 @@ export default defineComponent({
 }
 .testimonial-user {
   display: flex;
+  margin-top: 32px;
+}
+.ltr .testimonial-user{
+  direction: ltr !important;
+}
+.rtl .testimonial-user{
+  direction: rtl !important;
 }
 .testimonial-user .testimonial-user-image {
   width: 55px;
   height: 55px;
-  margin-left: 8px;
+ 
+}
+.rtl .testimonial-user .testimonial-user-image{
+  margin-left: 16px !important;
+}
+.ltr .testimonial-user .testimonial-user-image{
+  margin-right: 16px !important;
 }
 .testimonial-user .testimonial-user-image img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: 1px 1px 5px 2px rgb(0 0 0 / 10%);
+  box-shadow: 1px 1px 30px 2px rgb(0 0 0 / 10%);
 }
 .testimonial-username {
   font-size: 18px;
@@ -128,14 +155,16 @@ export default defineComponent({
   display: inline-block;
   padding: 0;
   margin: 0;
+  font-size: 15px;
+  color: #74757E;
 }
 
 .carousel__slide--next[data-v-7b327ef6],
 .carousel__slide {
   transform: none;
-  margin-right: 16px;
-  margin-left: 16px;
-  width: 30.4% !important;
+  margin-right: 16px !important;
+  margin-left: 16px !important;
+  width: 31% !important;
 }
 
 @media (max-width: 480px) {
@@ -146,10 +175,6 @@ export default defineComponent({
     margin-left: 0 !important;
     width: 100% !important;
   }
-}
-.carousel__slide {
-  justify-content: normal;
-  align-items: normal;
 }
 .carousel__slide {
   justify-content: normal;

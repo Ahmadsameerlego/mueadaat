@@ -18,3 +18,8 @@
     import TestimonialsContent from './global/TestimonialsContent.vue'; 
   </script>
       
+  <style scoped>
+  .section-heading{
+    margin-bottom: 10px !important;
+  }
+  </style>
