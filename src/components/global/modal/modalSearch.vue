@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="confirmBefore" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="searchModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
   
