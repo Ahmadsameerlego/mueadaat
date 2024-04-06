@@ -115,3 +115,22 @@ input::-webkit-inner-spin-button {
 .main-color{
     color: #FCAC62 !important;
 }
+
+.carousel__prev, .carousel__next{
+    top: -10% !important;
+        width: 35px !important;
+    height: 35px !important;
+    border-radius: 50% !important;
+    box-shadow: 0px 0px 10px #33333352;
+}
+
+.carousel__prev{
+    color: #FCAC62 !important;
+}
+.carousel__next{
+    
+    background-color: #fcac62 !important;
+    left: 5% !important;
+    opacity: 1 !important;
+    color: #fff !important;
+}

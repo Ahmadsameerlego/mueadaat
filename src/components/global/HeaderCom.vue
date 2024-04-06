@@ -162,7 +162,7 @@
         <div v-else>
           <button
             type="button"
-            class="global-button"
+            class="global-button login-button"
             data-bs-toggle="modal"
             href="#exampleModalToggle"
             role="button"
