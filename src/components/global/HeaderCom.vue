@@ -189,9 +189,9 @@
         </div>
 
         <div>
-          <button style="width:33px;height:33px" class="drop-image mx-2">
+          <router-link to="/search" style="width:33px;height:33px" class="drop-image mx-2">
             <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
+          </router-link>
         </div>
       </div>
     </div>

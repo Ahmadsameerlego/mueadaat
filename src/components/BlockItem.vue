@@ -33,11 +33,11 @@
       </div>
       <!-- End Post Data -->
       <!-- Start Post Info -->
-      <div class="post-info px-2">
+      <div class="post-info ">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-8 d-flex">
             <!-- Start Post Place -->
-            <span class="post-place text-body mx-3"
+            <span class="post-place text-body mx-2"
               ><placeIcon />{{ props.city }}</span
             >
             <!-- Start Post Date -->
@@ -47,7 +47,7 @@
           </div>
           <div class="col-sm-4">
             <!-- Start Post Detection -->
-            <span class="detection global-button">{{ props.detection }}</span>
+            <span class="detection global-button px-1">{{ props.detection }}</span>
           </div>
         </div>
       </div>
@@ -107,14 +107,14 @@ import Toast from "primevue/toast";
 
 export default {
   methods: {
-    async toggleFavoriteSimilar(id) {
+    async toggleFavoriteSimilar(service_id) {
       await axios
         .post(
           "https://dashboard.mueadaat.info/test-mode/api/add-to-favourite",
           {
             lang: localStorage.getItem("locale"),
             user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-            service_id: id,
+            service_id: service_id,
           }
         )
         .then((res) => {
@@ -124,7 +124,9 @@ export default {
               summary: res.data.msg,
               life: 3000,
             });
-            window.location.reload();
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
           } else {
             this.$toast.add({
               severity: "error",
@@ -140,3 +142,11 @@ export default {
   },
 };
 </script>
+<style>
+.favIcon {
+  color: red !important;
+}
+.favIcon svg {
+  fill: red !important;
+}
+</style>

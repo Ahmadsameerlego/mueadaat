@@ -1,30 +1,61 @@
 <template>
-    <BreadCrumb
-    :title="$t ('Equipments')"
+  <BreadCrumb
+    :title="$t('Equipments')"
     :pageTitle="$t('Equipments')"
     :homePage="$t('Home')"
-    />
-    <section class="p-sec">
-        <div class="container">
-            <div class="row">
-                <BlockItem
-                v-for="equipment in allEquipments"
-                :key="equipment.id"
-                :img="equipment.img"
-                :title="equipment.title"
-                :description="equipment.description"
-                :city="equipment.city"
-                :date="equipment.date"
-                :detection="equipment.detection"
-                :isAdded="equipment.isAdded" />
-            </div>
-        </div>
-    </section>
+  />
+  <section class="p-sec">
+    <div class="container">
+      <div class="row">
+        <BlockItem
+          v-for="equipment in data"
+          :key="equipment.id"
+                    :id="equipment.id"
+
+          :img="equipment.first_image"
+          :title="equipment.title"
+          :description="equipment.desc"
+          :city="equipment.city_title"
+          :date="equipment.date"
+          :detection="equipment.short_desc"
+          :isAdded="equipment.is_favourite"
+        />
+      </div>
+    </div>
+  </section>
 </template>
 <script setup>
-import {ref} from 'vue';
-import BreadCrumb from '@/components/global/BreadCrumb.vue';
-import BlockItem from '@/components/BlockItem.vue';
-import equipments from '../json/equipments.json';
-const allEquipments  = ref(equipments);
+// import { ref } from "vue";
+import BreadCrumb from "@/components/global/BreadCrumb.vue";
+import BlockItem from "@/components/BlockItem.vue";
+// import equipments from "../json/equipments.json";
+
+// const allEquipments = ref(equipments);
+</script>
+
+<script>
+import axios from 'axios';
+export default {
+  data() {
+        return {
+        data : []
+    };
+    },
+    methods: {
+        async getEquips() {
+             await axios.post('https://dashboard.mueadaat.info/test-mode/api/services', {
+                lang: localStorage.getItem('locale'),
+                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+                 type : 'item'
+            })
+            .then((res) => {
+                this.data = res.data.data;
+                // console.log('tag', res.data.data)
+            } )
+        }
+    },
+    mounted() {
+        this.getEquips();
+    }
+};
 </script>
