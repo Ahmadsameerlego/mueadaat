@@ -1,4 +1,4 @@
-<template>
+  <template>
   <swiper
     class="mySwiper"
         :modules="modules"

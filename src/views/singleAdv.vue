@@ -232,7 +232,7 @@ export default {
       await axios
         .post("https://dashboard.mueadaat.info/test-mode/api/show-service", {
           lang: localStorage.getItem("locale"),
-          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          user_id:1|| JSON.parse(sessionStorage.getItem("user")).data.id ,
           service_id: this.$route.params.id,
         })
         .then((res) => {

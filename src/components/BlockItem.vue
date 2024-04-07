@@ -30,8 +30,15 @@
           {{ props.description }}
         </p>
         <!-- End Post Description -->
+        <div class="rate" v-show="rate">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.5 12.0417L4.25 14.1667L5.3125 9.91667L2.125 6.375L6.72917 6.02083L8.5 2.125L10.2708 6.02083L14.875 6.375L11.6875 9.91667L12.75 14.1667L8.5 12.0417Z" stroke="#FCAC62" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+          <span>5</span>
+        </div>
       </div>
       <!-- End Post Data -->
+
       <!-- Start Post Info -->
       <div class="post-info ">
         <div class="row">
@@ -49,9 +56,12 @@
             <!-- Start Post Detection -->
             <span class="detection global-button px-1">{{ props.detection }}</span>
           </div>
+          <!-- <div class="detection">{{ props.detection }}</div> -->
         </div>
       </div>
       <!-- End Post Info -->
+
+
     </div>
     <!-- End Post -->
   </div>
@@ -95,6 +105,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  rate: {
+    type: Boolean,
+    required: false
+  }
 });
 // function addWish(event, theclass) {
 //   event.target.classList.toggle(theclass);
@@ -148,5 +162,8 @@ export default {
 }
 .favIcon svg {
   fill: red !important;
+}
+.post .rate{
+  margin-top:16px ;
 }
 </style>

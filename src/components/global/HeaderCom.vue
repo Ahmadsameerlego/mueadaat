@@ -111,7 +111,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/laws">
                   <div class="drop-image">
                     <i class="fa-regular fa-square"></i>
                   </div>
@@ -119,7 +119,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/treaty">
                   <div class="drop-image">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </div>
@@ -127,7 +127,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/usage-policy">
                   <div class="drop-image">
                     <i class="fa-solid fa-file"></i>
                   </div>
@@ -135,7 +135,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/favs">
                   <div class="drop-image">
                     <i class="fa-regular fa-heart"></i>
                   </div>
@@ -183,9 +183,12 @@
         </div>
 
         <div  v-if="user">
-          <button style="width:33px;height:33px" class="drop-image mx-2">
+          <router-link  to="/notification" style="width:33px;height:33px" class="position-relative drop-image mx-2">
             <i class="fa-regular fa-bell"></i>
-          </button>
+           <span class="notification_count" v-if="isNotGet">
+             {{ notification_count }}
+           </span>
+          </router-link>
         </div>
 
         <div>
@@ -219,12 +222,14 @@ import modalResetPassword from "./modal/modalResetPassword.vue";
 </script>
 <script>
 import Toast from "primevue/toast";
-
+import axios from 'axios'
 export default {
   data() {
     return {
       user: null,
       disabled: false,
+      notification_count: '',
+      isNotGet : false
     };
   },
   mounted() {
@@ -232,6 +237,18 @@ export default {
     if (savedUser) {
       this.user = JSON.parse(savedUser);
     }
+
+    axios
+      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .then((response) => {
+        // handle success
+        this.notification_count = response.data.notification_count;
+        this.isNotGet = true;
+      })
+      .catch((error) => {
+        // handle error
+        console.error("Error fetching data:", error);
+      });
   },
   methods: {
     signout() {
@@ -253,6 +270,21 @@ export default {
 };
 </script>
 <style>
+.notification_count{
+    background-color: red;
+    width: 20px;
+    height: 19px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    position: absolute;
+    left: -8px;
+    top: -6px;
+
+}
 .dropdown-menu {
   border: none !important;
   border-radius: 10px !important;

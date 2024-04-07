@@ -1,4 +1,5 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
+// import { component } from "vue/types/umd";
 const routes = [
   {
     path: "/",
@@ -47,7 +48,6 @@ const routes = [
     component: () => import("@/views/singleAdv.vue"),
     meta: {
       title: "Ads Details",
-      requiresAuth: true,
     },
   },
   {
@@ -68,15 +68,15 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: "/fovorite",
-    name: "favorite",
-    component: () => import("@/views/favoritePage.vue"),
-    meta: {
-      title: "Favorite",
-      requiresAuth: true,
-    },
-  },
+  // {
+  //   path: "/fovorite",
+  //   name: "favorite",
+  //   component: () => import("@/views/favoritePage.vue"),
+  //   meta: {
+  //     title: "Favorite",
+  //     requiresAuth: true,
+  //   },
+  // },
   {
     path: "/profile",
     name: "profile",
@@ -95,6 +95,7 @@ const routes = [
       requiresAuth: true,
     },
   },
+
   {
     path: "/search",
     name: "search Page",
@@ -103,21 +104,75 @@ const routes = [
       title: "search Page",
     },
   },
+  {
+    path: "/watch",
+    name: "watch-dates",
+    component: () => import("@/views/watchDate"),
+    data: {
+      title: "Watch Dates",
+    },
+  },
+  {
+    path: "/ads",
+    name: "myAds",
+    component: () => import("@/views/myAds"),
+    data: {
+      title: "my Ads",
+    },
+  },
+  {
+    path: "/rate-ads",
+    name: "rateMyAds",
+    component: () => import("@/views/rateMyAds"),
+    data: {
+      title: "rate My Ads",
+    },
+  },
+  {
+    path: "/laws",
+    name: "Laws",
+    component: () => import("@/views/LawsPage.vue"),
+    data: {
+      title: "Review of laws",
+    },
+  },
+  {
+    path: "/treaty",
+    name: "treaty",
+    component: () => import("@/views/treatyPage.vue"),
+    data: {
+      title: "Employment treaty",
+    },
+  },
+  {
+    path: "/usage-policy",
+    name: "usagePolicy",
+    component: () => import("@/views/usagePolicyPage.vue"),
+    data: {
+      title: "Usage policy",
+    },
+  },
+  {
+    path: '/notification',
+    component : ()=> import('@/views/notificationView.vue')
+  },
+  {
+    path: '/favs',
+    component : ()=> import('@/views/favoirtePage.vue')
+  }
 ];
 const router = createRouter({
-    routes,
-    history: createWebHistory()
-})
+  routes,
+  history: createWebHistory(),
+});
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (
-      !sessionStorage.getItem("user")
-    ) {
-        next({ name: "Home" });
-        document.querySelector(".login-button").click()
+    if (!sessionStorage.getItem("user")) {
+      next({ name: "Home" });
+      document.querySelector(".login-button").click();
     } else {
       next(); // go to wherever I'm going
     }
@@ -126,4 +181,4 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-export default router
+export default router;

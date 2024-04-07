@@ -175,7 +175,7 @@
           position: absolute;
           top: 0;
           right: -100%;
-          z-index: 0;
+          z-index: -1 !important;
           content: '';
           background-color: #FCAC62;
         }
@@ -192,7 +192,7 @@
           position: absolute !important;
           top: 0 !important;
           right: -100% !important;
-          z-index: 0 !important;
+          z-index: -1 !important;
           content: '' !important; 
           background-color: #f5f5f5 !important;
           border-radius: 25px;

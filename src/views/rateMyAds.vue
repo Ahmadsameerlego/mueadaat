@@ -1,11 +1,13 @@
 <template>
-  <Carousel
-    :autoplay="2000"
-    v-bind="settings"
-    :breakpoints="breakpoints"
-    v-if="reviews"
-  >
-    <Slide v-for="item in reviews.reviews" :id="item.id" :key="item.id">
+  <BreadCrumb
+    :title="$t('rateMyAdsTitle')"
+    :pageTitle="$t('rateMyAdsTitle')"
+    :homePage="$t('Home')"
+  />
+  <div class="page-container workers-area">
+    <div class="container">
+      <div class="row">
+         <div class="col-md-4" v-for="item in data" :id="item.id" :key="item.id">
       <div class="carousel__item">
         <div class="testimonial-block">
           <reviewsIcon />
@@ -67,68 +69,63 @@
           </div>
         </div>
       </div>
-    </Slide>
+    </div>
 
-    <template #addons>
-      <Navigation />
-    </template>
-  </Carousel>
+      </div>
+    </div>
+  </div>
 </template>
-<script>
-import reviewsIcon from "../Icons/reviewsIcon.vue";
-import { defineComponent } from "vue";
-import { Carousel, Navigation, Slide } from "vue3-carousel";
-import "vue3-carousel/dist/carousel.css";
-import axios from "axios";
-export default defineComponent({
-  name: "TestimonialsContent",
-  components: {
-    reviewsIcon,
-    Carousel,
-    Slide,
-    Navigation,
-  },
-  data: () => ({
-    reviews: [],
-    // carousel settings
-    settings: {
-      itemsToShow: 1,
-    },
-    // breakpoints are mobile first
-    // any settings not specified will fallback to the carousel settings
-    breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 2,
-        snapAlign: "center",
-      },
-      // 1024 and up
-      1024: {
-        itemsToShow: 3,
-        snapAlign: "start",
-      },
-    },
-  }),
-
-  mounted() {
-    var lang = this.$i18n.locale;
-    axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
-      .then((response) => {
-        // handle success
-        this.reviews = response.data.data;
-      })
-      .catch((error) => {
-        // handle error
-        console.error("Error fetching data:", error);
-      });
-  },
-});
+<script setup>
+// import {ref} from 'vue';
+import BreadCrumb from "@/components/global/BreadCrumb.vue";
 </script>
-<style >
-.icon {
+
+
+<script>
+import axios from 'axios';
+import reviewsIcon from "../components/Icons/reviewsIcon.vue";
+
+export default {
+  data() {
+        return {
+        data : []
+    };
+    },
+    methods: {
+        async getEquips() {
+             await axios.post('https://dashboard.mueadaat.info/test-mode/api/client_reviews', {
+                lang: localStorage.getItem('locale'),
+                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+                 type : 'item'
+            })
+            .then((res) => {
+                this.data = res.data.data.reviews;
+                // console.log('tag', res.data.data)
+            } )
+        }
+    },
+    mounted() {
+        this.getEquips();
+    },
+    components: {
+        reviewsIcon
+    }
+};
+</script>
+
+
+<style scoped>
+.page-container {
+  padding: 60px 0;
+}
+.watch-date {
   margin-bottom: 32px;
 }
+.watch-date .date {
+  color: #fcac62;
+}
+
+
 .testimonial-block {
   background-color: #fff;
   box-shadow: 0 0 10px rgb(0 0 0 / 8%);

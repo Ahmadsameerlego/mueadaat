@@ -1,7 +1,7 @@
 <template>
     <BreadCrumb
-    :title="$t('lawsTitle')"
-    :pageTitle="$t('lawsTitle')"
+    :title="$t('treatyTitle')"
+    :pageTitle="$t('treatyTitle')"
     :homePage="$t('Home')"
     />
 
@@ -10,12 +10,9 @@
         <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="trim-title">
-                    {{  data.title  }}
-                </h2>
+                <h2 class="trim-title">{{data.title}}</h2>
                 <p class="trim-text text-body">
-                    {{  data.desc  }}
-                </p>
+{{data.desc}}                </p>
             </div>
             <div class="col-md-6">
                 <img class="trim-img" src="https://picsum.photos/id/55/300/300">
@@ -29,7 +26,6 @@
 
 import BreadCrumb from '@/components/global/BreadCrumb.vue';
 </script>
-
 <script>
 import axios from 'axios';
 export default {
@@ -43,7 +39,7 @@ export default {
              await axios.post('https://dashboard.mueadaat.info/test-mode/api/page', {
                 lang: localStorage.getItem('locale'),
                  user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-                 title : 'lows'
+                 title : 'treaty'
             })
             .then((res) => {
                 this.data = res.data.data.page;
