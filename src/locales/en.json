@@ -39,5 +39,6 @@
     "getItFrom" : "Get it from",
     "googlePlay" : "Google Play",
     "appStore" : "App Store",
-    "knowUsMore" : "know us more"
+    "knowUsMore" : "know us more",
+    "searchFilterTitle": "Search Results"
 }

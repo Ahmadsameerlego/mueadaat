@@ -88,6 +88,14 @@ const routes = [
         meta: {
             title: "Provider Profile"
         }
+    },
+    {
+        path: '/search',
+        name: "search Page",
+        component: () => import('@/views/searchPage.vue'),
+        data: {
+            title: "search Page"
+        }
     }
     
 ]
