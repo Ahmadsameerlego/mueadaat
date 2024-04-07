@@ -111,7 +111,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/laws">
                   <div class="drop-image">
                     <i class="fa-regular fa-square"></i>
                   </div>
@@ -119,7 +119,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/treaty">
                   <div class="drop-image">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </div>
@@ -127,7 +127,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/usage-policy">
                   <div class="drop-image">
                     <i class="fa-solid fa-file"></i>
                   </div>
@@ -135,7 +135,7 @@
                 </router-link>
               </li>
               <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
+                <router-link class="dropdown-item d-flex" to="/fovorite">
                   <div class="drop-image">
                     <i class="fa-regular fa-heart"></i>
                   </div>

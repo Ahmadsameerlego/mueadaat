@@ -40,7 +40,14 @@
     "googlePlay" : "جوجل بلاي",
     "appStore" : "آب ستور",
     "knowUsMore" : "تعرف علينا أكثر",
-    "searchFilterTitle": "نتائج البحث"
+    "searchFilterTitle": "نتائج البحث",
+    "myFavoriteTitle": "إعلاناتي المفضلة",
+    "watchDateTitle": "تاريخ مشاهداتي",
+    "myAdsTitle": "إعلاناتي",
+    "rateMyAdsTitle": "تقييم إعلاناتي",
+    "lawsTitle": "استعراض القوانين",
+    "treatyTitle" : "معاهدة الإستخدام",
+    "policyTitle": "سياسة الإستخدام"
     
     
 }

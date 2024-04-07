@@ -67,8 +67,8 @@ const routes = [
     },
     {
         path: '/fovorite',
-        name: 'favorite',
-        component: () => import ('@/views/favoritePage.vue'),
+        name: 'Favoirte Page',
+        component: () => import ('@/views/favoirtePage.vue'),
         meta: {
             title: "Favorite"
         }
@@ -96,7 +96,56 @@ const routes = [
         data: {
             title: "search Page"
         }
-    }
+    },
+    {
+        path: '/watch',
+        name: "watch-dates",
+        component: () => import('@/views/watchDate'),
+        data: {
+            title: "Watch Dates"
+        }
+    },
+    {
+        path: "/ads",
+        name: "myAds",
+        component: () => import('@/views/myAds'),
+        data: {
+            title: "my Ads"
+        }
+    },
+    {
+        path: "/rate-ads",
+        name: "rateMyAds",
+        component: () => import('@/views/rateMyAds'),
+        data: {
+            title: "rate My Ads"
+        }
+    },
+    {
+        path: "/laws",
+        name: "Laws",
+        component: () => import ('@/views/LawsPage.vue'),
+        data: {
+            title: "Review of laws"
+        }
+    },
+    {
+        path: "/treaty",
+        name: "treaty",
+        component: () => import ('@/views/treatyPage.vue'),
+        data: {
+            title: "Employment treaty"
+        }
+    },
+    {
+        path: "/usage-policy",
+        name: "usagePolicy",
+        component: () => import ('@/views/usagePolicyPage.vue'),
+        data: {
+            title: "Usage policy"
+        }
+    },
+
     
 ]
 const router = createRouter({
