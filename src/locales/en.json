@@ -40,5 +40,13 @@
     "googlePlay" : "Google Play",
     "appStore" : "App Store",
     "knowUsMore" : "know us more",
-    "searchFilterTitle": "Search Results"
+    "searchFilterTitle": "Search Results",
+    "myFavoriteTitle": "My favorite ads",
+    "watchDateTitle": "My viewing history",
+    "myAdsTitle": "My ads",
+    "rateMyAdsTitle": "Evaluate my ads",
+    "lawsTitle": "Review of laws",
+    "treatyTitle": "Employment treaty",
+    "policyTitle": "Usage policy"
+
 }
