@@ -3,8 +3,10 @@
         <h2 class="bread-crumb-title">{{ title }}</h2>
         <nav class="breadcrum-nav">
             <ul class="bread-crumb-list">
-                <li class="bread-crumb-item">{{ pageTitle }}</li>
-                <li class="bread-crumb-item">{{ homePage }}</li>
+                <li class="bread-crumb-item text">{{ pageTitle }}</li>
+                <li class="bread-crumb-item"><router-link class="home-link" to="/">
+                    {{ homePage }}
+                </router-link></li>
             </ul>
         </nav>
     </div>
@@ -19,14 +21,16 @@
     .bread-crumb{
         background-color: #000;
         text-align: center !important;
-        padding: 32px 0;
+        padding: 32px 0 !important;
     }
     .bread-crumb-title{
         color: #fff;
         text-align: center;
+        position: relative;
     }
+    
     .bread-crumb-list{
-        color: #fff;
+        color: #74757E;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,9 +39,23 @@
 
     }
     .bread-crumb-list .bread-crumb-item{
-        padding: 5px 8px ;
+        padding: 5px 15px !important;
         text-align: center;
-        
-        
+        position: relative;
     }
+    .bread-crumb-list .bread-crumb-item.text:after{
+        position: absolute;
+    top: 15%;
+    left: -5px;
+    content: '>';
+    color: #74757E;
+    
+    }
+.home-link{
+    color: #FCAC62;
+    transition: all 0.3s ease;
+}
+.home-link:hover{
+    color: #fff;
+}
 </style>
