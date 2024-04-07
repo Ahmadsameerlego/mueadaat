@@ -1,6 +1,17 @@
 .form-items .no-padding{
     padding: 0;
   }
+  .form-item.form-item-search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rtl .form-item.form-item.form-item-search .form-item-label{
+    margin-left: 10px;
+  }
+  .ltr .form-item.form-item.form-item-search .form-item-label{
+    margin-left: 10px;
+  }
   .form-items .form-image{
     width: 100%;
     border-radius: 32px;
@@ -101,4 +112,11 @@
   .flex-this{
     display: flex;
     align-items: center;
+  }
+
+  .ltr .form-select{
+    direction: ltr;
+  }
+  .rtl .form-select{
+    direction: rtl;
   }
