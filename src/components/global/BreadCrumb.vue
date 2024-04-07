@@ -30,7 +30,7 @@
     }
     
     .bread-crumb-list{
-        color: #fff;
+        color: #74757E;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -48,7 +48,7 @@
     top: 15%;
     left: -5px;
     content: '>';
-    color: #fff;
+    color: #74757E;
     
     }
 .home-link{
