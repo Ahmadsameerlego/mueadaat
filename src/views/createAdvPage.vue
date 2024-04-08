@@ -39,6 +39,14 @@ const storeStype = (tyoe) => {
     background-color: #EDEDED;
     padding: 60px 0;
 }
+@media(max-width: 468px){
+    .create-adv{
+        padding: 25px !important;
+    }
+}
+.create-adv p{
+    text-align: center !important;
+}
 .choose{
     width: 400px;
     background-color: #fff;
@@ -52,11 +60,17 @@ const storeStype = (tyoe) => {
 section{
     padding: 100px;
 }
+@media(max-width: 468px){
+    section{
+        padding: 20px;
+    }
+}
 .sections-items{
     display: flex;
     align-items: center;
     justify-content: space-around;
     list-style: none;
+    margin-top: 16px !important;
 }
 .section-icon{
     background-color: #000;
