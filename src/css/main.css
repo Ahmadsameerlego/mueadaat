@@ -115,3 +115,9 @@ input::-webkit-inner-spin-button {
 .main-color{
     color: #FCAC62 !important;
 }
+
+@media(max-width: 480px){
+    .choose{
+        width: 100% !important;
+    }
+}
