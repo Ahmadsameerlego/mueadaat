@@ -128,102 +128,148 @@
         <!-- End Grid Two -->
 
         <div class="form-group">
-          <button class="global-button" :disabled="disabled">
-            حفظ التعديلات
-          </button>
-        </div>
-      </form>
-
-      <div class="user-head mt-4">
-        <svg
-          width="35"
-          height="35"
-          viewBox="0 0 35 35"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="35" height="35" rx="17.5" fill="#FCAC62" />
-          <path
-            d="M20.8333 20H14.1666C12.3256 20 10.8333 21.4924 10.8333 23.3333V25H24.1666V23.3333C24.1666 21.4924 22.6742 20 20.8333 20Z"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M17.4999 16.6667C19.3409 16.6667 20.8333 15.1743 20.8333 13.3333C20.8333 11.4924 19.3409 10 17.4999 10C15.659 10 14.1666 11.4924 14.1666 13.3333C14.1666 15.1743 15.659 16.6667 17.4999 16.6667Z"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        <h4 class="title">تعديل كلمة المرور</h4>
-      </div>
-      <form action="" class="form-items">
-        <div class="grid-two">
-          <div class="form-item">
-            <label for="subject" class="form-label">{{ $t("Password") }}</label>
-            <input
-              type="password"
-              name="subject"
-              id="subject"
-              class="form-item-input"
-              value=""
-              v-model="old_password"
-            />
-          </div>
-
-          <div class="form-item">
-            <label for="subject" class="form-label">كلمة المرور الجديدة</label>
-            <input
-              type="password"
-              name="subject"
-              id="subject"
-              class="form-item-input"
-              value=""
-              v-model="password"
-            />
-          </div>
-          <div class="form-item">
-            <label for="subject" class="form-label">تاكيد كلمة المرور</label>
-            <input
-              type="password"
-              name="subject"
-              id="subject"
-              class="form-item-input"
-              value=""
-              v-model="password_confirmation"
-            />
-          </div>
-        </div>
-        <div v-if="showValid" class="mb-3">
-          <p
-            v-if="passwordMatch"
-            class="passwordConfirmed d-flex align-items-center text-success"
-          >
-            <i class="fa-regular fa-circle-check"></i>
-            <span>متطابق</span>
-          </p>
-          <p v-else class="passwordWrong d-flex align-items-center text-danger">
-            <i class="fa-regular fa-circle-xmark"></i>
-            <span>غير متطابق</span>
-          </p>
-        </div>
-
-        <div class="form-group">
           <button
-            class="global-button"
-            :disabled="disabled2"
-            @click.prevent="updatePassword"
+            class="global-button w-25 d-flex justify-content-center mx-auto"
+            :disabled="disabled"
           >
             حفظ التعديلات
           </button>
         </div>
       </form>
+
+      <div class="mt-3">
+        <button
+          type="button"
+          class="global-button login-button w-25 d-flex justify-content-center mx-auto"
+          data-bs-toggle="modal"
+          href="#profile"
+          role="button"
+          style="background-color: #000"
+        >
+          تغيير كلمة المرور
+        </button>
+      </div>
     </div>
   </section>
   <Toast />
+
+  <!-- change password  -->
+
+  <div
+    class="modal fade"
+    id="profile"
+    aria-hidden="true"
+    aria-labelledby="profileLabel"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-body px-5 py-5">
+          <button  class="close_modal"   data-bs-dismiss="modal">
+      <i class="fas-solid fa-x"></i>
+    </button>
+          <div class="user-head mt-4">
+            <svg
+              width="35"
+              height="35"
+              viewBox="0 0 35 35"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="35" height="35" rx="17.5" fill="#FCAC62" />
+              <path
+                d="M20.8333 20H14.1666C12.3256 20 10.8333 21.4924 10.8333 23.3333V25H24.1666V23.3333C24.1666 21.4924 22.6742 20 20.8333 20Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17.4999 16.6667C19.3409 16.6667 20.8333 15.1743 20.8333 13.3333C20.8333 11.4924 19.3409 10 17.4999 10C15.659 10 14.1666 11.4924 14.1666 13.3333C14.1666 15.1743 15.659 16.6667 17.4999 16.6667Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h4 class="title">تعديل كلمة المرور</h4>
+          </div>
+          <form action="" class="form-items">
+            <div class="grid-two">
+              <div class="form-item">
+                <label for="subject" class="form-label">{{
+                  $t("Password")
+                }}</label>
+                <input
+                  type="password"
+                  name="subject"
+                  id="subject"
+                  class="form-item-input"
+                  value=""
+                  v-model="old_password"
+                />
+              </div>
+
+              <div class="form-item">
+                <label for="subject" class="form-label"
+                  >كلمة المرور الجديدة</label
+                >
+                <input
+                  type="password"
+                  name="subject"
+                  id="subject"
+                  class="form-item-input"
+                  value=""
+                  v-model="password"
+                />
+              </div>
+              <div class="form-item">
+                <label for="subject" class="form-label"
+                  >تاكيد كلمة المرور</label
+                >
+                <input
+                  type="password"
+                  name="subject"
+                  id="subject"
+                  class="form-item-input"
+                  value=""
+                  v-model="password_confirmation"
+                />
+              </div>
+            </div>
+            <div v-if="showValid" class="mb-3">
+              <p
+                v-if="passwordMatch"
+                class="passwordConfirmed d-flex align-items-center text-success"
+              >
+                <i class="fa-regular fa-circle-check"></i>
+                <span>متطابق</span>
+              </p>
+              <p
+                v-else
+                class="passwordWrong d-flex align-items-center text-danger"
+              >
+                <i class="fa-regular fa-circle-xmark"></i>
+                <span>غير متطابق</span>
+              </p>
+            </div>
+
+            <div class="form-group">
+              <button
+                class="global-button w-25 d-flex justify-content-center mx-auto"
+                :disabled="disabled2"
+                @click.prevent="updatePassword"
+              >
+                حفظ التعديلات
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import axios from "axios";

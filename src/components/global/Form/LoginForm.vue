@@ -1,5 +1,8 @@
 <template>
-  <div class="form-items">
+  <div class="form-items position-relative" style="overflow:hidden">
+    <button  class="close_modal"   data-bs-dismiss="modal">
+      <i class="fas-solid fa-x"></i>
+    </button>
     <div class="row no-padding">
       <div class="col-md-8 no-padding">
         <div class="form-image">
@@ -95,6 +98,10 @@
               انشاء حساب
             </button>
           </div>
+
+          <!-- <div>
+            <button class="global-button"> العودة للرئيسية </button>
+          </div> -->
         </div>
         <!-- End form Content -->
       </div>
@@ -218,4 +225,18 @@ let login = () => {
 // }
 </script>
 
-
+<style>
+.close_modal{
+  background-color: rgb(212, 52, 52);
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

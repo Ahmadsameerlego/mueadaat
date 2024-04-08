@@ -159,6 +159,10 @@ const routes = [
   {
     path: '/favs',
     component : ()=> import('@/views/favoirtePage.vue')
+  },
+  {
+    path: "/edit/:id",
+    component : ()=> import('@/views/editOwnAdd.vue')
   }
 ];
 const router = createRouter({

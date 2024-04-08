@@ -69,7 +69,7 @@
       ></textarea>
     </div>
 
-    <div class="form-group">
+    <div class="form-group d-flex justify-content-center align-items-center">
       <button type="submit" class="global-button" :disabled="disabled">
         {{$t('send')}}
       </button>

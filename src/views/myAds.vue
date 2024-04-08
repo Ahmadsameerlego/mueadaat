@@ -19,6 +19,7 @@
           :date="equipment.date"
           :detection="equipment.short_desc"
           :isAdded="equipment.is_favourite"
+          :isOwnAdds="true"
         />
         </div>
     </div>

@@ -8,10 +8,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <contactData />
+                                        <ContactForm />
+
                 </div>
                 <div class="col-md-6">
-                    <ContactForm />
+                                        <contactData />
+
                 </div>
             </div>
         </div>

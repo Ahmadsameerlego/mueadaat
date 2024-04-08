@@ -66,7 +66,7 @@
       <!-- Start Image -->
       <div class="image" v-for="(image, index) in images" :key="index">
         <span class="delete" @click="deleteImage(index)">&times;</span>
-        <img :src="image.url" />
+        <img :src="image.image" />
       </div>
       <!-- End Image -->
     </div>
@@ -79,8 +79,17 @@
       class="global-button"
       @click.prevent="submitAdd"
       :disabled="disabled"
+      v-if="!$route.fullPath.includes('edit')"
     >
       نشر الاعلان
+    </button>
+    <button
+      v-else
+      class="global-button"
+      @click.prevent="updateAdd"
+      :disabled="disabled"
+    >
+      تعديل الاعلان
     </button>
   </div>
   <Toast />
@@ -113,7 +122,7 @@ export default (await import("vue")).defineComponent({
         if (!this.images.some((e) => e.name === files[i].name)) {
           this.images.push({
             name: files[i].name,
-            url: URL.createObjectURL(files[i]),
+            image: URL.createObjectURL(files[i]),
           });
         }
 
@@ -175,6 +184,8 @@ export default (await import("vue")).defineComponent({
       fd.append("title_ar", localStorage.getItem("title_ar"));
       fd.append("price", localStorage.getItem("price"));
       fd.append("type", localStorage.getItem("type"));
+      fd.append("active_id", localStorage.getItem("act_id"));
+      fd.append("category_id", localStorage.getItem("cat_id"));
       // var images = [];
       fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
 
@@ -206,10 +217,74 @@ export default (await import("vue")).defineComponent({
           this.disabled = false;
         });
     },
+    async updateAdd() {
+      this.disabled = true;
+      const fd = new FormData(this.$refs.images);
+      fd.append("lang", localStorage.getItem("locale"));
+      fd.append("user_id", localStorage.getItem("entity_id"));
+      fd.append("desc_ar", localStorage.getItem("desc_ar"));
+      fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
+      fd.append("title_ar", localStorage.getItem("title_ar"));
+      fd.append("price", localStorage.getItem("price"));
+      fd.append("type", localStorage.getItem("type"));
+      fd.append("active_id", localStorage.getItem("act_id"));
+      fd.append("category_id", localStorage.getItem("cat_id"));
+      fd.append("service_id", this.$route.params.id);
+      // var images = [];
+      fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
+
+      await axios
+        .post(
+          "https://dashboard.mueadaat.info/test-mode/api/update-service",
+          fd,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data.key == 1) {
+            this.$toast.add({
+              severity: "success",
+              summary: res.data.msg,
+              life: 3000,
+            });
+            // this.$router.push('/ads')
+          } else {
+            this.$toast.add({
+              severity: "error",
+              summary: res.data.msg,
+              life: 3000,
+            });
+          }
+          console.log(res);
+          this.disabled = false;
+        });
+    },
+
+
+     async getData() {
+      await axios
+        .post("https://dashboard.mueadaat.info/test-mode/api/show-service", {
+          lang: localStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          service_id : this.$route.params.id
+        })
+        .then((res) => {
+          this.images = res.data.data.images;
+          
+        });
+    },
   },
   components: {
     Toast,
   },
+  mounted() {
+    if (this.$route.fullPath.includes('edit')) {
+      this.getData()
+    }
+  }
 });
 </script>
 

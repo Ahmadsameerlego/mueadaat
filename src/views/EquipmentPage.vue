@@ -10,8 +10,7 @@
         <BlockItem
           v-for="equipment in data"
           :key="equipment.id"
-                    :id="equipment.id"
-
+          :id="equipment.id"
           :img="equipment.first_image"
           :title="equipment.title"
           :description="equipment.desc"
@@ -34,28 +33,33 @@ import BlockItem from "@/components/BlockItem.vue";
 </script>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
-        return {
-        data : []
+    return {
+      data: [],
     };
+  },
+  methods: {
+    async getEquips() {
+      var id = null;
+      if (sessionStorage.getItem("user")) {
+        id = JSON.parse(sessionStorage.getItem("user")).data.id;
+      }
+      await axios
+        .post("https://dashboard.mueadaat.info/test-mode/api/services", {
+          lang: localStorage.getItem("locale"),
+          user_id: id,
+          type: "item",
+        })
+        .then((res) => {
+          this.data = res.data.data;
+          // console.log('tag', res.data.data)
+        });
     },
-    methods: {
-        async getEquips() {
-             await axios.post('https://dashboard.mueadaat.info/test-mode/api/services', {
-                lang: localStorage.getItem('locale'),
-                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-                 type : 'item'
-            })
-            .then((res) => {
-                this.data = res.data.data;
-                // console.log('tag', res.data.data)
-            } )
-        }
-    },
-    mounted() {
-        this.getEquips();
-    }
+  },
+  mounted() {
+    this.getEquips();
+  },
 };
 </script>

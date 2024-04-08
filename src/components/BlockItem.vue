@@ -64,6 +64,12 @@
               : {{ props.seen_count }}</span
             >
           <!-- <div class="detection">{{ props.detection }}</div> -->
+
+          <div class="d-flex justify-content-center align-items-center mt-2" v-if="isOwnAdds">
+            <router-link :to="'/edit/'+props.id" class="global-button" style="background-color:#000">
+                تعديل الاعلان
+            </router-link>
+          </div>
         </div>
       </div>
       <!-- End Post Info -->
@@ -113,6 +119,10 @@ const props = defineProps({
     required: true,
   },
   isAdded: {
+    type: Boolean,
+    required: true,
+  },
+  isOwnAdds: {
     type: Boolean,
     required: true,
   },

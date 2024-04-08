@@ -41,9 +41,13 @@ export default {
     },
     methods: {
         async getEquips() {
+            var id = null;
+      if (sessionStorage.getItem("user")) {
+        id = JSON.parse(sessionStorage.getItem("user")).data.id;
+      }
              await axios.post('https://dashboard.mueadaat.info/test-mode/api/services', {
                 lang: localStorage.getItem('locale'),
-                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+                 user_id: id,
                  type : 'worker'
             })
             .then((res) => {

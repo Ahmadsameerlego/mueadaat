@@ -252,31 +252,8 @@ export default {
                 // }
             } )
           }, 1000);
-        },
-  },
-  mounted() {
-    var savedUser = sessionStorage.getItem("user");
-    if (savedUser) {
-      this.user = JSON.parse(savedUser);
-    }
-
-    axios
-      .post("https://dashboard.mueadaat.info/test-mode/api/home", {
-       user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-      })
-      .then((response) => {
-        // handle success
-        this.notification_count = response.data.notification_count;
-        this.phone = response.data.phone;
-        this.isNotGet = true;
-      })
-      .catch((error) => {
-        // handle error
-        console.error("Error fetching data:", error);
-      });
-  },
-  methods: {
-    signout() {
+    },
+        signout() {
       this.disabled = true;
       setTimeout(() => {
         sessionStorage.removeItem("user");
@@ -289,6 +266,33 @@ export default {
       }, 1000);
     },
   },
+  mounted() {
+    var savedUser = sessionStorage.getItem("user");
+    if (savedUser) {
+      this.user = JSON.parse(savedUser);
+    }
+    var id = null;
+    if (sessionStorage.getItem('user')) {
+      id =  JSON.parse(sessionStorage.getItem("user")).data.id
+    }
+    axios
+      .post("https://dashboard.mueadaat.info/test-mode/api/home", {
+       user_id:  id,
+      })
+      .then((response) => {
+        // handle success
+        this.notification_count = response.data.notification_count;
+        this.phone = response.data.phone;
+        this.isNotGet = true;
+      })
+      .catch((error) => {
+        // handle error
+        console.error("Error fetching data:", error);
+      });
+  },
+  // methods: {
+    
+  // },
   components: {
     Toast,
   },

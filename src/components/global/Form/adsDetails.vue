@@ -9,7 +9,7 @@
           class="form-item-input"
           id="fullName"
           v-model="title_ar"
-          placeholder="ادخل اسمك"
+          placeholder="ادخل اسم الاعلان"
         />
       </div>
       <div class="grid-two">
@@ -21,7 +21,7 @@
             class="form-item-input"
             id="email"
             v-model="short_desc_ar"
-            placeholder="name@example.com"
+            placeholder="ادخل الميزة التنافسية"
           />
         </div>
         <div class="form-item">
@@ -35,32 +35,55 @@
             placeholder="ادخل السعر"
           />
         </div>
+ <div
+        class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
+      >
+        <label for="" class="form-item-label">نوع الخدمة </label>
+        <select
+          class="form-select form-item-input"
+          aria-label="Default select example"
+          v-model="cat_id"
+        >
+          <option selected disabled value="" hidden>اختر نوع الخدمة</option>
+          <option v-for="cat in categories" :key="cat" :value="cat.id">
+            {{ cat.title }}
+          </option>
+        </select>
+      </div>
+      <div
+        class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
+      >
+        <label for="" class="form-item-label">نشاط العامل </label>
+        <select
+          class="form-select form-item-input"
+          aria-label="Default select example"
+          v-model="act_id"
+        >
+          <option selected hidden disabled value="">اختر نشاط العمل</option>
+          <option v-for="act in actives" :key="act" :value="act.id">
+            {{ act.title }}
+          </option>
+        </select>
+      </div>
       </div>
 
       <div class="form-item">
         <label class="form-item-label">نظام التكلفة</label>
         <div class="flex-this">
           <div class="form-check">
-            <input type="radio" v-model="unit" value="daily"/>
+            <input type="radio" v-model="unit" value="daily" />
             <label>التكلفة باليوم</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" v-model="unit"  value="total" />
+            <input type="radio" v-model="unit" value="total" />
             <label>التكلفة بالساعة</label>
           </div>
         </div>
       </div>
 
-      <div class="form-item">
-        <label for="details" class="form-label">تفاصيل الإعلان</label>
-        <textarea
-          name="details"
-          class="form-item-input"
-          id="message"
-          v-model="desc_ar"
-        ></textarea>
-      </div>
+      <!-- Start Form Item -->
+     
 
       <div class="form-item">
         <label for="details" class="form-label">تفاصيل الإعلان</label>
@@ -71,47 +94,95 @@
           v-model="desc_ar"
         ></textarea>
       </div>
-      <div class="form-item">
-        <label for="details" class="form-label">تفاصيل الإعلان</label>
-        <textarea
-          name="details"
-          class="form-item-input"
-          id="message"
-          v-model="desc_ar"
-        ></textarea>
-      </div>
 
-
+    
     </form>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      title_ar: '',
-        desc_ar : '',
-      unit: '',
-      price: '',
-        short_desc_ar : ''
-    }
+      title_ar: "",
+      desc_ar: "",
+      unit: "",
+      price: "",
+      short_desc_ar: "",
+      cat_id: "",
+      act_id: "",
+       categories: [],
+      actives: [],
+    };
   },
   watch: {
-    title_ar(){
-      localStorage.setItem('title_ar', this.title_ar)
+    title_ar() {
+      localStorage.setItem("title_ar", this.title_ar);
     },
-    desc_ar(){
-      localStorage.setItem('desc_ar', this.desc_ar)
+    desc_ar() {
+      localStorage.setItem("desc_ar", this.desc_ar);
     },
-    price(){
-      localStorage.setItem('price', this.price)
+    price() {
+      localStorage.setItem("price", this.price);
     },
-    short_desc_ar(){
-      localStorage.setItem('short_desc_ar', this.short_desc_ar)
+    short_desc_ar() {
+      localStorage.setItem("short_desc_ar", this.short_desc_ar);
     },
-    unit(){
-      localStorage.setItem('unit', this.unit)
+    unit() {
+      localStorage.setItem("unit", this.unit);
     },
-  }
-}
+    cat_id() {
+      localStorage.setItem("cat_id", this.cat_id);
+    },
+    act_id() {
+      localStorage.setItem("act_id", this.act_id);
+    },
+  },
+  methods: {
+    async getFilters() {
+      await axios
+        .post("https://dashboard.mueadaat.info/test-mode/api/app_data", {
+          lang: localStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+        })
+        .then((res) => {
+          // this.cities = res.data.data.cities;
+          this.categories = res.data.data.categories;
+          this.actives = res.data.data.actives;
+        });
+    },
+    async getData() {
+      await axios
+        .post("https://dashboard.mueadaat.info/test-mode/api/show-service", {
+          lang: localStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          service_id : this.$route.params.id
+        })
+        .then((res) => {
+          this.title_ar = res.data.data.title;
+          this.desc_ar = res.data.data.desc;
+          this.price = res.data.data.price;
+          this.short_desc_ar = res.data.data.short_desc;
+          this.cat_id = res.data.data.category_id;
+          this.act_id = res.data.data.active_id;
+          this.unit = res.data.data.unit;
+          console.log(res)
+        });
+    },
+
+    
+  },
+  mounted() {
+    this.getFilters();
+    if (this.$route.fullPath.includes('edit')) {
+      this.getData()
+    }
+  },
+};
 </script>
+
+<style>
+.form-select{
+  --bs-form-select-bg-img : none !important
+}
+</style>
