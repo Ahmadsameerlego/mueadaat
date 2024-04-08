@@ -61,6 +61,12 @@
     "haveAnyQuestion" : "Have any question? ",
     "writeEmail" : "Write email",
     "visitAnytime" : "Visit anytime",
-    "send": "Send"
+    "send": "Send",
+    "pofile" : "Profile",
+    "lows" : "Lows",
+    "treat" : "Usage treat",
+    "policy" : "Policy",
+    "rate" : "Favorites",
+    "logout" : "Log Out"
 
 }
