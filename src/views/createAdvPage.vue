@@ -3,15 +3,15 @@
     <section>
         <div class="container create-adv">
             <div class="choose">
-                <h2 class="choose-title">انشاء اعلان</h2>
-                <p class="choose-description">اختر نوع اعلانك من فضلك !</p>
+                <h2 class="choose-title">{{ $t('Create')}}</h2>
+                <p class="choose-description">{{ $t('chooseTypeAdv') }}</p>
                 <ul class="sections-items">
                     <li>
                         <router-link @click="storeStype('worker')" data-bs-toggle="modal" to="#confirmBefore" role="button">
                             <div class="section-icon workers">
                                 <img src="../assets/icons/workers.png" />
                             </div>
-                            <h3 class="section-title">عمالة</h3>
+                            <h3 class="section-title">{{$t('Workers')}}</h3>
                         </router-link>
                     </li>
                     <li>
@@ -19,7 +19,7 @@
                             <div class="section-icon">
                                 <img src="../assets/icons/equipments.png" />
                             </div>
-                            <h3 class="section-title">معدات</h3>
+                            <h3 class="section-title">{{ $t('Equipments') }}</h3>
                         </router-link>
                     </li>
                 </ul>

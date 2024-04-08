@@ -37,6 +37,7 @@
     "ResetTitle": "Change Password",
     "ResetDesc": "Please enter your password below and return the form below",
     "companyNameLabel": "Company Name",
+    "enterYourCompny": "Enter Company Name",
     "myPlaceLabel": "My Place",
     "getItTitle": "Get an app",
     "siteNmae": "Equipment and Workers",
@@ -45,8 +46,8 @@
     "appStore" : "App Store",
     "knowUsMore" : "know us more",
     "searchFilterTitle": "Search Results",
-    "myFavoriteTitle": "My favorite ads",
-    "watchDateTitle": "My viewing history",
+    "myFavoriteTitle": "My favorite",
+    "watchDateTitle": "Viewing history",
     "myAdsTitle": "My ads",
     "rateMyAdsTitle": "Evaluate my ads",
     "lawsTitle": "Review of laws",
@@ -96,6 +97,19 @@
 
     "publish" : "publish add",
     "detils" : "add details",
-    "images" : "add images"
+    "images" : "add images",
+    "chooseTypeAdv" : "Please choose your ad type",
+    "copyRight": "All rights reserved to equipment and workers website and application 2024",
+    "implement": "designed By",
+    "anmat": "Anmat Alshabkah institution for information technology",
+    "aboutMe": "Brief about me",
+    "myPersonalData": "My personal data",
+    "changePassword": "Change Password",
+    "editPassword": "Edit Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "identical": "identical",
+    "unIdentical": "Un Identical",
+    "saveMyEdit": "Save modifications"
 
 }

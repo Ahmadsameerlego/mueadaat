@@ -21,23 +21,13 @@
             <!-- Start Item -->
             <li class="item">
               <router-link to="/ads" class="item-link">
-                <svg
-                  width="20"
-                  height="21"
-                  viewBox="0 0 20 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.6095 10.5395L10 17.1667L16.3905 10.5395C17.1009 9.80277 17.5 8.80357 17.5 7.7617C17.5 5.59212 15.804 3.83333 13.7119 3.83333C12.7073 3.83333 11.7438 4.24721 11.0334 4.98392L10 6.05555L8.96664 4.98393C8.25624 4.24721 7.29273 3.83333 6.28807 3.83333C4.19598 3.83333 2.5 5.59212 2.5 7.7617C2.5 8.80357 2.8991 9.80277 3.6095 10.5395Z"
-                    stroke="#FCAC62"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.83325 7.16667H14.1666M5.83325 10.5H14.1666M5.83325 13.8333H10.8333M3.33325 3.83333H16.6666V17.1667H3.33325V3.83333Z" stroke="#FCAC62" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 
-                <span>إعلاناتي</span>
+
+
+                <span>{{$t('myAdsTitle')}}</span>
               </router-link>
             </li>
             <!-- End Item -->
@@ -62,7 +52,7 @@
                   />
                 </svg>
 
-                <span>تقييم إعلاناتي</span>
+                <span>{{$t('rateMyAdsTitle')}}</span>
               </router-link>
             </li>
             <!-- End Item -->
@@ -85,7 +75,7 @@
                   />
                 </svg>
 
-                <span>عدد  المشاهدة</span>
+                <span>{{$t('watchDateTitle')}}</span>
               </router-link>
             </li>
             <!-- End Item -->
@@ -108,7 +98,7 @@
                   />
                 </svg>
 
-                <span>مفضلتي</span>
+                <span>{{ $t('myFavoriteTitle') }}</span>
               </router-link>
             </li>
             <!-- End Item -->
