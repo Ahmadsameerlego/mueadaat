@@ -1,47 +1,56 @@
 <template>
-  <form class="form-items" @submit.prevent="save">
+  <div class="section-heading">
+        <span class="section-title">{{ $t("SendUsEmail") }}</span>
+        <h1 class="section-description">{{ $t("feelFree") }}</h1>
+      </div>
+      
+  <form class="form-items contact" @submit.prevent="save">
     <!-- Start Grid Two -->
     <div class="grid-two">
       <div class="form-item">
-        <label for="username" class="form-label">الاسم</label>
+        <label for="username" class="form-label">{{$t('Name')}}</label>
         <input
           type="text"
           name="username"
           id="username"
           class="form-item-input"
+          :placeholder="$t('enterName')" 
           v-model="formData.username"
           required
         />
       </div>
       <div class="form-item">
-        <label for="email" class="form-label">ايميل</label>
+        <label for="email" class="form-label">{{ $t('Email') }}</label>
         <input
           type="email"
           name="email"
           id="email"
           class="form-item-input"
+          :placeholder="$t('enterEmail')" 
           v-model="formData.email"
           required
         />
       </div>
       <div class="form-item">
-        <label for="mobileNumber" class="form-label">رقم الجوال</label>
+        <label for="mobileNumber" class="form-label">{{$t('Phone')}}</label>
         <input
           type="tel"
           name="mobileNumber"
           class="form-item-input"
           id="mobileNumber"
+          :placeholder="$t('enterPhone')" 
           v-model="formData.mobileNumber"
           required
         />
       </div>
       <div class="form-item">
-        <label for="subject" class="form-label">الموضوع</label>
+        <label for="subject" class="form-label">{{$t('Subject')}}</label>
         <input
           type="text"
           name="subject"
           id="subject"
           class="form-item-input"
+          :placeholder="$t('enterSubject')" 
           v-model="formData.subject"
           required
         />
@@ -49,11 +58,12 @@
     </div>
     <!-- End Grid Two -->
     <div class="form-item">
-      <label for="message" class="form-label">الرسالة</label>
+      <label for="message" class="form-label">{{ $t('Message') }}</label>
       <textarea
         name="message"
         class="form-item-input"
         id="message"
+        :placeholder="$t('enterMessage')" 
         v-model="formData.message"
         required
       ></textarea>
@@ -61,7 +71,7 @@
 
     <div class="form-group">
       <button type="submit" class="global-button" :disabled="disabled">
-        ارسال
+        {{$t('send')}}
       </button>
     </div>
   </form>
@@ -110,3 +120,11 @@ const save = () => {
     });
 };
 </script>
+<style scoped>
+.section-description{
+    font-size: 25px !important;
+}
+.section-title{
+  font-size: 15px !important;
+}
+</style>
