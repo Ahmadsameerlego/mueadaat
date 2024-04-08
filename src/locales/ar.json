@@ -16,6 +16,10 @@
     "RelatedDesc" : "اعلانات مشابهة",
     "Email" : "البريد الإلكتروني",
     "enterEmail": "ادخل البريد الإلكتروني",
+    "Message": "المحتوى",
+    "enterMessage": "ادخل محتوى رسالتك",
+    "Subject": "الموضوع",
+    "enterSubject": "ادخل عنوان موضوع رسالتك",
     "Name" : "الاسم",
     "enterName": "ادخل اسمك",
     "Password" : "كلمة المرور",
@@ -47,7 +51,17 @@
     "rateMyAdsTitle": "تقييم إعلاناتي",
     "lawsTitle": "استعراض القوانين",
     "treatyTitle" : "معاهدة الإستخدام",
-    "policyTitle": "سياسة الإستخدام"
+    "policyTitle": "سياسة الإستخدام",
+    "myAccount": "حسابي",
+    "adAccount": "حساب المعلن",
+    "needHelp": "هل تحتاج إلى مساعدة",
+    "touchWithUs": "ابق على تواصل معنا",
+    "SendUsEmail" : "ارسل لنا بريدا الكتروني",
+    "feelFree" : "لا تتردد في الكتابة",
+    "haveAnyQuestion" : "هل لديك أي سؤال ؟  ",
+    "writeEmail" : "اكتب بريدا الكترونياً",
+    "visitAnytime" : "قم بالزيارة في أي وقت",
+    "send": "ارسال"
     
     
 }

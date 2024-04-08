@@ -16,6 +16,10 @@
     "RelatedDesc" : "Similar ads",
     "Email" : "Email",
     "enterEmail": "Enter Your Email",
+    "Message": "Message",
+    "enterMessage": "Enter your message",
+    "Subject": "Subject",
+    "enterSubject": "Enter the message title",
     "Name" : "Name",
     "enterName": "Enter Your Name",
     "Password" : "Password",
@@ -47,6 +51,16 @@
     "rateMyAdsTitle": "Evaluate my ads",
     "lawsTitle": "Review of laws",
     "treatyTitle": "Employment treaty",
-    "policyTitle": "Usage policy"
+    "policyTitle": "Usage policy",
+    "myAccount": "My Account",
+    "adAccount": "Advertiser account",
+    "needHelp": " Need any help ? ",
+    "touchWithUs": "Get in touch with us",
+    "SendUsEmail" : "Send us Email",
+    "feelFree" : "Feel Free To Write",
+    "haveAnyQuestion" : "Have any question? ",
+    "writeEmail" : "Write email",
+    "visitAnytime" : "Visit anytime",
+    "send": "Send"
 
 }
