@@ -89,7 +89,7 @@ const components = [
   { step: "3", component_name: publicAds, title: "" },
 ];
 
-const titles = ["تفاصيل الاعلان", "صور الاعلان", "نشر الاعلان"];
+// const titles = ["تفاصيل الاعلان", "صور الاعلان", "نشر الاعلان"];
 const step = ref(1);
 const stepperProgress = computed(() => {
   return (100 / 2) * (step.value - 1) + "%";
@@ -98,6 +98,18 @@ const shown_component = computed(() => {
   return components.find((component) => component.step == step.value);
 });
 </script>
+
+
+<script>
+export default {
+  data() {
+    return {
+        titles : [this.$t('detils'), this.$t('images'), this.$t('publish')]
+      }
+    }
+  }
+</script>
+
 
 <style scoped>
 .wrapper-stepper {

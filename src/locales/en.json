@@ -67,6 +67,8 @@
     "treat" : "Usage treat",
     "policy" : "Policy",
     "rate" : "Favorites",
-    "logout" : "Log Out"
-
+    "logout" : "Log Out",
+    "publish" : "publish add",
+    "detils" : "add details",
+    "images" : "add images"
 }

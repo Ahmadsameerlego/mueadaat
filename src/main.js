@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import i18n from './i18n'
 //import store from './store/store';
+import VueI18n from "vue-i18n";
 
 
 import App from './App.vue';
@@ -33,5 +34,6 @@ createApp(App)
   .use(ToastService)
   .use(createPinia())
   .use(vuelidate)
+  .use(VueI18n)
   .component("fa", FontAwesomeIcon)
   .mount("#app");
