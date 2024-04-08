@@ -111,7 +111,8 @@
     "confirmPassword": "تأكيد كلمة المرور",
     "identical": "متطابق",
     "unIdentical": "غير متطابق",
-    "saveMyEdit": "حفظ التعديلات"
+    "saveMyEdit": "حفظ التعديلات",
+    "continue": "استمرار"
 
     
 }

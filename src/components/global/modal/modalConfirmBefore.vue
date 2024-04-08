@@ -34,7 +34,7 @@
 </p>
 
 
-<router-link to="/steps" class="global-button" @click="removePopUp">إستمرار</router-link>
+<router-link to="/steps" class="global-button" @click="removePopUp">{{$t('continue')}}</router-link>
 
 </div><!-- End Confirm Details -->
   
