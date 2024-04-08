@@ -11,7 +11,7 @@
         </p>
       </div>
       <!-- End Heading -->
-      <form action="/about" method="post" @submit="validateForm">
+      <form method="post" @submit.prevent="validateForm">
         <div class="error-list">
           <!-- <div class="error" v-for="error in formErrors" :key="error.id">
             {{ error }}

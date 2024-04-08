@@ -42,6 +42,10 @@
                                     <i class="fa-solid fa-trash-can" ></i>     
                                 
                             </button>
+
+
+
+                            <router-link :to="'/workers/'+not.order_id" class="abs-link" v-if="not.order_id!=0"></router-link>
                         </div>
                     <!-- </div> -->
                    
@@ -150,6 +154,13 @@ export default {
 </script>
 
 <style >
+.abs-link{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    right: 0;
+}
     .delete_not{
         position:absolute;
         left: 20px;

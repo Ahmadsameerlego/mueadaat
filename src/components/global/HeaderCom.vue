@@ -151,6 +151,7 @@
                     class="mx-2"
                     @click="signout"
                     :disabled="disabled"
+                    style="cursor:pointer"
                   >
                     تسجيل الخروج
                   </span>
@@ -177,13 +178,13 @@
         <LangCom class="mx-2" />
 
         <div  v-if="user">
-          <button  style="width:33px;height:33px;border-radius:50%" class="px-0 global-button drop-image mx-2 d-flex justify-content-center align-items-center">
+          <a  :href="'https://api.whatsapp.com/send?phone='+phone" target="_black" style="width:33px;height:33px;border-radius:50%" class="px-0 global-button drop-image mx-2 d-flex justify-content-center align-items-center">
             <i class="fa-solid fa-comment-dots"></i>
-          </button>
+          </a>
         </div>
 
         <div  v-if="user">
-          <router-link  to="/notification" style="width:33px;height:33px" class="position-relative drop-image mx-2">
+          <router-link @click="getNotification"  to="/notification" style="width:33px;height:33px" class="position-relative drop-image mx-2">
             <i class="fa-regular fa-bell"></i>
            <span class="notification_count" v-if="isNotGet">
              {{ notification_count }}
@@ -229,8 +230,29 @@ export default {
       user: null,
       disabled: false,
       notification_count: '',
-      isNotGet : false
+      isNotGet: false,
+      phone : ''
     };
+  },
+  methods: {
+       // get notifications 
+        async getNotification(){
+            
+          setTimeout(() => {
+               axios.post('https://dashboard.mueadaat.info/test-mode/api/show-notification', {
+                 lang: localStorage.getItem('locale'),
+                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+            } )
+            .then( (res)=>{
+                // if( res.data.key === 'success' ){
+                    console.log(res.data.data)
+                    // this.currentPage = res.data.data.pagination.current_page ;
+                    // this.totalPages = res.data.data.pagination.total_pages ;
+                    // this.per_page = res.data.data.pagination.per_page ;
+                // }
+            } )
+          }, 1000);
+        },
   },
   mounted() {
     var savedUser = sessionStorage.getItem("user");
@@ -239,10 +261,13 @@ export default {
     }
 
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .post("https://dashboard.mueadaat.info/test-mode/api/home", {
+       user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+      })
       .then((response) => {
         // handle success
         this.notification_count = response.data.notification_count;
+        this.phone = response.data.phone;
         this.isNotGet = true;
       })
       .catch((error) => {

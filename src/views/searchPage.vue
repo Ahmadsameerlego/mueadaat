@@ -5,7 +5,7 @@
     class="py-5"
   />
 
-  <div class="total_filter">
+  <div class="total_filter" v-if="isSearch">
     {{ data.length  }} نتيجة حول بحثك
   </div>
   <div class="form-items p-sec" style="background:#f9f9f9">
@@ -112,6 +112,10 @@
           </div>
           <!-- End Column -->
         </div>
+
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="global-button w-25" type="button" @click="clearFilter"> تصفية  </button>
+        </div>
       </div>
     </form>
   </div>
@@ -168,12 +172,22 @@ export default {
         cat_id: '',
         act_id: '',
         title: '',
-        isDataGet : false
+      isDataGet: false,
+        isSearch : false
     };
   },
   methods: {
+    clearFilter() {
+      this.city_id = '';
+      this.title = '';
+      this.act_id = ''
+      this.cat_id = ''
+      this.getEquips();
+
+    },
       async getEquips() {
-          this.isDataGet = true;
+      this.isDataGet = true;
+        
       await axios
         .post("https://dashboard.mueadaat.info/test-mode/api/services", {
           lang: localStorage.getItem("locale"),
@@ -203,11 +217,15 @@ export default {
         });
     },
     toggleType(type) {
-        this.type = type;
+      this.type = type;
+                  this.isSearch = true
+
         this.getEquips();
       },
       getData() {
-                this.getEquips();
+        this.getEquips();
+                          this.isSearch = true
+
 
     }
   },
@@ -223,6 +241,7 @@ export default {
 </script>
 
 <style >
+
 .total_filter{
         margin: auto;
     display: flex;

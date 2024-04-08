@@ -56,6 +56,13 @@
             <!-- Start Post Detection -->
             <span class="detection global-button px-1">{{ props.detection }}</span>
           </div>
+           <!-- Start Post Place -->
+            <span class="post-place text-body mx-2" v-if="$route.fullPath.includes('watch')"
+              >
+              <i class="fa-solid fa-eye"></i>
+              <span class="mx-2">عدد المشاهدات</span>
+              : {{ props.seen_count }}</span
+            >
           <!-- <div class="detection">{{ props.detection }}</div> -->
         </div>
       </div>
@@ -90,6 +97,10 @@ const props = defineProps({
     required: true,
   },
   city: {
+    type: String,
+    required: true,
+  },
+  seen_count: {
     type: String,
     required: true,
   },

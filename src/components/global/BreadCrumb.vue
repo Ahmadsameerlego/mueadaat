@@ -3,7 +3,7 @@
         <h2 class="bread-crumb-title">{{ title }}</h2>
         <nav class="breadcrum-nav">
             <ul class="bread-crumb-list">
-                <li class="bread-crumb-item text">{{ pageTitle }}</li>
+                <li class="bread-crumb-item text" :class="{search: $route.fullPath.includes('search')||$route.fullPath.includes('notification')}">{{ pageTitle }}</li>
                 <li class="bread-crumb-item"><router-link class="home-link" to="/">
                     {{ homePage }}
                 </router-link></li>
@@ -51,6 +51,7 @@
     color: #74757E;
     
     }
+    .bread-crumb-list .bread-crumb-item.text.search:after{display: none !important;}
 .home-link{
     color: #FCAC62;
     transition: all 0.3s ease;
