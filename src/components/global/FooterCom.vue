@@ -10,7 +10,7 @@
                 <div class="col-md-6">
                     <p class="footer-text design">
                         {{$t('implement')}}
-                        <router-link to="/">{{ $t('anmat') }}</router-link>
+                        <router-link to="https://alsehamy.com">{{ $t('anmat') }}</router-link>
                     </p>
                 </div>
             </div>
