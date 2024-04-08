@@ -1,7 +1,7 @@
 <template>
     <BreadCrumb
-    :title="$t('Contact')"
-    :pageTitle="$t('Contact')"
+    :title="$t('myAccount')"
+    :pageTitle="$t('myAccount')"
     :homePage="$t('Home')"
     />
 

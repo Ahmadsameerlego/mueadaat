@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    data
+                    <contactData />
                 </div>
                 <div class="col-md-6">
                     <ContactForm />
@@ -21,5 +21,6 @@
 
     import BreadCrumb from '@/components/global/BreadCrumb.vue';
     import ContactForm from '../components/global/Form/ContactForm.vue'; 
+    import contactData from '../components/contactData.vue';
     
 </script>

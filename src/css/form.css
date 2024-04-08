@@ -120,3 +120,19 @@
   .rtl .form-select{
     direction: rtl;
   }
+  .form-item input{
+    font-size: 14px;
+  }
+  .rtl .form-item input::placeholder{
+    text-align: right;
+  }
+  .ltr .form-item input::placeholder{
+    text-align: left;
+  }
+
+  .form-items.contact .global-button{
+    display: inline-block !important;
+    width: inherit !important;
+    padding: 8px 25px !important;
+    font-size: 17px;
+  }
