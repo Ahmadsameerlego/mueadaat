@@ -1,6 +1,6 @@
 <template>
   <div class="view-ads">
-    <p class="text-body">يمكنك مشاهدة الإعلان الآن</p>
+    <p class="text-body">{{$t('watchAd')}}</p>
     <svg
       width="48"
       height="73"
@@ -19,7 +19,7 @@
   </div>
   <div class="main_submit">
     <button class="global-button" @click.prevent="submitAdd">
-      <router-link to="/"> الرجوع للرئيسية </router-link>
+      <router-link to="/"> {{ $t('backHome') }} </router-link>
     </button>
   </div>
 

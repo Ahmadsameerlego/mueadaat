@@ -61,7 +61,29 @@
     "haveAnyQuestion" : "هل لديك أي سؤال ؟  ",
     "writeEmail" : "اكتب بريدا الكترونياً",
     "visitAnytime" : "قم بالزيارة في أي وقت",
-    "send": "ارسال"
+    "send": "ارسال",
+    "adsName": "عنوان الإعلان",
+    "enterAdsName": "ادخل عنوان الاعلان",
+    "advantageLabel": "الميزة التنافسية",
+    "enterAdvantage": "ادخل الميزة التنافسية",
+    "priceLabel": "السعر",
+    "enterPrice": "ادخل السعر",
+    "servicesTypeLabel": "نوع الخدمة",
+    "chooseServicesType": "اختر نوع الخدمة",
+    "workActivity": "نشاط العمل",
+    "chooseWorkActivity": "اختر نشاط العمل",
+    "costSystem": "نظام التكلفة",
+    "dayCost": "التكلفة باليوم",
+    "hourCost": "التكلفة بالساعة",
+    "advDetailsLabel" : "تفاصيل الإعلان",
+    "enterAdvDetails": "ادخل تفاصيل الإعلان",
+    "fiveImage": "يمكن اضاافة 5 صور فقط",
+    "backHome": "الرجوع للرئيسية",
+    "watchAd": "يمكنك مشاهدة الإعلان الآن",
+    "previous": "السابق",
+    "Next": "التالي",
+    "PostAd" :"نشر الإعلان",
+    "EditAd": "تعديل الإعلان"
     
     
 }

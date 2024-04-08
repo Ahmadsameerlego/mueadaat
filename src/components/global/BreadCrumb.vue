@@ -47,10 +47,16 @@
     .bread-crumb-list .bread-crumb-item.text:after{
         position: absolute;
     top: 15%;
-    left: -5px;
+    
     content: '>';
     color: #74757E;
     
+    }
+    .rtl .bread-crumb-list .bread-crumb-item.text:after{
+        left: -5px;
+    }
+    .ltr .bread-crumb-list .bread-crumb-item.text:after{
+        right : -5px;
     }
     .bread-crumb-list .bread-crumb-item.text.search:after{display: none !important;}
 .home-link{
