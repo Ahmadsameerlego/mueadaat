@@ -20,6 +20,11 @@
     box-shadow: 1px 1px 50px 2px rgb(0 0 0 / 17%);
     height: 580px;
   }
+  @media(max-width: 480px){
+    .form-image{
+      display: none;
+    }
+  }
   .form-items .grid-two{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -136,3 +141,4 @@
     padding: 8px 25px !important;
     font-size: 17px;
   }
+  
