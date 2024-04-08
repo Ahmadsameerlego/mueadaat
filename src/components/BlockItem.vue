@@ -26,9 +26,17 @@
         </h3>
         <!-- End Post Title -->
         <!-- Start Post Description -->
-        <p class="post-description text-body">
+       <div v-if="isOwnAdds">
+         <p class="post-description text-body">
           {{ props.description }}
         </p>
+        <p class="post-description text-body" v-if="props.show===true" style="color:green !important">
+          تمت الموافقة عليه
+        </p>
+        <p class="post-description text-body" v-if="props.show===false" style="color:red !important">
+          في انتظار موافقة الادمن
+        </p>
+       </div>
         <!-- End Post Description -->
         <div class="rate" v-show="rate">
           <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,6 +127,10 @@ const props = defineProps({
     required: true,
   },
   isAdded: {
+    type: Boolean,
+    required: true,
+  },
+  show: {
     type: Boolean,
     required: true,
   },

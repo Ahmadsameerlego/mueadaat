@@ -19,6 +19,7 @@
           :date="equipment.date"
           :detection="equipment.short_desc"
           :isAdded="equipment.is_favourite"
+          :show="equipment.show"
           :isOwnAdds="true"
         />
         </div>
@@ -42,10 +43,9 @@ export default {
     },
     methods: {
         async getEquips() {
-             await axios.post('https://dashboard.mueadaat.info/test-mode/api/services', {
+             await axios.post('https://dashboard.mueadaat.info/test-mode/api/all-provider-services', {
                 lang: localStorage.getItem('locale'),
                  user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-                 type : 'item'
             })
             .then((res) => {
                 this.data = res.data.data;

@@ -229,7 +229,9 @@ export default (await import("vue")).defineComponent({
       fd.append("type", localStorage.getItem("type"));
       fd.append("active_id", localStorage.getItem("act_id"));
       fd.append("category_id", localStorage.getItem("cat_id"));
+      fd.append("unit", localStorage.getItem("unit"));
       fd.append("service_id", this.$route.params.id);
+      
       // var images = [];
       fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
 

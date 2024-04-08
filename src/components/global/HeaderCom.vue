@@ -80,6 +80,7 @@
             </router-link>
           </li>
         </ul>
+        <section class="user_interaction d-flex justify-content-between">
 
         <div v-if="user">
           <div class="dropdown">
@@ -175,7 +176,7 @@
             </span>
           </button>
         </div>
-        <LangCom class="mx-2" />
+          <LangCom class="mx-2" />
 
         <div  v-if="user">
           <a  :href="'https://api.whatsapp.com/send?phone='+phone" target="_black" style="width:33px;height:33px;border-radius:50%" class="px-0 global-button drop-image mx-2 d-flex justify-content-center align-items-center">
@@ -197,6 +198,7 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </router-link>
         </div>
+        </section>
       </div>
     </div>
   </nav>
