@@ -298,5 +298,11 @@ button, input [type="submit"]{
     background-repeat: repeat;
 }
 
+@media(max-width: 480px){
+    .modal.show .modal-dialog{
+    width: 90% !important;
+    margin: 25px auto !important;
+}
+}
 
 </style>

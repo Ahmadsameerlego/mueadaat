@@ -153,5 +153,10 @@ input::-webkit-inner-spin-button {
     top: -233px !important;
     right: 1px !important;
     width: 205px !important;
+    }
 }
+@media(max-width: 480px){
+    .choose{
+        width: 100% !important;
+    }
 }
