@@ -62,6 +62,7 @@
     "writeEmail" : "Write email",
     "visitAnytime" : "Visit anytime",
     "send": "Send",
+<<<<<<< HEAD
     "adsName": "Advertisement title",
     "enterAdsName": "Enter the ad title",
     "advantageLabel": "Competitive advantage",
@@ -84,5 +85,13 @@
     "Next": "Next",
     "PostAd" :"Post the ad",
     "EditAd": "Edit the ad"
+=======
+    "pofile" : "Profile",
+    "lows" : "Lows",
+    "treat" : "Usage treat",
+    "policy" : "Policy",
+    "rate" : "Favorites",
+    "logout" : "Log Out"
+>>>>>>> 92efd823c64b1c7a78904e49ab5155f07a9ec266
 
 }

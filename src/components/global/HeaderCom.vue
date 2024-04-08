@@ -108,7 +108,7 @@
                   <div class="drop-image">
                     <i class="fa-regular fa-user"></i>
                   </div>
-                  <span class="mx-2"> حسابي </span>
+                  <span class="mx-2"> {{  $t('pofile')  }} </span>
                 </router-link>
               </li>
               <li>
@@ -116,7 +116,7 @@
                   <div class="drop-image">
                     <i class="fa-regular fa-square"></i>
                   </div>
-                  <span class="mx-2"> استعراض القوانين </span>
+                  <span class="mx-2"> {{  $t('lows')  }} </span>
                 </router-link>
               </li>
               <li>
@@ -124,7 +124,7 @@
                   <div class="drop-image">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </div>
-                  <span class="mx-2"> معاهدة الاستخدام </span>
+                  <span class="mx-2"> {{  $t('treat')  }} </span>
                 </router-link>
               </li>
               <li>
@@ -132,7 +132,7 @@
                   <div class="drop-image">
                     <i class="fa-solid fa-file"></i>
                   </div>
-                  <span class="mx-2"> سياسة الخصوصية </span>
+                  <span class="mx-2"> {{  $t('policy')  }} </span>
                 </router-link>
               </li>
               <li>
@@ -140,7 +140,7 @@
                   <div class="drop-image">
                     <i class="fa-regular fa-heart"></i>
                   </div>
-                  <span class="mx-2"> المفضلة </span>
+                  <span class="mx-2"> {{  $t('rate')  }} </span>
                 </router-link>
               </li>
               <li>
@@ -154,7 +154,7 @@
                     :disabled="disabled"
                     style="cursor:pointer"
                   >
-                    تسجيل الخروج
+                    {{  $t('logout')  }}
                   </span>
                 </div>
               </li>
