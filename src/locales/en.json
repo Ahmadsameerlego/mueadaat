@@ -30,7 +30,7 @@
     "NohaveAccount": " Don't have an account? ؟",
     "forgetPassword": "Forgot your password ?",
     "welcomeBack": "Welcome Back ",
-    "loginEmailTitle": "You can now log in with your email if you want to log in with your mobile number",
+    "loginEmailTitle": "You can now log in using your email or mobile number",
     "accountConfirmation": "Account Confirmation",
     "accountConfirmDesc-1": "We automatically detect an SMS sent to your mobile number ",
     "accountConfirmDesc-2": "To complete registration",
@@ -125,7 +125,10 @@
   "serviceType": "Service type",
   "noAdds" : "No Addvertisement Is Found!",
   "register": "Create Account",
-  "registerDesc": "Welcome! You can now register with us on the Maadati & Amali application and website."
+  "registerDesc": "Hello, you can now obtain a new registration with us on the Workers and Equipments application and website",
+  "Notifications": "Notifications",
+  "noNotifications": "There are no notifications yet",
+  "forgetDesc": "Please enter your mobile number below and the rest of the steps will be sent to you"
 
 
 }
