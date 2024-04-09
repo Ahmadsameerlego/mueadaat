@@ -3,7 +3,7 @@
   <div class="card">
     <!-- Start Top -->
     <div class="top">
-      <p class="text-body">يمكن اضاافة 5 صور فقط</p>
+      <p class="text-body">{{$t('fiveImage')}}</p>
     </div>
     <!-- End Top -->
     <!-- Start Drag Area -->
@@ -81,7 +81,7 @@
       :disabled="disabled"
       v-if="!$route.fullPath.includes('edit')"
     >
-      نشر الاعلان
+      {{ $t('PostAd') }}
     </button>
     <button
       v-else
@@ -89,7 +89,7 @@
       @click.prevent="updateAdd"
       :disabled="disabled"
     >
-      تعديل الاعلان
+      {{$t('EditAd')}}
     </button>
   </div>
   <Toast />

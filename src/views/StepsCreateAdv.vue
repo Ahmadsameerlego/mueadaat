@@ -53,14 +53,14 @@
                     @click="step--"
                     :disabled="step == 1"
                   >
-                    السابق
+                    {{$t('previous')}}
                   </button>
                   <button
                     class="global-button"
                     @click="step++"
                     :disabled="step == 3"
                   >
-                    التالي
+                  {{$t('Next')}}
                   </button>
                 </div>
               </div>

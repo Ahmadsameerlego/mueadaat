@@ -58,6 +58,7 @@
             <input
               type="text"
               id="subject"
+              :placeholder="$t('enterYourCompny')"
               class="form-item-input"
               value="مؤسسة الجوهرة لتأجير المعدات"
               v-model="full_name"
@@ -114,7 +115,7 @@
         </div>
 
         <div class="form-item">
-          <label for="subject" class="form-label">نبذه عني</label>
+          <label for="subject" class="form-label">{{ $t('aboutMe') }}</label>
           <textarea
             v-model="desc_ar"
             name="desc_ar"
@@ -132,7 +133,7 @@
             class="global-button w-25 d-flex justify-content-center mx-auto"
             :disabled="disabled"
           >
-            حفظ التعديلات
+            {{$t('myPersonalData')}}
           </button>
         </div>
       </form>
@@ -146,7 +147,7 @@
           role="button"
           style="background-color: #000"
         >
-          تغيير كلمة المرور
+          {{$t('changePassword')}}
         </button>
       </div>
     </div>
@@ -194,7 +195,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <h4 class="title">تعديل كلمة المرور</h4>
+            <h4 class="title">{{ $t('editPassword') }}</h4>
           </div>
           <form action="" class="form-items">
             <div class="grid-two">
@@ -214,7 +215,7 @@
 
               <div class="form-item">
                 <label for="subject" class="form-label"
-                  >كلمة المرور الجديدة</label
+                  >{{$t('newPassword')}}</label
                 >
                 <input
                   type="password"
@@ -227,7 +228,7 @@
               </div>
               <div class="form-item">
                 <label for="subject" class="form-label"
-                  >تاكيد كلمة المرور</label
+                  >{{ $t('confirmPassword') }}</label
                 >
                 <input
                   type="password"
@@ -245,14 +246,14 @@
                 class="passwordConfirmed d-flex align-items-center text-success"
               >
                 <i class="fa-regular fa-circle-check"></i>
-                <span>متطابق</span>
+                <span>{{$t('identical')}}</span>
               </p>
               <p
                 v-else
                 class="passwordWrong d-flex align-items-center text-danger"
               >
                 <i class="fa-regular fa-circle-xmark"></i>
-                <span>غير متطابق</span>
+                <span>{{$t('unIdentical')}}</span>
               </p>
             </div>
 
@@ -262,7 +263,7 @@
                 :disabled="disabled2"
                 @click.prevent="updatePassword"
               >
-                حفظ التعديلات
+                {{$t('saveMyEdit')}}
               </button>
             </div>
           </form>
