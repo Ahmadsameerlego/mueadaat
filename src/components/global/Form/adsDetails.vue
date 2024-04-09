@@ -2,49 +2,49 @@
   <div class="form-items">
     <form>
       <div class="form-item">
-        <label for="fullName" class="form-item-label">عنوان الإعلان</label>
+        <label for="fullName" class="form-item-label">{{$t('adsName')}}</label>
         <input
           type="text"
           name="fullName"
           class="form-item-input"
           id="fullName"
           v-model="title_ar"
-          placeholder="ادخل اسم الاعلان"
+          :placeholder=" $t('enterAdsName') "
         />
       </div>
       <div class="grid-two">
         <div class="form-item">
-          <label for="email" class="form-item-label">الميزة التنافسية</label>
+          <label for="email" class="form-item-label">{{ $t('advantageLabel') }}</label>
           <input
             type="email"
             name="email"
             class="form-item-input"
             id="email"
             v-model="short_desc_ar"
-            placeholder="ادخل الميزة التنافسية"
+            :placeholder="$t('enterAdvantage')"
           />
         </div>
         <div class="form-item">
-          <label for="mobileNumber" class="form-item-label">السعر</label>
+          <label for="mobileNumber" class="form-item-label">{{$t('priceLabel')}}</label>
           <input
             type="email"
             name="email"
             class="form-item-input"
             id="mobileNumber"
             v-model="price"
-            placeholder="ادخل السعر"
+            :placeholder="$t('enterPrice')"
           />
         </div>
  <div
         class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
       >
-        <label for="" class="form-item-label">نوع الخدمة </label>
+        <label for="" class="form-item-label">{{ $t('servicesTypeLabel') }} </label>
         <select
           class="form-select form-item-input"
           aria-label="Default select example"
           v-model="cat_id"
         >
-          <option selected disabled value="" hidden>اختر نوع الخدمة</option>
+          <option selected disabled value="" hidden>{{$t('chooseServicesType')}}</option>
           <option v-for="cat in categories" :key="cat" :value="cat.id">
             {{ cat.title }}
           </option>
@@ -53,13 +53,13 @@
       <div
         class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
       >
-        <label for="" class="form-item-label">نشاط العامل </label>
+        <label for="" class="form-item-label">{{ $t('workActivity') }}</label>
         <select
           class="form-select form-item-input"
           aria-label="Default select example"
           v-model="act_id"
         >
-          <option selected hidden disabled value="">اختر نشاط العمل</option>
+          <option selected hidden disabled value="">{{$t('chooseWorkActivity')}}</option>
           <option v-for="act in actives" :key="act" :value="act.id">
             {{ act.title }}
           </option>
@@ -68,16 +68,16 @@
       </div>
 
       <div class="form-item">
-        <label class="form-item-label">نظام التكلفة</label>
+        <label class="form-item-label">{{ $t('costSystem') }}</label>
         <div class="flex-this">
           <div class="form-check">
             <input type="radio" v-model="unit" value="daily" />
-            <label>التكلفة باليوم</label>
+            <label>{{$t('dayCost')}}</label>
           </div>
 
           <div class="form-check">
             <input type="radio" v-model="unit" value="total" />
-            <label>التكلفة بالساعة</label>
+            <label>{{$t('hourCost')}}</label>
           </div>
         </div>
       </div>
@@ -86,11 +86,12 @@
      
 
       <div class="form-item">
-        <label for="details" class="form-label">تفاصيل الإعلان</label>
+        <label for="details" class="form-label">{{ $t('advDetailsLabel') }}</label>
         <textarea
           name="details"
           class="form-item-input"
           id="message"
+          :placeholder="$t('enterAdvDetails')"
           v-model="desc_ar"
         ></textarea>
       </div>

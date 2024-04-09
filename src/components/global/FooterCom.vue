@@ -4,12 +4,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <p class="footer-text">
-                        جميع الحقوق محفوظة لموقع وتطبيق معداتي و عمالي 2024
+                        {{$t('copyRight')}}
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <p class="footer-text">
-                        حقوق التصميم
+                    <p class="footer-text design">
+                        {{$t('implement')}}
+                        <router-link to="https://alsehamy.com">{{ $t('anmat') }}</router-link>
                     </p>
                 </div>
             </div>
@@ -28,5 +29,27 @@
 }
 .footer .footer-text{
     color: #fff;
+}
+.footer .footer-text a{
+    color: #FCAC62;
+    transition: all 0.3s ease;
+}
+.footer .footer-text a:hover{
+    color: #fff;
+}
+.rtl .footer .footer-text.design{
+    float: left;
+}
+.ltr .footer .footer-text.design{
+    float: right;
+}
+
+@media(max-width: 768px){
+    .rtl .footer .footer-text.design{
+    float: center !important;
+}
+.ltr .footer .footer-text.design{
+    float: center !important;
+}
 }
 </style>
