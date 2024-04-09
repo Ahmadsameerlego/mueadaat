@@ -49,8 +49,8 @@
 
       <!-- Start Post Info -->
       <div class="post-info ">
-        <div class="row">
-          <div class="col-sm-8 d-flex">
+        <div class="row flex-wrap">
+          <div class="col-sm-7 d-flex">
             <!-- Start Post Place -->
             <span class="post-place text-body mx-2"
               ><placeIcon />{{ props.city }}</span
@@ -60,7 +60,7 @@
               <dateICon /> {{ props.date }}</span
             >
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-5">
             <!-- Start Post Detection -->
             <span class="detection global-button px-1">{{ props.detection }}</span>
           </div>

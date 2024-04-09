@@ -200,3 +200,7 @@ body.ltr{
 
 
 }
+
+.detection{
+  white-space: nowrap !important;
+}
