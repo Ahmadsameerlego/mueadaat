@@ -197,8 +197,17 @@ body.ltr{
     left: 66px !important;
 }
 
-
-
+.ads-options button{
+  margin: 0 10px;
+}
+.author .author-img {
+    margin-right: 16px;
+    margin-left: 0px !important;
+}
+.close_modal{
+  right: 8px;
+  left: auto !important;
+}
 }
 
 .detection{

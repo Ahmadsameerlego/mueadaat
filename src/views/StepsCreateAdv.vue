@@ -45,7 +45,7 @@
               <div class="stepper-pane">
                 <!-- <adsDetails />
                 <adsGallery /> -->
-                <component :is="shown_component.component_name" />
+                <component :is="shown_component.component_name" @openNext="openNext" />
 
                 <div class="center-this">
                   <button
@@ -58,7 +58,7 @@
                   <button
                     class="global-button"
                     @click="step++"
-                    :disabled="step == 3"
+                    :disabled="openButton"
                   >
                   {{$t('Next')}}
                   </button>
@@ -98,6 +98,16 @@ const stepperProgress = computed(() => {
 const shown_component = computed(() => {
   return components.find((component) => component.step == step.value);
 });
+const openButton = ref(true)
+const openNext = (val) => {
+  if (val == true) {
+      openButton.value = false
+
+  } else {
+      openButton.value = true
+
+  }
+}
 </script>
 
 
@@ -105,8 +115,15 @@ const shown_component = computed(() => {
 export default {
   data() {
     return {
-        titles : [this.$t('detils'), this.$t('images'), this.$t('publish')]
+      titles: [this.$t('detils'), this.$t('images'), this.$t('publish')],
+        // openButton : true
       }
+  },
+  methods: {
+    // openNext() {
+    //     this.openButton = false
+    //     console.log('fff')
+    //   }
     }
   }
 </script>

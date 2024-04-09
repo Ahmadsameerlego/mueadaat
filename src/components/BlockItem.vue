@@ -155,7 +155,14 @@ import Toast from "primevue/toast";
 export default {
   methods: {
     async toggleFavoriteSimilar(service_id) {
-      await axios
+      if (!sessionStorage.getItem('user')) {
+        this.$toast.add({
+              severity: "error",
+              summary: 'عليك تسجيل الدخول اولا',
+              life: 3000,
+            });
+      } else {
+        await axios
         .post(
           "https://dashboard.mueadaat.info/test-mode/api/add-to-favourite",
           {
@@ -182,6 +189,8 @@ export default {
             });
           }
         });
+      }
+      
     },
   },
   components: {

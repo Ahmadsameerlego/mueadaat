@@ -122,6 +122,9 @@ export default {
     },
     desc_ar() {
       localStorage.setItem("desc_ar", this.desc_ar);
+      if (this.title_ar !== '' || this.desc_ar !== '' || this.price !== '' || this.short_desc_ar !== '' || this.unit !== '' || this.cat_id !== '' || this.act_id !== '') {
+        this.$emit('openNext', true)
+      }
     },
     price() {
       localStorage.setItem("price", this.price);
@@ -177,7 +180,17 @@ export default {
     this.getFilters();
     if (this.$route.fullPath.includes('edit')) {
       this.getData()
+    } else {
+      this.title_ar = localStorage.getItem("title_ar");
+    this.desc_ar = localStorage.getItem("desc_ar");
+    this.price = localStorage.getItem("price");
+    this.short_desc_ar = localStorage.getItem("short_desc_ar");
+    this.cat_id = localStorage.getItem("cat_id");
+    this.act_id =localStorage.getItem("act_id") ;
+    this.unit = localStorage.getItem("unit");
     }
+
+    
   },
 };
 </script>

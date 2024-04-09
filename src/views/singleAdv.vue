@@ -99,9 +99,9 @@
             </div>
           </div>
 
-          <span class="desc-rate mt-4 d-block fw-bold">أضف تقييمك</span>
+          <span class="desc-rate mt-4 d-block fw-bold" v-if="isAuthed">أضف تقييمك</span>
 
-          <div class="add-your-rate mx-auto d-flex justify-content-center">
+          <div class="add-your-rate mx-auto d-flex justify-content-center" v-if="isAuthed">
             <div class="stars">
               <Rating v-model="value" :cancel="false" class="mb-2" />
               <textarea
@@ -225,6 +225,7 @@ export default {
       rate: "",
       disabled: false,
       provider_id: "",
+      isAuthed : false
     };
   },
   methods: {
@@ -351,6 +352,9 @@ export default {
   },
   mounted() {
     this.getAdds();
+    if (sessionStorage.getItem('user')) {
+      this.isAuthed = true;
+    }
   },
   components: {
     GalleryAds,

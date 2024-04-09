@@ -12,10 +12,9 @@
         <div class="form-content">
           <!-- Start Heading -->
           <div class="form-heading">
-            <h3>انشاء حساب</h3>
+            <h3> {{  $t('register')  }} </h3>
             <p class="text-body">
-              يا هلا , انت الآن تستطيع الحصول على تسجيل جديد لدينا في تطبيق و
-              موقع معاداتي و عمالي
+              {{  $t('registerDesc')  }}
             </p>
           </div>
           <!-- End Heading -->
@@ -40,7 +39,7 @@
                 class="form-item-input"
                 id="first_name"
                 v-model="first_name"
-                placeholder="ادخل اسمك"
+                :placeholder="$t('enterName')"
                 required
               />
             </div>
@@ -68,7 +67,7 @@
                 class="form-item-input"
                 id="phone"
                 v-model="phone"
-                placeholder="ادخل رقم جوالك"
+                :placeholder="$t('enterPhone')"
                 required
               />
             </div>
@@ -82,14 +81,14 @@
                 id="password"
                 name="password"
                 v-model="password"
-                placeholder="ادخل كلمة االمرور"
+                :placeholder="$t('enterPassword')"
                 required
               />
             </div>
 
             <div class="form-item">
               <button class="global-button" :disabled="disabled">
-                انشاء حساب
+                {{ $t('register')  }}
               </button>
             </div>
           </form>
@@ -101,7 +100,7 @@
               data-bs-toggle="modal"
               href="#exampleModalToggle"
               role="button"
-              >تسجيل دخول</a
+              > {{ $t('signIn') }} </a
             >
           </div>
         </div>

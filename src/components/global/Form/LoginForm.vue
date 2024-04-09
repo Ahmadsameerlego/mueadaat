@@ -80,7 +80,7 @@
 
             <div class="form-item">
               <button type="submit" :disabled="disabled" class="global-button">
-                تسجيل الدخول
+                {{  $t('SignIn')  }}
               </button>
             </div>
           </form>
@@ -95,7 +95,7 @@
               data-bs-dismiss="modal"
               type="button"
             >
-              انشاء حساب
+               {{  $t('register')  }}
             </button>
           </div>
 

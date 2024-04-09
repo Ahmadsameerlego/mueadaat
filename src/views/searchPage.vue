@@ -6,7 +6,7 @@
   />
 
   <div class="total_filter" v-if="isSearch">
-    {{ data.length }} نتيجة حول بحثك
+    {{ data.length }} {{  $t('seatchResult')  }}
   </div>
   <div class="form-items p-sec" style="background: #f9f9f9">
     <form>
@@ -19,7 +19,7 @@
               class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
             >
               <div>
-                <label for="" class="form-item-label">المكان</label>
+                <label for="" class="form-item-label">{{$t('locations')}}</label>
               </div>
               <select
                 class="form-select form-item-input"
@@ -28,7 +28,7 @@
                 @change="getData"
                 style="background: #f0f0f0"
               >
-                <option selected value="" hidden disabled>اختر موقعك</option>
+                <option selected value="" hidden disabled> {{  $t('chooseLocation')  }} </option>
                 <option v-for="city in cities" :key="city" :value="city.id">
                   {{ city.title }}
                 </option>
@@ -42,7 +42,7 @@
             <!-- Start Form Item -->
             <div class="form-item form-item-search">
               <input
-                placeholder="ادخل هنا ماتريد البحث عنه"
+                :placeholder="$t('searchWhat')"
                 type="search"
                 class="form-item-input"
                 v-model="title"
@@ -62,14 +62,14 @@
                   :class="{ active: type == 'worker' }"
                   @click.prevent="toggleType('worker')"
                 >
-                  عمالة
+                  {{  $t('workerss')  }}
                 </button>
                 <button
                   class="category-button"
                   :class="{ active: type == 'item' }"
                   @click.prevent="toggleType('item')"
                 >
-                  معدات
+                  {{  $t('equips')  }}
                 </button>
               </div>
             </div>
@@ -81,7 +81,7 @@
             <div
               class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
             >
-              <label for="" class="form-item-label">نوع الخدمة </label>
+              <label for="" class="form-item-label">{{  $t('serviceType')  }} </label>
               <select
                 class="form-select form-item-input"
                 aria-label="Default select example"
@@ -90,7 +90,7 @@
                 style="background: #f0f0f0"
               >
                 <option selected disabled value="" hidden>
-                  اختر نوع الخدمة
+                  {{ $t('chooseType') }}
                 </option>
                 <option v-for="cat in categories" :key="cat" :value="cat.id">
                   {{ cat.title }}
@@ -106,7 +106,7 @@
             <div
               class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
             >
-              <label for="" class="form-item-label">نشاط العامل </label>
+              <label for="" class="form-item-label"> {{ $t('activeType') }}</label>
               <select
                 class="form-select form-item-input"
                 aria-label="Default select example"
@@ -115,7 +115,7 @@
                 style="background: #f0f0f0"
               >
                 <option selected hidden disabled value="">
-                  اختر نشاط العمل
+                  {{  $t('chooseActive')  }}
                 </option>
                 <option v-for="act in actives" :key="act" :value="act.id">
                   {{ act.title }}
@@ -129,7 +129,7 @@
 
         <div class="d-flex justify-content-center align-items-center">
           <button class="global-button w-25" type="button" @click="clearFilter">
-            تصفية
+            {{ $t('filter') }}
           </button>
         </div>
       </div>
@@ -153,7 +153,7 @@
         />
 
         <Message severity="warn" v-if="data.length === 0"
-          >لا توجد اعلانات مطابقة</Message
+          > {{  $t('noAdds')  }} </Message
         >
       </div>
       <div class="loader" v-if="isDataGet">

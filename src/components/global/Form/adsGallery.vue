@@ -128,24 +128,7 @@ export default (await import("vue")).defineComponent({
 
         // console.log()
       }
-
-      const fileListArray = Array.from(files).map((file) => ({
-        name: file.name,
-        type: file.type,
-        size: file.size,
-        lastModified: file.lastModified,
-        lastModifiedDate: file.lastModifiedDate,
-        webkitRelativePath: file.webkitRelativePath,
-        // Add other properties if needed
-      }));
-
-      // Now you have the files in an array, you can proceed with your logic
-      console.log(fileListArray);
-      // for (let x = 0; x < fileListArray.length; x++){
-      localStorage.setItem("images", JSON.stringify(fileListArray));
-      //         console.log(fileListArray[x])
-
-      // }
+      localStorage.setItem("images_links", JSON.stringify(this.images));
     },
     deleteImage(index) {
       this.images.splice(index, 1);
@@ -184,6 +167,7 @@ export default (await import("vue")).defineComponent({
       fd.append("title_ar", localStorage.getItem("title_ar"));
       fd.append("price", localStorage.getItem("price"));
       fd.append("type", localStorage.getItem("type"));
+            fd.append("unit", localStorage.getItem("unit"));
       fd.append("active_id", localStorage.getItem("act_id"));
       fd.append("category_id", localStorage.getItem("cat_id"));
       // var images = [];
@@ -206,6 +190,14 @@ export default (await import("vue")).defineComponent({
               summary: res.data.msg,
               life: 3000,
             });
+            sessionStorage.removeItem("desc_ar")
+            sessionStorage.removeItem("short_desc_ar")
+            sessionStorage.removeItem("title_ar")
+            sessionStorage.removeItem("price")
+            sessionStorage.removeItem("type")
+            sessionStorage.removeItem("active_id")
+            sessionStorage.removeItem("category_id")
+            sessionStorage.removeItem("images_links")
           } else {
             this.$toast.add({
               severity: "error",
@@ -285,6 +277,9 @@ export default (await import("vue")).defineComponent({
   mounted() {
     if (this.$route.fullPath.includes('edit')) {
       this.getData()
+    }
+    else {
+      this.images = JSON.parse(localStorage.getItem('images_links')) || []
     }
   }
 });

@@ -111,6 +111,21 @@
     "identical": "identical",
     "unIdentical": "Un Identical",
     "saveMyEdit": "Save modifications",
-    "continue": "Continue"
+    "continue": "Continue",
+  "equips": "Equips",
+  "workerss": "Workers",
+  "searchWhat": "Enter what you want to search for here",
+  "chooseLocation": "Choose your location",
+  "locations": "Location",
+  "searchResult": "Search result",
+  "filter": "Filter",
+  "chooseActive": "Choose work activity",
+  "activeType": "Worker activity",
+  "chooseType": "Choose service type",
+  "serviceType": "Service type",
+  "noAdds" : "No Addvertisement Is Found!",
+  "register": "Create Account",
+  "registerDesc": "Welcome! You can now register with us on the Maadati & Amali application and website."
+
 
 }
