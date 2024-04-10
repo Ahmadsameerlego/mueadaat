@@ -12,7 +12,7 @@
           </p>
           <ul class="download-app-list">
             <li class="item">
-              <a href="#" class="google-play">
+              <a  :href="android_link" target="_blank" class="google-play">
                 <div class="flex-link">
                   <div class="icon">
                     <svg
@@ -48,7 +48,7 @@
               </a>
             </li>
             <li class="item">
-              <a href="#" class="app-store">
+              <a :href="ios_link" target="_blank" class="apple-store">
                 <div class="flex-link">
                   <div class="icon">
                     <svg
@@ -113,6 +113,9 @@ export default {
   name: "getApp",
   data: () => ({
     get_app: {},
+    googlePlay: '',
+    android_link : ''
+    
   }),
   mounted() {
     var lang = this.$i18n.locale;
@@ -121,6 +124,8 @@ export default {
       .then((response) => {
         // handle success
         this.get_app = response.data.data.get_app;
+        this.googlePlay = response.data.googlePlay;
+        this.android_link = response.data.android_link;
         console.log("success", response.data.data);
       })
       .catch((error) => {

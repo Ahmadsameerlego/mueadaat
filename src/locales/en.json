@@ -135,6 +135,22 @@
   "newPasswordTitle": "New Password",
   "activateAccountTitle": "activate the account",
   "activeAccountDesc": "Enter the activation code sent to your mobile number",
-  "aboutYourCompanyName": "About the name of your organization"
+  "aboutYourCompanyName": "About the name of your organization",
+    "treatDesc": "Note: Site fees are the responsibility of the advertiser and do not exempt the advertiser from paying the fees in the event of payment.",
+    "treatDays": "  * I also undertake to pay the fees within 10 days of receiving the full amount of the sale.",
+    "treatText": "I pledge and swear by Allah that I, the advertiser, will pay the website fees, which are 1% of the selling price, whether the sale is made through the website or because of it.",
+    "treatEnd": "In the name of Allah, the Most Gracious, the Most Merciful.",
+    "treatQua": "Allah Almighty said: \"And fulfill the covenant of Allah when you have taken it, [O believers], and do not break oaths after their confirmation while you have made Allah, over you, a guardian.\"",
+    "treatBSm": "In the name of Allah, the Most Gracious, the Most Merciful.",
+    "treatTitlte": "Fee Agreement",
+    "priceHour": "Hourly cost",
+    "RS": "R.S",
+    "rating": "Rating",
+    "share": "Share",
+    "AddFavorites": "Add to favorites",
+    "addRating": "Add your rating",
+    "writeYourComment": "Write your comment here",
+    "sendRating" : "Send Rating"
+
 
 }
