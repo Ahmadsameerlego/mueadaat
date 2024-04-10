@@ -66,7 +66,7 @@
         </div>
       </div>
       <!-- End Post Data -->
-
+      
       <!-- Start Post Info -->
       <div class="post-info">
         <div class="row flex-wrap">

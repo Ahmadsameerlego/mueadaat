@@ -66,16 +66,20 @@ export default {
 .modal-content {
   width: 60%;
   margin: 0 auto;
-  padding: 32px;
+  padding: 16px;
 }
 @media (max-width: 768px) {
   .modal-content {
     width: 100%;
   }
 }
-.form-check,
 .confirm-details {
   padding: 0 32px !important;
+}
+@media(max-width: 468px){
+  .confirm-details {
+    padding: 0 !important;
+  }
 }
 .form-check {
   margin-bottom: 16px;
@@ -108,5 +112,10 @@ input[type="checkbox"] {
 }
 .aya .finsh-aya {
   text-align: left;
+}
+@media(max-width: 468px){
+  .modal-content{
+    font-size: 15px;
+  }
 }
 </style>

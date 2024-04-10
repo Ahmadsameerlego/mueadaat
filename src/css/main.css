@@ -89,6 +89,11 @@ input::-webkit-inner-spin-button {
   background-color: #fcac62;
   padding: 60px 0;
 }
+@media(max-width: 486px){
+  .create-ads{
+    padding: 32px;
+  }
+}
 .create-container {
   background-color: #fff;
   padding: 0 !important;
@@ -182,6 +187,9 @@ input::-webkit-inner-spin-button {
 @media (max-width: 480px) {
   .choose {
     width: 100% !important;
+  }
+  .global-button{
+    min-width: 10px !important;
   }
 }
 

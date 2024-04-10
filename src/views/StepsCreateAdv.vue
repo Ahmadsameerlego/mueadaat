@@ -31,7 +31,7 @@
                 <!-- Start Stepper Item Counter-->
                 <div class="stepper-item-counter">
                   <fa class="icon" icon="check" />
-                  <span class="numb">{{ index + 1 }}</span>
+                  <span class="number">{{ index + 1 }}</span>
                 </div>
                 <!-- End Stepper Item Counter-->
 
@@ -45,7 +45,7 @@
               <div class="stepper-pane">
                 <!-- <adsDetails />
                 <adsGallery /> -->
-                <form >
+                <form class="creat-form">
                   <component :is="shown_component.component_name" @openNext="openNext" @images="getImages" :data="data" />
                 </form>
 
@@ -286,11 +286,17 @@ export default {
 }
 .stepper-progress-bar {
   position: absolute;
-  left: 0;
+  
   height: 100%;
   width: 0%;
   background-color: #fcac62;
   transition: all 0.3s ease;
+}
+.ltr .stepper-progress-bar{
+  left: 0;
+}
+.rtl .stepper-progress-bar{
+  rtl: 0;
 }
 .stepper-item {
   display: flex;
@@ -309,6 +315,12 @@ export default {
   border-radius: 100%;
   position: relative;
 }
+@media(max-width: 468px){
+  .stepper-item-counter{
+    width: 32px;
+    height: 32px;
+  }
+}
 .icon {
   position: absolute;
   opacity: 0;
@@ -326,7 +338,12 @@ export default {
   color: #74757e;
   width: 100px;
 }
-
+@media(max-width: 486px){
+  .stepper-item-title{
+    font-size: 14px;
+    text-align: center;
+  }
+}
 .stepper-item.success .stepper-item-counter {
   border-color: #fcac62;
   background-color: #fcac62;
@@ -361,5 +378,21 @@ export default {
 .global-button:disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+@media(max-width: 768px){
+  .stepper{
+    width: 85% !important;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+  .creat-form{
+    margin-top: 32px;
+  }
+}
+@media(max-width: 486px){
+  .creat-form{
+    padding: 0 16px;
+  }
 }
 </style>

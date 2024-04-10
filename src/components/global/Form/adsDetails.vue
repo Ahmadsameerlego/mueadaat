@@ -97,13 +97,13 @@
       <!-- Start Form Item -->
 
       <div class="form-item">
-        <label class="form-item-label">المدينة</label>
+        <label class="form-item-label">{{ $t('cityLabel') }}</label>
        <select
           class="form-select form-item-input"
           aria-label="Default select example"
           v-model="city_id"
         >
-          <option selected value="" hidden disabled>
+          <option selected value=""  hidden disabled>
             {{ $t("chooseLocation") }}
           </option>
           <option v-for="city in cities" :key="city" :value="city.id">
@@ -238,5 +238,20 @@ export default {
 .form-select {
   --bs-form-select-bg-img: none !important;
 }
+.form-check{
+  padding: 0 !important;
+}
+.rtl .form-check{
+  margin-left: 16px;
+}
 
+.ltr .form-check{
+  margin-right: 16px;
+}
+.rtl .form-check input[type="radio"]{
+  margin-left: 8px;
+}
+.ltr .form-check input[type="radio"]{
+  margin-right: 5px;
+}
 </style>

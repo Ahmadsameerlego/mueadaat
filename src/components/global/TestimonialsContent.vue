@@ -8,7 +8,7 @@
     <Slide v-for="item in reviews.reviews" :id="item.id" :key="item.id">
       <div class="carousel__item">
         <div class="testimonial-block">
-          <reviewsIcon />
+          <reviewsIcon class="commentIcon" />
 
           <p class="reviews-text">{{ item.desc }}</p>
           <div class="testimonial-user">
@@ -97,6 +97,7 @@ export default defineComponent({
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
     breakpoints: {
+
       // 700px and up
       700: {
         itemsToShow: 2,
@@ -125,7 +126,7 @@ export default defineComponent({
   },
 });
 </script>
-<style>
+<style scoped>
 .icon {
   margin-bottom: 32px;
 }
@@ -226,5 +227,15 @@ body.rtl .carousel__slide {
 .carousel__slide--next {
   opacity: 1;
   transform: none;
+}
+@media(max-width: 486px){
+  body.ltr .carousel__slide{
+    margin-right: 20px !important;
+  }
+  .commentIcon{
+    margin-bottom: 16px !important;
+  }
+
+  
 }
 </style>
