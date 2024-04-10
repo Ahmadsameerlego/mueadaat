@@ -209,7 +209,7 @@ export default {
 
       await axios
         .post("https://dashboard.mueadaat.info/test-mode/api/services", {
-          lang: localStorage.getItem("locale"),
+          lang: localStorage.getItem("locale")||'en',
           user_id: id,
           type: this.type,
           city_id: this.city_id,
