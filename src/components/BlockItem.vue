@@ -95,7 +95,6 @@
             <span class="mx-2">عدد المشاهدات</span>
             : {{ props.seen_count }}</span
           >
-          <!-- <div class="detection">{{ props.detection }}</div> -->
 
           <div
             class="d-flex justify-content-center align-items-center mt-2"
