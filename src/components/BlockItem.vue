@@ -93,13 +93,10 @@
           >
             <i class="fa-solid fa-eye"></i>
             <span class="mx-2">عدد المشاهدات</span>
-            : {{ props.seen_count }}</span
-          >
-
+            : {{ props.seen_count }}</span>
           <div
             class="d-flex justify-content-center align-items-center mt-2"
-            v-if="isOwnAdds"
-          >
+            v-if="isOwnAdds">
             <router-link
               :to="'/edit/' + props.id"
               class="global-button"
