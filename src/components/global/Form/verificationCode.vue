@@ -4,11 +4,9 @@
     <div class="form-content">
       <!-- Start Heading -->
       <div class="form-heading">
-        <h3>{{ $t("accountConfirmation") }}</h3>
+        <h3>{{ $t("activateAccountTitle") }}</h3>
         <p class="text-body">
-          {{ $t("accountConfirmDesc-1") }}
-          <span class="user-phone"></span>
-          {{ $t("accountConfirmDesc-2") }}
+          {{ $t('activeAccountDesc') }}
         </p>
       </div>
       <!-- End Heading -->
@@ -42,7 +40,7 @@
 
         <div class="form-item">
           <button type="submit" class="global-button" :disabled="disabled">
-            ارسال
+            {{$t('send')}}
           </button>
         </div>
       </form>

@@ -38,6 +38,7 @@
     "ResetDesc": "ادخل كلمة المرور بالأدنى وأعدة بالنموزج أدناه من فضلك",
     "companyNameLabel": "اسم المؤسسة",
     "enterYourCompny": "ادخل اسم المؤسسة",
+    "aboutCompany": "ادخل نبذة عن المؤسسة",
     "myPlaceLabel": "موقعي",
     "getItTitle": "احصل على تطبيق",
     "siteNmae": "معداتي و عمالي",
@@ -129,5 +130,11 @@
     "registerDesc" : "يا هلا , انت الآن تستطيع الحصول على تسجيل جديد لدينا في تطبيق و موقع معاداتي و عمالي",
     "Notifications": "الإشعارات",
     "noNotifications": " لا توجد اشعارات الى الان",
-    "forgetDesc": "يرجي ادخال رقم جوالك بالأدنى وسيتم ارسال لك بقية الخطوات"
+    "forgetDesc": "يرجي ادخال رقم جوالك بالأدنى وسيتم ارسال لك بقية الخطوات",
+    "changePasswordDesc" :"يرجي ادخال كلمة المرور الجديدة و اعادتها",
+    "changePasswordNow": "تغيير كلمة المرور",
+    "newPasswordTitle": "كلمة المرور الجديدة",
+    "activateAccountTitle": "تفعيل الحساب",
+    "activeAccountDesc": "ادخل كود التفعيل المرسل على رقم جوالك",
+    "aboutYourCompanyName": "نبذة عن اسم مؤسستك"
 }

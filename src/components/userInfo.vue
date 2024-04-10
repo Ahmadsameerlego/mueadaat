@@ -151,15 +151,20 @@ export default {
   display: flex;
   align-items: center;
 }
+.user-img{
+  margin: 0 !important;
+  width: 64px !important;
+  height: 64px !important;
+}
 .ltr .user-img {
-  margin-right: 16px;
+  margin-right: 16px !important;
 }
 .rtl .user-img {
-  margin-left: 16px;
+  margin-left: 16px !important;
 }
-.user-img img {
-  width: 64px;
-  height: 64px;
+.rtl .user-img img , .ltr .user-img img {
+  width: 64px !important;
+  height: 64px !important;
   border-radius: 50%;
   border: 2px solid #fcac62;
 }
@@ -201,4 +206,5 @@ export default {
 .details-user .item-link svg {
   margin: 0 auto;
 }
+
 </style>

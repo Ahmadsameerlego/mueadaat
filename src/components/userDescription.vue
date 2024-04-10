@@ -25,11 +25,11 @@
             stroke-linejoin="round"
           />
         </svg>
-        <h4 class="title">نبذة عني</h4>
+        <h4 class="title">{{ $t('aboutMe') }}</h4>
       </div>
 
       <p class="text-body">
-       {{  desc }}
+       {{  $t('aboutCompany') }}
       </p>
     </div>
   </section>

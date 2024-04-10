@@ -1,8 +1,9 @@
 <template>
+
   <BreadCrumb
     :title="$t('searchFilterTitle')"
-    style="background-color: #fcac62"
-    class="py-5"
+    :pageTitle="$t('searchFilterTitle')"
+    :homePage="$t('Home')"
   />
 
   <div class="total_filter" v-if="isSearch">

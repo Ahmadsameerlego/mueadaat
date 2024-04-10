@@ -30,11 +30,16 @@
   margin-bottom: 32px;
 }
 
-.user-head svg {
+.rtl .user-head svg {
   margin-left: 10px;
 }
+.ltr .user-head svg {
+  margin-right: 10px;
+}
 .user-head .title {
-  font-size: 20px;
+  font-size: 19px;
+  position: relative;
+  top: 5px;
 }
 .dropdown-menu {
   position: absolute !important;

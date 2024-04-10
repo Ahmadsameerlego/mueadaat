@@ -25,7 +25,7 @@
             stroke-linejoin="round"
           />
         </svg>
-        <h4 class="title">بياناتي الشخصية</h4>
+        <h4 class="title">{{$t('myPersonalData')}}</h4>
       </div>
       <form class="form-items" ref="profile" @submit.prevent="updateProfile">
         <div class="user-img">
@@ -52,9 +52,7 @@
             />
           </div>
           <div class="form-item">
-            <label for="subject" class="form-label">{{
-              $t("companyNameLabel")
-            }}</label>
+            <label for="subject" class="form-label">{{ $t("companyNameLabel") }}</label>
             <input
               type="text"
               id="subject"
@@ -122,6 +120,7 @@
             class="form-item-input"
             id=""
             cols="30"
+            :placeholder="$t('aboutCompany')"
             rows="2"
           ></textarea>
         </div>
@@ -165,7 +164,7 @@
     data-bs-backdrop="static"
     data-bs-keyboard="false"
   >
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-body px-5 py-5">
           <button class="close_modal" data-bs-dismiss="modal">
@@ -195,11 +194,10 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <h4 class="title">{{ $t("editPassword") }}</h4>
+            <h4 class="title">{{ $t("changePasswordNow") }}</h4>
           </div>
           <form action="" class="form-items">
-            <div class="grid-two">
-              <div class="form-item">
+            <div class="form-item">
                 <label for="subject" class="form-label">{{
                   $t("Password")
                 }}</label>
@@ -239,7 +237,7 @@
                   v-model="password_confirmation"
                 />
               </div>
-            </div>
+
             <div v-if="showValid" class="mb-3">
               <p
                 v-if="passwordMatch"
@@ -259,7 +257,7 @@
 
             <div class="form-group">
               <button
-                class="global-button w-25 d-flex justify-content-center mx-auto"
+                class="global-button "
                 :disabled="disabled2"
                 @click.prevent="updatePassword"
               >
@@ -436,4 +434,5 @@ export default {
     opacity: 0;
   }
 }
+
 </style>
