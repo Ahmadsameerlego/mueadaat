@@ -8,30 +8,38 @@
               <img :src="user.avatar" />
             </div>
             <div class="user-heading">
-              <h3 class="user-name"> {{ user.first_name }} </h3>
+              <h3 class="user-name">{{ user.first_name }}</h3>
               <p class="user-company text-body">
-                    {{user.full_name}}              
-                </p>
+                {{ user.full_name }}
+              </p>
             </div>
           </div>
         </div>
         <div class="col-md-8">
           <ul class="details-user justify-content-end">
-
             <!-- Start Item -->
             <li class="item">
               <router-link to="/ads" class="item-link">
-                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5.83325 7.16667H14.1666M5.83325 10.5H14.1666M5.83325 13.8333H10.8333M3.33325 3.83333H16.6666V17.1667H3.33325V3.83333Z" stroke="#FCAC62" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.83325 7.16667H14.1666M5.83325 10.5H14.1666M5.83325 13.8333H10.8333M3.33325 3.83333H16.6666V17.1667H3.33325V3.83333Z"
+                    stroke="#FCAC62"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
 
-
-
-                <span>{{$t('myAdsTitle')}}</span>
+                <span>{{ $t("myAdsTitle") }}</span>
               </router-link>
             </li>
             <!-- End Item -->
-
 
             <!-- Start Item -->
             <li class="item">
@@ -52,7 +60,7 @@
                   />
                 </svg>
 
-                <span>{{$t('rateMyAdsTitle')}}</span>
+                <span>{{ $t("rateMyAdsTitle") }}</span>
               </router-link>
             </li>
             <!-- End Item -->
@@ -75,7 +83,7 @@
                   />
                 </svg>
 
-                <span>{{$t('watchDateTitle')}}</span>
+                <span>{{ $t("watchDateTitle") }}</span>
               </router-link>
             </li>
             <!-- End Item -->
@@ -98,13 +106,10 @@
                   />
                 </svg>
 
-                <span>{{ $t('myFavoriteTitle') }}</span>
+                <span>{{ $t("myFavoriteTitle") }}</span>
               </router-link>
             </li>
             <!-- End Item -->
-            
-
-           
           </ul>
         </div>
       </div>
@@ -112,31 +117,30 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-    data() {
-        return {
-                user : {}
-        }
+  data() {
+    return {
+      user: {},
+    };
+  },
+  methods: {
+    async getUserData() {
+      await axios
+        .post("https://dashboard.mueadaat.info/admin/api/show-user", {
+          lang: sessionStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+        })
+        .then((res) => {
+          this.user = res.data.data;
+        });
     },
-    methods: {
-        async getUserData() {
-            await axios.post('https://dashboard.mueadaat.info/test-mode/api/show-user', {
-                lang: localStorage.getItem('locale'),
-                user_id : JSON.parse(sessionStorage.getItem( "user" )).data.id
-            })
-            .then((res) => {
-                this.user = res.data.data;
-
-            } )
-        }
-    },
-    mounted() {
-        this.getUserData()
-    }
-}
+  },
+  mounted() {
+    this.getUserData();
+  },
+};
 </script>
-
 
 <style scoped>
 .user-info {

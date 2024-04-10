@@ -211,3 +211,7 @@ body.ltr{
 .detection{
   white-space: nowrap !important;
 }
+
+.stepper-content .global-button{
+  margin: 0 10px !important;
+}

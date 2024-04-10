@@ -7,70 +7,69 @@
   <div class="page-container workers-area">
     <div class="container">
       <div class="row">
-         <div class="col-md-4" v-for="item in data" :id="item.id" :key="item.id">
-      <div class="carousel__item">
-        <div class="testimonial-block">
-          <reviewsIcon />
+        <div class="col-md-4" v-for="item in data" :id="item.id" :key="item.id">
+          <div class="carousel__item">
+            <div class="testimonial-block">
+              <reviewsIcon />
 
-          <p class="reviews-text">{{ item.desc }}</p>
-          <div class="testimonial-user">
-            <div class="testimonial-user-image">
-              <img :src="item.user_avatar" alt="" />
-            </div>
+              <p class="reviews-text">{{ item.desc }}</p>
+              <div class="testimonial-user">
+                <div class="testimonial-user-image">
+                  <img :src="item.user_avatar" alt="" />
+                </div>
 
-            <div class="testimonial-user-data">
-              <h4 class="testimonial-username">{{ item.user_name }}</h4>
-              <div class="testimonial-address">
-                <span class="testimonial-address-text">
+                <div class="testimonial-user-data">
+                  <h4 class="testimonial-username">{{ item.user_name }}</h4>
+                  <div class="testimonial-address">
+                    <span class="testimonial-address-text">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 10.5C10.2426 10.5 11.25 9.49264 11.25 8.25C11.25 7.00736 10.2426 6 9 6C7.75736 6 6.75 7.00736 6.75 8.25C6.75 9.49264 7.75736 10.5 9 10.5Z"
+                          stroke="#74757E"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M9 15.75C12.3137 14.25 15 11.5637 15 8.25C15 4.93629 12.3137 2.25 9 2.25C5.68629 2.25 3 4.93629 3 8.25C3 11.5637 5.68629 14.25 9 15.75Z"
+                          stroke="#74757E"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+
+                      {{ item.city_title }}</span
+                    >
+                  </div>
                   <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 17 17"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M9 10.5C10.2426 10.5 11.25 9.49264 11.25 8.25C11.25 7.00736 10.2426 6 9 6C7.75736 6 6.75 7.00736 6.75 8.25C6.75 9.49264 7.75736 10.5 9 10.5Z"
-                      stroke="#74757E"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9 15.75C12.3137 14.25 15 11.5637 15 8.25C15 4.93629 12.3137 2.25 9 2.25C5.68629 2.25 3 4.93629 3 8.25C3 11.5637 5.68629 14.25 9 15.75Z"
-                      stroke="#74757E"
+                      d="M8.5 12.0417L4.25 14.1667L5.3125 9.91667L2.125 6.375L6.72917 6.02083L8.5 2.125L10.2708 6.02083L14.875 6.375L11.6875 9.91667L12.75 14.1667L8.5 12.0417Z"
+                      stroke="#FCAC62"
                       stroke-width="1.5"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                   </svg>
 
-                  {{ item.city_title }}</span
-                >
+                  {{ item.rate }}
+                </div>
               </div>
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.5 12.0417L4.25 14.1667L5.3125 9.91667L2.125 6.375L6.72917 6.02083L8.5 2.125L10.2708 6.02083L14.875 6.375L11.6875 9.91667L12.75 14.1667L8.5 12.0417Z"
-                  stroke="#FCAC62"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-
-              {{ item.rate }}
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
       </div>
     </div>
   </div>
@@ -80,39 +79,38 @@
 import BreadCrumb from "@/components/global/BreadCrumb.vue";
 </script>
 
-
 <script>
-import axios from 'axios';
+import axios from "axios";
 import reviewsIcon from "../components/Icons/reviewsIcon.vue";
 
 export default {
   data() {
-        return {
-        data : []
+    return {
+      data: [],
     };
+  },
+  methods: {
+    async getEquips() {
+      await axios
+        .post("https://dashboard.mueadaat.info/admin/api/client_reviews", {
+          lang: sessionStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          type: "item",
+        })
+        .then((res) => {
+          this.data = res.data.data.reviews;
+          // console.log('tag', res.data.data)
+        });
     },
-    methods: {
-        async getEquips() {
-             await axios.post('https://dashboard.mueadaat.info/test-mode/api/client_reviews', {
-                lang: localStorage.getItem('locale'),
-                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-                 type : 'item'
-            })
-            .then((res) => {
-                this.data = res.data.data.reviews;
-                // console.log('tag', res.data.data)
-            } )
-        }
-    },
-    mounted() {
-        this.getEquips();
-    },
-    components: {
-        reviewsIcon
-    }
+  },
+  mounted() {
+    this.getEquips();
+  },
+  components: {
+    reviewsIcon,
+  },
 };
 </script>
-
 
 <style scoped>
 .page-container {
@@ -124,7 +122,6 @@ export default {
 .watch-date .date {
   color: #fcac62;
 }
-
 
 .testimonial-block {
   background-color: #fff;

@@ -149,12 +149,12 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   data() {
     return {
-      facebook: '',
-      twitter : ''
+      facebook: "",
+      twitter: "",
     };
   },
   mounted() {
@@ -163,7 +163,7 @@ export default {
       id = JSON.parse(sessionStorage.getItem("user")).data.id;
     }
     axios
-      .post("https://dashboard.mueadaat.info/test-mode/api/home", {
+      .post("https://dashboard.mueadaat.info/admin/api/home", {
         user_id: id,
       })
       .then((response) => {

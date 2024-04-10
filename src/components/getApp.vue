@@ -41,8 +41,8 @@
                     </svg>
                   </div>
                   <div class="app-type">
-                    <span class="get-it">{{ $t('getItFrom') }}</span>
-                    <h4 class="app-name">{{ $t('googlePlay') }}</h4>
+                    <span class="get-it">{{ $t("getItFrom") }}</span>
+                    <h4 class="app-name">{{ $t("googlePlay") }}</h4>
                   </div>
                 </div>
               </a>
@@ -89,8 +89,8 @@
                     </svg>
                   </div>
                   <div class="app-type">
-                    <span class="get-it">{{ $t('getItFrom') }}</span>
-                    <h4 class="app-name">{{ $t('appStore') }} </h4>
+                    <span class="get-it">{{ $t("getItFrom") }}</span>
+                    <h4 class="app-name">{{ $t("appStore") }}</h4>
                   </div>
                 </div>
               </a>
@@ -117,7 +117,7 @@ export default {
   mounted() {
     var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
+      .get("https://dashboard.mueadaat.info/admin/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.get_app = response.data.data.get_app;
@@ -147,17 +147,17 @@ export default {
   border-radius: 16px;
   transition: all 0.4s;
 }
-.download-app-list .item a:hover{
+.download-app-list .item a:hover {
   opacity: 0.7;
 }
-.download-app-list .item{
+.download-app-list .item {
   padding: 0 !important;
 }
 
-.rtl .download-app-list .item:first-child{
+.rtl .download-app-list .item:first-child {
   margin-left: 16px !important;
 }
-.ltr .download-app-list .item:first-child{
+.ltr .download-app-list .item:first-child {
   margin-right: 16px !important;
 }
 .download-app-list .item a.google-play {
@@ -168,10 +168,10 @@ export default {
 .download-app-list .item a .flex-link {
   display: flex !important;
 }
-.rtl .download-app-list .item a .flex-link .icon{
+.rtl .download-app-list .item a .flex-link .icon {
   margin-left: 10px;
 }
-.ltr .download-app-list .item a .flex-link .icon{
+.ltr .download-app-list .item a .flex-link .icon {
   margin-right: 10px;
 }
 .get-it {
@@ -183,16 +183,16 @@ export default {
   margin-bottom: 2px;
   padding: 0;
 }
-.app-imag{
+.app-imag {
   width: 100%;
   height: 100%;
 }
-.app-imag img{
+.app-imag img {
   width: 100%;
   height: 100%;
 }
-.text-body{
-  color: #74757E !important;
+.text-body {
+  color: #74757e !important;
   line-height: 28px;
 }
 </style>

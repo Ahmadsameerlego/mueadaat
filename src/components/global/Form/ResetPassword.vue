@@ -94,7 +94,7 @@ let validateForm = () => {
 let resetPassord = () => {
   disabled.value = true;
   axios
-    .post("https://dashboard.mueadaat.info/test-mode/api/reset-password", {
+    .post("https://dashboard.mueadaat.info/admin/api/reset-password", {
       user_id: authData.value.id,
       code: OPT.value,
       password: password.value,

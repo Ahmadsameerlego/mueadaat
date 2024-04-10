@@ -1,18 +1,16 @@
 <template>
-    <BreadCrumb
+  <BreadCrumb
     :title="$t('watchDateTitle')"
     :pageTitle="$t('watchDateTitle')"
     :homePage="$t('Home')"
-    />
-    <div class="page-container workers-area">
-        <div class="container">
-        <div class="row">
-
-    <BlockItem
+  />
+  <div class="page-container workers-area">
+    <div class="container">
+      <div class="row">
+        <BlockItem
           v-for="equipment in data"
           :key="equipment.id"
-                    :id="equipment.id"
-
+          :id="equipment.id"
           :img="equipment.first_image"
           :title="equipment.title"
           :description="equipment.desc"
@@ -22,56 +20,53 @@
           :isAdded="equipment.is_favourite"
           :seen_count="equipment.seen_count"
         />
-
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 <script setup>
 // import {ref} from 'vue';
-import BreadCrumb from '@/components/global/BreadCrumb.vue';
-import BlockItem from '@/components/BlockItem.vue';
+import BreadCrumb from "@/components/global/BreadCrumb.vue";
+import BlockItem from "@/components/BlockItem.vue";
 // import workers from '../json/workers.json';
-        // const ourworks = ref (workers);
+// const ourworks = ref (workers);
 </script>
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
-        return {
-        data : []
+    return {
+      data: [],
     };
+  },
+  methods: {
+    async getEquips() {
+      await axios
+        .post("https://dashboard.mueadaat.info/admin/api/services", {
+          lang: sessionStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          type: "item",
+        })
+        .then((res) => {
+          this.data = res.data.data;
+          // console.log('tag', res.data.data)
+        });
     },
-    methods: {
-        async getEquips() {
-             await axios.post('https://dashboard.mueadaat.info/test-mode/api/services', {
-                lang: localStorage.getItem('locale'),
-                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-                 type : 'item'
-            })
-            .then((res) => {
-                this.data = res.data.data;
-                // console.log('tag', res.data.data)
-            } )
-        }
-    },
-    mounted() {
-        this.getEquips();
-    }
+  },
+  mounted() {
+    this.getEquips();
+  },
 };
 </script>
 
-
-
-
 <style scoped>
-    .page-container{
-        padding: 60px 0;
-    }
-    .watch-date{
-        margin-bottom: 32px; 
-    }
-    .watch-date .date{
-        color: #FCAC62;
-    }
+.page-container {
+  padding: 60px 0;
+}
+.watch-date {
+  margin-bottom: 32px;
+}
+.watch-date .date {
+  color: #fcac62;
+}
 </style>

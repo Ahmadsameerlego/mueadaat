@@ -1,6 +1,6 @@
 <template>
   <div class="view-ads">
-    <p class="text-body">{{$t('watchAd')}}</p>
+    <p class="text-body">{{ $t("watchAd") }}</p>
     <svg
       width="48"
       height="73"
@@ -16,94 +16,138 @@
         stroke-linejoin="round"
       />
     </svg>
-  </div>
-  <div class="main_submit">
-    <button
-      class="global-button"
-      @click.prevent="submitAdd"
-      :disabled="disabled"
-      v-if="!$route.fullPath.includes('edit')"
-    >
-      {{ $t('PostAd') }}
-    </button>
-    <button
-      v-else
-      class="global-button"
-      @click.prevent="updateAdd"
-      :disabled="disabled"
-    >
-      {{$t('EditAd')}}
-    </button>
-  </div>
+
   
-  <div class="main_submit">
-    <button class="global-button" @click.prevent="submitAdd">
-      <router-link to="/"> {{ $t('backHome') }} </router-link>
-    </button>
   </div>
+
+  <div v-if="data.id!=0" style="    margin: auto;
+    display: flex;
+    justify-content: center;
+">
+      <router-link :to="'/workers/'+data.id" style="    color: #ef7606;
+    font-size: 19px;
+    font-weight: bold;
+    border-bottom: 2px solid #fcac62;
+    margin-bottom: 20px;">
+        اذهب للاعلان
+    </router-link>
+  </div>
+ 
+
+  <!-- <div class="main_submit">
+    <button class="global-button" @click.prevent="submitAdd">
+      <router-link to="/"> {{ $t("backHome") }} </router-link>
+    </button>
+  </div> -->
 
   <Toast />
 </template>
 <script>
 import Toast from "primevue/toast";
 
-import axios from "axios";
+// import axios from "axios";
 export default {
   data() {
     return {};
   },
   methods: {
-    async submitAdd() {
-      const fd = new FormData();
-      fd.append("lang", localStorage.getItem("locale"));
-      fd.append("user_id", localStorage.getItem("entity_id"));
-      fd.append("desc_ar", localStorage.getItem("desc_ar"));
-      fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
-      fd.append("title_ar", localStorage.getItem("title_ar"));
-      fd.append("price", localStorage.getItem("price"));
-      fd.append("type", localStorage.getItem("type"));
-      // var images = [];
-      fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
-      // for (let i = 0; i < JSON.parse(localStorage.getItem('images')).length; i++){
-      //     images.push(JSON.parse(localStorage.getItem('images'))[i])
-      // }
-      // console.log('imagessssssssssssss',JSON.parse(localStorage.getItem('images')))
-      const imagesArray = JSON.parse(localStorage.getItem("images"));
+    // async submitAdd() {
+    //   this.disabled = true;
+    //   const fd = new FormData(this.$refs.images);
+    //   fd.append("lang", sessionStorage.getItem("locale"));
+    //   fd.append("user_id", localStorage.getItem("entity_id"));
+    //   fd.append("desc_ar", localStorage.getItem("desc_ar"));
+    //   fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
+    //   fd.append("title_ar", localStorage.getItem("title_ar"));
+    //   fd.append("price", localStorage.getItem("price"));
+    //   fd.append("type", localStorage.getItem("type"));
+    //   fd.append("unit", localStorage.getItem("unit"));
+    //   fd.append("active_id", localStorage.getItem("act_id"));
+    //   fd.append("category_id", localStorage.getItem("cat_id"));
+    //   // var images = [];
+    //   fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
 
-      // Creating FormData and appending images
-      imagesArray.forEach((image) => {
-        fd.append("images[]", image);
-      });
-      await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/store-service",
-          fd,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res) => {
-          if (res.key == 1) {
-            this.$toast.add({
-              severity: "success",
-              summary: res.data.msg,
-              life: 3000,
-            });
-          } else {
-            this.$toast.add({
-              severity: "error",
-              summary: res.data.msg,
-              life: 3000,
-            });
-          }
-          console.log(res);
-        });
-    },
+    //   await axios
+    //     .post("https://dashboard.mueadaat.info/admin/api/store-service", fd, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((res) => {
+    //       if (res.data.key == 1) {
+    //         this.$toast.add({
+    //           severity: "success",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //         sessionStorage.removeItem("desc_ar");
+    //         sessionStorage.removeItem("short_desc_ar");
+    //         sessionStorage.removeItem("title_ar");
+    //         sessionStorage.removeItem("price");
+    //         sessionStorage.removeItem("type");
+    //         sessionStorage.removeItem("active_id");
+    //         sessionStorage.removeItem("category_id");
+    //         sessionStorage.removeItem("images_links");
+    //       } else {
+    //         this.$toast.add({
+    //           severity: "error",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //       }
+    //       console.log(res);
+    //       this.disabled = false;
+    //     });
+    // },
+    // async updateAdd() {
+    //   this.disabled = true;
+    //   const fd = new FormData(this.$refs.images);
+    //   fd.append("lang", sessionStorage.getItem("locale"));
+    //   fd.append("user_id", localStorage.getItem("entity_id"));
+    //   fd.append("desc_ar", localStorage.getItem("desc_ar"));
+    //   fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
+    //   fd.append("title_ar", localStorage.getItem("title_ar"));
+    //   fd.append("price", localStorage.getItem("price"));
+    //   fd.append("type", localStorage.getItem("type"));
+    //   fd.append("active_id", localStorage.getItem("act_id"));
+    //   fd.append("category_id", localStorage.getItem("cat_id"));
+    //   fd.append("unit", localStorage.getItem("unit"));
+    //   fd.append("service_id", this.$route.params.id);
+
+    //   // var images = [];
+    //   fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
+
+    //   await axios
+    //     .post("https://dashboard.mueadaat.info/admin/api/update-service", fd, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((res) => {
+    //       if (res.data.key == 1) {
+    //         this.$toast.add({
+    //           severity: "success",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //         // this.$router.push('/ads')
+    //       } else {
+    //         this.$toast.add({
+    //           severity: "error",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //       }
+    //       console.log(res);
+    //       this.disabled = false;
+    //     });
+    // },
   },
   components: {
     Toast,
+  },
+   props: {
+    data : Object
   },
 };
 </script>

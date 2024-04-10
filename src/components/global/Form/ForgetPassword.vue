@@ -6,7 +6,7 @@
       <div class="form-heading">
         <h3>{{ $t("forgetPassword") }}</h3>
         <p class="text-body">
-         {{$t('forgetDesc')}}
+          {{ $t("forgetDesc") }}
         </p>
       </div>
       <!-- End Heading -->
@@ -29,7 +29,9 @@
         {{ msg }}
 
         <div class="form-item">
-          <button type="submit" class="global-button" :disabled="disabled"> {{$t('send')}}</button>
+          <button type="submit" class="global-button" :disabled="disabled">
+            {{ $t("send") }}
+          </button>
         </div>
       </form>
     </div>
@@ -46,14 +48,14 @@
   >
     انشاء حساب
   </button>
-  <Toast/>
+  <Toast />
 </template>
 <script setup>
 import { useAuthStore } from "@/stores/AuthSrore";
 import axios from "axios";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import Toast from 'primevue/toast';
+import Toast from "primevue/toast";
 
 import { useToast } from "primevue/usetoast";
 const toast = useToast();
@@ -81,7 +83,7 @@ let forgetPassord = () => {
   disabled.value = true;
   const btn = document.getElementById("btn_forget_model");
   axios
-    .post("https://dashboard.mueadaat.info/test-mode/api/forget-password", {
+    .post("https://dashboard.mueadaat.info/admin/api/forget-password", {
       phone: phone.value,
       lang: locale.value,
     })
@@ -97,13 +99,11 @@ let forgetPassord = () => {
         setAuthData(data.value.data);
         btn.click();
 
-                                toast.add({ severity: 'success', summary: data.value.msg, life: 3000 });
-
+        toast.add({ severity: "success", summary: data.value.msg, life: 3000 });
       } else {
         formErrors.value.push(data.value.msg);
         console.log("success", response);
-                                toast.add({ severity: 'error', summary: data.value.msg, life: 3000 });
-
+        toast.add({ severity: "error", summary: data.value.msg, life: 3000 });
       }
       disabled.value = false;
     })

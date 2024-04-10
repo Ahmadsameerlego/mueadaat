@@ -7,18 +7,24 @@
             <div class="section-heading">
               <span class="section-title">{{ $t("About") }}</span>
               <h1 class="section-description">{{ about_us.title }}</h1>
-              <h1 class="site-name">{{$t('siteNmae')}}</h1>
+              <h1 class="site-name">{{ $t("siteNmae") }}</h1>
             </div>
             <div class="about-text">
               <p class="text-body">{{ about_us.desc }}</p>
             </div>
             <router-link to="/about" class="global-button" v-show="showButton">
-              {{$t('knowUsMore')}}</router-link>
+              {{ $t("knowUsMore") }}</router-link
+            >
           </div>
         </div>
         <div class="col-md-6">
           <div class="about-media">
-            <button class="play-btn" data-bs-toggle="modal" href="#appVideo" role="button"></button>
+            <button
+              class="play-btn"
+              data-bs-toggle="modal"
+              href="#appVideo"
+              role="button"
+            ></button>
             <img src="../../assets/about-img.png" />
           </div>
         </div>
@@ -28,11 +34,11 @@
   <appVideoModal />
 </template>
 <script>
-import appVideoModal from './modal/appVideoModal.vue';
+import appVideoModal from "./modal/appVideoModal.vue";
 import axios from "axios";
 export default {
   name: "AboutIntro",
-  components:{appVideoModal},
+  components: { appVideoModal },
   props: {
     showButton: Boolean,
   },
@@ -42,7 +48,7 @@ export default {
   mounted() {
     var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
+      .get("https://dashboard.mueadaat.info/admin/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.about_us = response.data.data.about_us;
@@ -66,11 +72,10 @@ export default {
   margin-bottom: 32px;
 }
 
-
 body {
   background: #444;
 }
-.about-media{
+.about-media {
   position: relative;
   overflow: hidden;
 }
@@ -78,10 +83,12 @@ body {
   width: 100px;
   height: 100px;
   position: absolute !important;
-    right: 0 !important;
-    left: 0 !important;
-  background: radial-gradient(rgb(252 172 98 / 85%) 60%,
-   rgba(255, 255, 255, 1) 62%);
+  right: 0 !important;
+  left: 0 !important;
+  background: radial-gradient(
+    rgb(252 172 98 / 85%) 60%,
+    rgba(255, 255, 255, 1) 62%
+  );
   border-radius: 50%;
   position: relative;
   display: block;
@@ -162,5 +169,4 @@ body {
     box-shadow: none;
   }
 }
-
 </style>

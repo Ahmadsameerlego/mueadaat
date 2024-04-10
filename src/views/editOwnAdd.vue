@@ -45,7 +45,9 @@
               <div class="stepper-pane">
                 <!-- <adsDetails />
                 <adsGallery /> -->
-                <component :is="shown_component.component_name" />
+ <form >
+                  <component :is="shown_component.component_name" @openNext="openNext" @images="getImages" :data="data" />
+                </form>
 
                 <div class="center-this">
                   <button
@@ -63,6 +65,24 @@
                     التالي
                   </button>
                 </div>
+
+                <div class="main_submit d-flex justify-content-center align-items-center mt-4" v-if="step == 3">
+                    <!-- <button
+                      class="global-button"
+                      @click.prevent="submitAdd"
+                      :disabled="disabled"
+                      v-if="!$route.fullPath.includes('edit')"
+                    >
+                      {{ $t("PostAd") }}
+                    </button> -->
+                    <button
+                      class="global-button"
+                      @click.prevent="updateAdd"
+                      :disabled="disabled"
+                    >
+                      {{ $t("EditAd") }}
+                    </button>
+                  </div>
               </div>
               <!-- End stepper pane-->
             </div>
@@ -101,13 +121,70 @@ const shown_component = computed(() => {
 
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
-        titles : [this.$t('detils'), this.$t('images'), this.$t('publish')]
+      titles: [this.$t('detils'), this.$t('images'), this.$t('publish')],
+        disabled: false,
+      images: null,
+      data : {id : 0}
       }
-    }
+  },
+  methods: {
+      getImages(val) {
+          this.images = val
+      },
+    async updateAdd() {
+      this.disabled = true;
+      const fd = new FormData(this.images);
+      fd.append("lang", sessionStorage.getItem("locale"));
+      fd.append("user_id", localStorage.getItem("entity_id"));
+      fd.append("desc_ar", localStorage.getItem("desc_ar"));
+      fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
+      fd.append("title_ar", localStorage.getItem("title_ar"));
+      fd.append("price", localStorage.getItem("price"));
+      fd.append("type", localStorage.getItem("type"));
+      fd.append("active_id", localStorage.getItem("act_id"));
+      fd.append("category_id", localStorage.getItem("cat_id"));
+      fd.append("unit", localStorage.getItem("unit"));
+            fd.append("city_id", localStorage.getItem("city_id"));
+
+      fd.append("service_id", this.$route.params.id);
+
+      // var images = [];
+      fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
+
+      await axios
+        .post("https://dashboard.mueadaat.info/admin/api/update-service", fd, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          if (res.data.key == 1) {
+            this.$toast.add({
+              severity: "success",
+              summary: res.data.msg,
+              life: 3000,
+            });
+            setTimeout(() => {
+              this.$router.push('/ads')
+            }, 2000);
+          } else {
+            this.$toast.add({
+              severity: "error",
+              summary: res.data.msg,
+              life: 3000,
+            });
+          }
+          console.log(res);
+          this.disabled = false;
+        });
+    },
   }
+}
+
 </script>
 
 

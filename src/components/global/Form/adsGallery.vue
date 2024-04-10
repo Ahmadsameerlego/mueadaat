@@ -3,7 +3,7 @@
   <div class="card">
     <!-- Start Top -->
     <div class="top">
-      <p class="text-body">{{$t('fiveImage')}}</p>
+      <p class="text-body">{{ $t("fiveImage") }}</p>
     </div>
     <!-- End Top -->
     <!-- Start Drag Area -->
@@ -74,7 +74,6 @@
   </div>
   <!-- End Card-->
 
-  
   <Toast />
 </template>
 <script>
@@ -91,6 +90,7 @@ export default (await import("vue")).defineComponent({
       disabled: false,
     };
   },
+ 
   methods: {
     selectFiles() {
       this.$refs.fileInput.click();
@@ -108,7 +108,7 @@ export default (await import("vue")).defineComponent({
             image: URL.createObjectURL(files[i]),
           });
         }
-
+        this.$emit('images', this.$refs.images)
         // console.log()
       }
       localStorage.setItem("images_links", JSON.stringify(this.images));
@@ -140,117 +140,107 @@ export default (await import("vue")).defineComponent({
       }
     },
 
-    async submitAdd() {
-      this.disabled = true;
-      const fd = new FormData(this.$refs.images);
-      fd.append("lang", localStorage.getItem("locale"));
-      fd.append("user_id", localStorage.getItem("entity_id"));
-      fd.append("desc_ar", localStorage.getItem("desc_ar"));
-      fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
-      fd.append("title_ar", localStorage.getItem("title_ar"));
-      fd.append("price", localStorage.getItem("price"));
-      fd.append("type", localStorage.getItem("type"));
-            fd.append("unit", localStorage.getItem("unit"));
-      fd.append("active_id", localStorage.getItem("act_id"));
-      fd.append("category_id", localStorage.getItem("cat_id"));
-      // var images = [];
-      fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
+    // async submitAdd() {
+    //   this.disabled = true;
+    //   const fd = new FormData(this.$refs.images);
+    //   fd.append("lang", sessionStorage.getItem("locale"));
+    //   fd.append("user_id", localStorage.getItem("entity_id"));
+    //   fd.append("desc_ar", localStorage.getItem("desc_ar"));
+    //   fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
+    //   fd.append("title_ar", localStorage.getItem("title_ar"));
+    //   fd.append("price", localStorage.getItem("price"));
+    //   fd.append("type", localStorage.getItem("type"));
+    //   fd.append("unit", localStorage.getItem("unit"));
+    //   fd.append("active_id", localStorage.getItem("act_id"));
+    //   fd.append("category_id", localStorage.getItem("cat_id"));
+    //   // var images = [];
+    //   fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
 
+    //   await axios
+    //     .post("https://dashboard.mueadaat.info/admin/api/store-service", fd, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((res) => {
+    //       if (res.data.key == 1) {
+    //         this.$toast.add({
+    //           severity: "success",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //         sessionStorage.removeItem("desc_ar");
+    //         sessionStorage.removeItem("short_desc_ar");
+    //         sessionStorage.removeItem("title_ar");
+    //         sessionStorage.removeItem("price");
+    //         sessionStorage.removeItem("type");
+    //         sessionStorage.removeItem("active_id");
+    //         sessionStorage.removeItem("category_id");
+    //         sessionStorage.removeItem("images_links");
+    //       } else {
+    //         this.$toast.add({
+    //           severity: "error",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //       }
+    //       console.log(res);
+    //       this.disabled = false;
+    //     });
+    // },
+    // async updateAdd() {
+    //   this.disabled = true;
+    //   const fd = new FormData(this.$refs.images);
+    //   fd.append("lang", sessionStorage.getItem("locale"));
+    //   fd.append("user_id", localStorage.getItem("entity_id"));
+    //   fd.append("desc_ar", localStorage.getItem("desc_ar"));
+    //   fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
+    //   fd.append("title_ar", localStorage.getItem("title_ar"));
+    //   fd.append("price", localStorage.getItem("price"));
+    //   fd.append("type", localStorage.getItem("type"));
+    //   fd.append("active_id", localStorage.getItem("act_id"));
+    //   fd.append("category_id", localStorage.getItem("cat_id"));
+    //   fd.append("unit", localStorage.getItem("unit"));
+    //   fd.append("service_id", this.$route.params.id);
+
+    //   // var images = [];
+    //   fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
+
+    //   await axios
+    //     .post("https://dashboard.mueadaat.info/admin/api/update-service", fd, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((res) => {
+    //       if (res.data.key == 1) {
+    //         this.$toast.add({
+    //           severity: "success",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //         // this.$router.push('/ads')
+    //       } else {
+    //         this.$toast.add({
+    //           severity: "error",
+    //           summary: res.data.msg,
+    //           life: 3000,
+    //         });
+    //       }
+    //       console.log(res);
+    //       this.disabled = false;
+    //     });
+    // },
+
+    async getData() {
       await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/store-service",
-          fd,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res) => {
-          if (res.data.key == 1) {
-            this.$toast.add({
-              severity: "success",
-              summary: res.data.msg,
-              life: 3000,
-            });
-            sessionStorage.removeItem("desc_ar")
-            sessionStorage.removeItem("short_desc_ar")
-            sessionStorage.removeItem("title_ar")
-            sessionStorage.removeItem("price")
-            sessionStorage.removeItem("type")
-            sessionStorage.removeItem("active_id")
-            sessionStorage.removeItem("category_id")
-            sessionStorage.removeItem("images_links")
-          } else {
-            this.$toast.add({
-              severity: "error",
-              summary: res.data.msg,
-              life: 3000,
-            });
-          }
-          console.log(res);
-          this.disabled = false;
-        });
-    },
-    async updateAdd() {
-      this.disabled = true;
-      const fd = new FormData(this.$refs.images);
-      fd.append("lang", localStorage.getItem("locale"));
-      fd.append("user_id", localStorage.getItem("entity_id"));
-      fd.append("desc_ar", localStorage.getItem("desc_ar"));
-      fd.append("short_desc_ar", localStorage.getItem("short_desc_ar"));
-      fd.append("title_ar", localStorage.getItem("title_ar"));
-      fd.append("price", localStorage.getItem("price"));
-      fd.append("type", localStorage.getItem("type"));
-      fd.append("active_id", localStorage.getItem("act_id"));
-      fd.append("category_id", localStorage.getItem("cat_id"));
-      fd.append("unit", localStorage.getItem("unit"));
-      fd.append("service_id", this.$route.params.id);
-      
-      // var images = [];
-      fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
-
-      await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/update-service",
-          fd,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res) => {
-          if (res.data.key == 1) {
-            this.$toast.add({
-              severity: "success",
-              summary: res.data.msg,
-              life: 3000,
-            });
-            // this.$router.push('/ads')
-          } else {
-            this.$toast.add({
-              severity: "error",
-              summary: res.data.msg,
-              life: 3000,
-            });
-          }
-          console.log(res);
-          this.disabled = false;
-        });
-    },
-
-
-     async getData() {
-      await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/show-service", {
-          lang: localStorage.getItem("locale"),
+        .post("https://dashboard.mueadaat.info/admin/api/show-service", {
+          lang: sessionStorage.getItem("locale"),
           user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-          service_id : this.$route.params.id
+          service_id: this.$route.params.id,
         })
         .then((res) => {
           this.images = res.data.data.images;
-          
         });
     },
   },
@@ -258,13 +248,12 @@ export default (await import("vue")).defineComponent({
     Toast,
   },
   mounted() {
-    if (this.$route.fullPath.includes('edit')) {
-      this.getData()
+    if (this.$route.fullPath.includes("edit")) {
+      this.getData();
+    } else {
+      this.images = JSON.parse(localStorage.getItem("images_links")) || [];
     }
-    else {
-      this.images = JSON.parse(localStorage.getItem('images_links')) || []
-    }
-  }
+  },
 });
 </script>
 

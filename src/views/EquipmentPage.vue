@@ -47,8 +47,8 @@ export default {
         id = JSON.parse(sessionStorage.getItem("user")).data.id;
       }
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/services", {
-          lang: localStorage.getItem("locale"),
+        .post("https://dashboard.mueadaat.info/admin/api/services", {
+          lang: sessionStorage.getItem("locale"),
           user_id: id,
           type: "item",
         })

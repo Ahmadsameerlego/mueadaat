@@ -103,7 +103,7 @@ const handleOnComplete = (value) => {
   disabled.value = true;
   if (OPT.value) {
     axios
-      .post("https://dashboard.mueadaat.info/test-mode/api/active-account", {
+      .post("https://dashboard.mueadaat.info/admin/api/active-account", {
         code: value,
         lang: locale.value,
         user_id: OPT.value,
@@ -127,7 +127,7 @@ const handleOnComplete = (value) => {
     btn.click();
   }
   // axios
-  //   .post("https://dashboard.mueadaat.info/test-mode/api/forget-password", {
+  //   .post("https://dashboard.mueadaat.info/admin/api/forget-password", {
   //     code: value,
   //     lang: locale.value,
   //   })
@@ -155,7 +155,7 @@ const handleOnComplete = (value) => {
 
 // let resendCode = () => {
 //   axios
-//     .post("https://dashboard.mueadaat.info/test-mode/api/forget-password", {
+//     .post("https://dashboard.mueadaat.info/admin/api/forget-password", {
 //       phone: authData.phone,
 //       lang: useI18n().locale.value,
 //     })

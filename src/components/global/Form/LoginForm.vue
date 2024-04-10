@@ -1,6 +1,6 @@
 <template>
-  <div class="form-items position-relative" style="overflow:hidden">
-    <button  class="close_modal"   data-bs-dismiss="modal">
+  <div class="form-items position-relative" style="overflow: hidden">
+    <button class="close_modal" data-bs-dismiss="modal">
       <i class="fas-solid fa-x"></i>
     </button>
     <div class="row no-padding">
@@ -80,7 +80,7 @@
 
             <div class="form-item">
               <button type="submit" :disabled="disabled" class="global-button">
-                {{  $t('SignIn')  }}
+                {{ $t("SignIn") }}
               </button>
             </div>
           </form>
@@ -95,7 +95,7 @@
               data-bs-dismiss="modal"
               type="button"
             >
-               {{  $t('register')  }}
+              {{ $t("register") }}
             </button>
           </div>
 
@@ -169,7 +169,7 @@ let login = () => {
   const btn = document.getElementById("btn_forget_model");
   disabled.value = true;
   axios
-    .post("https://dashboard.mueadaat.info/test-mode/api/login", {
+    .post("https://dashboard.mueadaat.info/admin/api/login", {
       // email: email.value,
       phone: phone.value,
       password: password.value,
@@ -195,7 +195,7 @@ let login = () => {
         } else {
           console.log(data.value.data.id);
           axios
-            .post("https://dashboard.mueadaat.info/test-mode/api/resend-code", {
+            .post("https://dashboard.mueadaat.info/admin/api/resend-code", {
               user_id: data.value.data.id,
               lang: locale.value,
             })
@@ -226,7 +226,7 @@ let login = () => {
 </script>
 
 <style>
-.close_modal{
+.close_modal {
   background-color: rgb(212, 52, 52);
   position: absolute;
   left: 8px;

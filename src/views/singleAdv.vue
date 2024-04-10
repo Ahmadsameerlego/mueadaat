@@ -99,9 +99,14 @@
             </div>
           </div>
 
-          <span class="desc-rate mt-4 d-block fw-bold" v-if="isAuthed">أضف تقييمك</span>
+          <span class="desc-rate mt-4 d-block fw-bold" v-if="isAuthed"
+            >أضف تقييمك</span
+          >
 
-          <div class="add-your-rate mx-auto d-flex justify-content-center" v-if="isAuthed">
+          <div
+            class="add-your-rate mx-auto d-flex justify-content-center"
+            v-if="isAuthed"
+          >
             <div class="stars">
               <Rating v-model="value" :cancel="false" class="mb-2" />
               <textarea
@@ -225,15 +230,15 @@ export default {
       rate: "",
       disabled: false,
       provider_id: "",
-      isAuthed : false
+      isAuthed: false,
     };
   },
   methods: {
     async getAdds() {
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/show-service", {
-          lang: localStorage.getItem("locale"),
-          user_id:1|| JSON.parse(sessionStorage.getItem("user")).data.id ,
+        .post("https://dashboard.mueadaat.info/admin/api/show-service", {
+          lang: sessionStorage.getItem("locale"),
+          user_id: 1 || JSON.parse(sessionStorage.getItem("user")).data.id,
           service_id: this.$route.params.id,
         })
         .then((res) => {
@@ -245,14 +250,11 @@ export default {
     },
     async toggleFavorite() {
       await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/add-to-favourite",
-          {
-            lang: localStorage.getItem("locale"),
-            user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-            service_id: this.$route.params.id,
-          }
-        )
+        .post("https://dashboard.mueadaat.info/admin/api/add-to-favourite", {
+          lang: sessionStorage.getItem("locale"),
+          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          service_id: this.$route.params.id,
+        })
         .then((res) => {
           if (res.data.key === 1) {
             this.$toast.add({
@@ -270,39 +272,46 @@ export default {
           }
         });
     },
-    async toggleFavoriteSimilar(id) {
-      await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/add-to-favourite",
-          {
-            lang: localStorage.getItem("locale"),
-            user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-            service_id: id,
-          }
-        )
-        .then((res) => {
-          if (res.data.key === 1) {
-            this.$toast.add({
-              severity: "success",
-              summary: res.data.msg,
-              life: 3000,
-            });
-            this.getAdds();
-          } else {
-            this.$toast.add({
-              severity: "error",
-              summary: res.data.msg,
-              life: 3000,
-            });
-          }
+    async toggleFavoriteSimilar(service_id) {
+      if (!sessionStorage.getItem("user")) {
+        this.$toast.add({
+          severity: "error",
+          summary: "عليك تسجيل الدخول اولا",
+          life: 3000,
         });
+      } else {
+        await axios
+          .post("https://dashboard.mueadaat.info/admin/api/add-to-favourite", {
+            lang: sessionStorage.getItem("locale"),
+            user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+            service_id: service_id,
+          })
+          .then((res) => {
+            if (res.data.key === 1) {
+              this.$toast.add({
+                severity: "success",
+                summary: res.data.msg,
+                life: 3000,
+              });
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+            } else {
+              this.$toast.add({
+                severity: "error",
+                summary: res.data.msg,
+                life: 3000,
+              });
+            }
+          });
+      }
     },
     async rateAdd() {
       this.disabled = true;
 
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/rate-provider", {
-          lang: localStorage.getItem("locale"),
+        .post("https://dashboard.mueadaat.info/admin/api/rate-provider", {
+          lang: sessionStorage.getItem("locale"),
           user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
           service_id: this.$route.params.id,
           rate: this.value,
@@ -352,7 +361,7 @@ export default {
   },
   mounted() {
     this.getAdds();
-    if (sessionStorage.getItem('user')) {
+    if (sessionStorage.getItem("user")) {
       this.isAuthed = true;
     }
   },

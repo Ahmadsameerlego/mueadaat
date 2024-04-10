@@ -1,7 +1,7 @@
-  <template>
+<template>
   <swiper
     class="mySwiper"
-        :modules="modules"
+    :modules="modules"
     :spaceBetween="30"
     :centeredSlides="true"
     :loop="true"
@@ -11,7 +11,12 @@
     }"
   >
     <swiper-slide v-for="image in responseData" :key="image">
-      <img :src="image.image" alt="" style="width:100%;height:400px;object-fit:cover" class="slide-image" />
+      <img
+        :src="image.image"
+        alt=""
+        style="width: 100%; height: 400px; object-fit: cover"
+        class="slide-image"
+      />
     </swiper-slide>
   </swiper>
 </template>
@@ -36,7 +41,7 @@ export default {
   },
   mounted() {
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home")
+      .get("https://dashboard.mueadaat.info/admin/api/home")
       .then((response) => {
         // handle success
         this.responseData = response.data.data.sliders;
@@ -74,7 +79,7 @@ export default {
 }
 </style>
 <style>
-.slide-image{
+.slide-image {
   border-top-left-radius: 150px;
   border-bottom-right-radius: 150px;
 }

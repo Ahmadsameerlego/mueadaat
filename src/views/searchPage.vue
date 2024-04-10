@@ -6,7 +6,7 @@
   />
 
   <div class="total_filter" v-if="isSearch">
-    {{ data.length }} {{  $t('seatchResult')  }}
+    {{ data.length }} {{ $t("seatchResult") }}
   </div>
   <div class="form-items p-sec" style="background: #f9f9f9">
     <form>
@@ -19,7 +19,9 @@
               class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
             >
               <div>
-                <label for="" class="form-item-label">{{$t('locations')}}</label>
+                <label for="" class="form-item-label">{{
+                  $t("locations")
+                }}</label>
               </div>
               <select
                 class="form-select form-item-input"
@@ -28,7 +30,9 @@
                 @change="getData"
                 style="background: #f0f0f0"
               >
-                <option selected value="" hidden disabled> {{  $t('chooseLocation')  }} </option>
+                <option selected value="" hidden disabled>
+                  {{ $t("chooseLocation") }}
+                </option>
                 <option v-for="city in cities" :key="city" :value="city.id">
                   {{ city.title }}
                 </option>
@@ -62,14 +66,14 @@
                   :class="{ active: type == 'worker' }"
                   @click.prevent="toggleType('worker')"
                 >
-                  {{  $t('workerss')  }}
+                  {{ $t("workerss") }}
                 </button>
                 <button
                   class="category-button"
                   :class="{ active: type == 'item' }"
                   @click.prevent="toggleType('item')"
                 >
-                  {{  $t('equips')  }}
+                  {{ $t("equips") }}
                 </button>
               </div>
             </div>
@@ -81,7 +85,9 @@
             <div
               class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
             >
-              <label for="" class="form-item-label">{{  $t('serviceType')  }} </label>
+              <label for="" class="form-item-label"
+                >{{ $t("serviceType") }}
+              </label>
               <select
                 class="form-select form-item-input"
                 aria-label="Default select example"
@@ -90,7 +96,7 @@
                 style="background: #f0f0f0"
               >
                 <option selected disabled value="" hidden>
-                  {{ $t('chooseType') }}
+                  {{ $t("chooseType") }}
                 </option>
                 <option v-for="cat in categories" :key="cat" :value="cat.id">
                   {{ cat.title }}
@@ -106,7 +112,9 @@
             <div
               class="form-item form-item-search d-flex flex-column justify-content-start align-items-start"
             >
-              <label for="" class="form-item-label"> {{ $t('activeType') }}</label>
+              <label for="" class="form-item-label">
+                {{ $t("activeType") }}</label
+              >
               <select
                 class="form-select form-item-input"
                 aria-label="Default select example"
@@ -115,7 +123,7 @@
                 style="background: #f0f0f0"
               >
                 <option selected hidden disabled value="">
-                  {{  $t('chooseActive')  }}
+                  {{ $t("chooseActive") }}
                 </option>
                 <option v-for="act in actives" :key="act" :value="act.id">
                   {{ act.title }}
@@ -129,7 +137,7 @@
 
         <div class="d-flex justify-content-center align-items-center">
           <button class="global-button w-25" type="button" @click="clearFilter">
-            {{ $t('filter') }}
+            {{ $t("filter") }}
           </button>
         </div>
       </div>
@@ -152,9 +160,9 @@
           :isAdded="equipment.is_favourite"
         />
 
-        <Message severity="warn" v-if="data.length === 0"
-          > {{  $t('noAdds')  }} </Message
-        >
+        <Message severity="warn" v-if="data.length === 0">
+          {{ $t("noAdds") }}
+        </Message>
       </div>
       <div class="loader" v-if="isDataGet">
         <ProgressSpinner />
@@ -208,8 +216,8 @@ export default {
       }
 
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/services", {
-          lang: localStorage.getItem("locale")||'en',
+        .post("https://dashboard.mueadaat.info/admin/api/services", {
+          lang: sessionStorage.getItem("locale") || "en",
           user_id: id,
           type: this.type,
           city_id: this.city_id,
@@ -224,15 +232,20 @@ export default {
         });
     },
     async getFilters() {
+      var id = null;
+      if (sessionStorage.getItem("user")) {
+        id = JSON.parse(sessionStorage.getItem("user")).data.id;
+      }
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/app_data", {
-          lang: localStorage.getItem("locale"),
-          user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+        .post("https://dashboard.mueadaat.info/admin/api/app_data", {
+          lang: sessionStorage.getItem("locale"),
+          user_id: id,
         })
         .then((res) => {
           this.cities = res.data.data.cities;
           this.categories = res.data.data.categories;
           this.actives = res.data.data.actives;
+          // console.log(res)
         });
     },
     toggleType(type) {
@@ -253,6 +266,7 @@ export default {
   mounted() {
     this.getEquips();
     this.getFilters();
+    console.log(sessionStorage.getItem("locale"));
   },
 };
 </script>

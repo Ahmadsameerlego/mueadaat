@@ -12,9 +12,9 @@
         <div class="form-content">
           <!-- Start Heading -->
           <div class="form-heading">
-            <h3> {{  $t('register')  }} </h3>
+            <h3>{{ $t("register") }}</h3>
             <p class="text-body">
-              {{  $t('registerDesc')  }}
+              {{ $t("registerDesc") }}
             </p>
           </div>
           <!-- End Heading -->
@@ -88,7 +88,7 @@
 
             <div class="form-item">
               <button class="global-button" :disabled="disabled">
-                {{ $t('register')  }}
+                {{ $t("register") }}
               </button>
             </div>
           </form>
@@ -100,8 +100,9 @@
               data-bs-toggle="modal"
               href="#exampleModalToggle"
               role="button"
-              > {{ $t('signIn') }} </a
             >
+              {{ $t("signIn") }}
+            </a>
           </div>
         </div>
         <!-- End form Content -->
@@ -175,7 +176,7 @@ let signUp = () => {
   const btn = document.getElementById("btn_forget_model");
   disabled.value = true;
   axios
-    .post("https://dashboard.mueadaat.info/test-mode/api/register", {
+    .post("https://dashboard.mueadaat.info/admin/api/register", {
       first_name: first_name.value,
       email: email.value,
       phone: phone.value,

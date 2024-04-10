@@ -115,7 +115,7 @@
         </div>
 
         <div class="form-item">
-          <label for="subject" class="form-label">{{ $t('aboutMe') }}</label>
+          <label for="subject" class="form-label">{{ $t("aboutMe") }}</label>
           <textarea
             v-model="desc_ar"
             name="desc_ar"
@@ -133,7 +133,7 @@
             class="global-button w-25 d-flex justify-content-center mx-auto"
             :disabled="disabled"
           >
-            {{$t('myPersonalData')}}
+            {{ $t("myPersonalData") }}
           </button>
         </div>
       </form>
@@ -147,7 +147,7 @@
           role="button"
           style="background-color: #000"
         >
-          {{$t('changePassword')}}
+          {{ $t("saveMyEdit") }}
         </button>
       </div>
     </div>
@@ -168,9 +168,9 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-body px-5 py-5">
-          <button  class="close_modal"   data-bs-dismiss="modal">
-      <i class="fas-solid fa-x"></i>
-    </button>
+          <button class="close_modal" data-bs-dismiss="modal">
+            <i class="fas-solid fa-x"></i>
+          </button>
           <div class="user-head mt-4">
             <svg
               width="35"
@@ -195,7 +195,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <h4 class="title">{{ $t('editPassword') }}</h4>
+            <h4 class="title">{{ $t("editPassword") }}</h4>
           </div>
           <form action="" class="form-items">
             <div class="grid-two">
@@ -214,9 +214,9 @@
               </div>
 
               <div class="form-item">
-                <label for="subject" class="form-label"
-                  >{{$t('newPassword')}}</label
-                >
+                <label for="subject" class="form-label">{{
+                  $t("newPassword")
+                }}</label>
                 <input
                   type="password"
                   name="subject"
@@ -227,9 +227,9 @@
                 />
               </div>
               <div class="form-item">
-                <label for="subject" class="form-label"
-                  >{{ $t('confirmPassword') }}</label
-                >
+                <label for="subject" class="form-label">{{
+                  $t("confirmPassword")
+                }}</label>
                 <input
                   type="password"
                   name="subject"
@@ -246,14 +246,14 @@
                 class="passwordConfirmed d-flex align-items-center text-success"
               >
                 <i class="fa-regular fa-circle-check"></i>
-                <span>{{$t('identical')}}</span>
+                <span>{{ $t("identical") }}</span>
               </p>
               <p
                 v-else
                 class="passwordWrong d-flex align-items-center text-danger"
               >
                 <i class="fa-regular fa-circle-xmark"></i>
-                <span>{{$t('unIdentical')}}</span>
+                <span>{{ $t("unIdentical") }}</span>
               </p>
             </div>
 
@@ -263,7 +263,7 @@
                 :disabled="disabled2"
                 @click.prevent="updatePassword"
               >
-                {{$t('saveMyEdit')}}
+                {{ $t("saveMyEdit") }}
               </button>
             </div>
           </form>
@@ -316,8 +316,8 @@ export default {
   methods: {
     async getUserData() {
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/show-user", {
-          lang: localStorage.getItem("locale"),
+        .post("https://dashboard.mueadaat.info/admin/api/show-user", {
+          lang: sessionStorage.getItem("locale"),
           user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
         })
         .then((res) => {
@@ -334,8 +334,8 @@ export default {
     },
     async getCities() {
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/sections", {
-          lang: localStorage.getItem("locale"),
+        .post("https://dashboard.mueadaat.info/admin/api/sections", {
+          lang: sessionStorage.getItem("locale"),
           user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
         })
         .then((res) => {
@@ -351,10 +351,10 @@ export default {
       fd.append("full_name", this.full_name);
       fd.append("first_name", this.first_name);
       fd.append("phone", this.phone);
-      fd.append("lang", localStorage.getItem("locale"));
+      fd.append("lang", sessionStorage.getItem("locale"));
       fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
       await axios
-        .post("https://dashboard.mueadaat.info/test-mode/api/update-user", fd)
+        .post("https://dashboard.mueadaat.info/admin/api/update-user", fd)
         .then((res) => {
           if (res.data.key == 1) {
             this.$toast.add({
@@ -378,13 +378,10 @@ export default {
       const fd = new FormData(this.$refs.profile);
       fd.append("old_password", this.old_password);
       fd.append("password", this.password);
-      fd.append("lang", localStorage.getItem("locale"));
+      fd.append("lang", sessionStorage.getItem("locale"));
       fd.append("user_id", JSON.parse(sessionStorage.getItem("user")).data.id);
       await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/update-password",
-          fd
-        )
+        .post("https://dashboard.mueadaat.info/admin/api/update-password", fd)
         .then((res) => {
           if (res.data.key == 1) {
             this.$toast.add({

@@ -17,18 +17,29 @@
             <!-- Start Post -->
             <div class="post">
               <div class="post-img">
-                <router-link :to="'/workers/'+worker.id">
+                <router-link :to="'/workers/' + worker.id">
                   <img :src="worker.first_image" />
                 </router-link>
                 <div class="add-favorite">
                   <button
-                   :class="{ favIcon: worker.is_favourite == true }"
+                    :class="{ favIcon: worker.is_favourite == true }"
                     @click="toggleFavoriteSimilar(worker.id)"
                   >
-                  <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.3314 9.04738L10 17L17.6686 9.04738C18.5211 8.16332 19 6.96429 19 5.71405C19 3.11055 16.9648 1 14.4543 1C13.2487 1 12.0925 1.49666 11.24 2.38071L10 3.66667L8.75997 2.38071C7.90749 1.49666 6.75128 1 5.54569 1C3.03517 1 1 3.11055 1 5.71405C1 6.96429 1.47892 8.16332 2.3314 9.04738Z" stroke="#EDEDED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                    <svg
+                      width="20"
+                      height="18"
+                      viewBox="0 0 20 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2.3314 9.04738L10 17L17.6686 9.04738C18.5211 8.16332 19 6.96429 19 5.71405C19 3.11055 16.9648 1 14.4543 1C13.2487 1 12.0925 1.49666 11.24 2.38071L10 3.66667L8.75997 2.38071C7.90749 1.49666 6.75128 1 5.54569 1C3.03517 1 1 3.11055 1 5.71405C1 6.96429 1.47892 8.16332 2.3314 9.04738Z"
+                        stroke="#EDEDED"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -120,50 +131,46 @@ export default defineComponent({
     is_favourite: function (event, theclass) {
       event.target.classList.toggle(theclass);
     },
-     async toggleFavoriteSimilar(service_id) {
-      if (!sessionStorage.getItem('user')) {
+    async toggleFavoriteSimilar(service_id) {
+      if (!sessionStorage.getItem("user")) {
         this.$toast.add({
-              severity: "error",
-              summary: 'عليك تسجيل الدخول اولا',
-              life: 3000,
-            });
+          severity: "error",
+          summary: "عليك تسجيل الدخول اولا",
+          life: 3000,
+        });
       } else {
         await axios
-        .post(
-          "https://dashboard.mueadaat.info/test-mode/api/add-to-favourite",
-          {
-            lang: localStorage.getItem("locale"),
+          .post("https://dashboard.mueadaat.info/admin/api/add-to-favourite", {
+            lang: sessionStorage.getItem("locale"),
             user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
             service_id: service_id,
-          }
-        )
-        .then((res) => {
-          if (res.data.key === 1) {
-            this.$toast.add({
-              severity: "success",
-              summary: res.data.msg,
-              life: 3000,
-            });
-            setTimeout(() => {
-              window.location.reload();
-            }, 2000);
-          } else {
-            this.$toast.add({
-              severity: "error",
-              summary: res.data.msg,
-              life: 3000,
-            });
-          }
-        });
+          })
+          .then((res) => {
+            if (res.data.key === 1) {
+              this.$toast.add({
+                severity: "success",
+                summary: res.data.msg,
+                life: 3000,
+              });
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+            } else {
+              this.$toast.add({
+                severity: "error",
+                summary: res.data.msg,
+                life: 3000,
+              });
+            }
+          });
       }
-      
     },
   },
 
   mounted() {
     var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
+      .get("https://dashboard.mueadaat.info/admin/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.fav_worker = response.data.data;

@@ -3,7 +3,7 @@
     class="navbar navbar-expand-lg custom-nav"
     :dir="$i18n.locale == 'ar' ? 'rtl' : 'ltr'"
   >
-    <div class="container" style="    max-width: 1250px;"> 
+    <div class="container" style="max-width: 1250px">
       <router-link class="navbar-brand" to="/">
         <img src="../../assets/logo.png" width="120" />
       </router-link>
@@ -81,123 +81,136 @@
           </li>
         </ul>
         <section class="user_interaction d-flex justify-content-between">
-
-        <div v-if="user">
-          <div class="dropdown">
+          <div v-if="user">
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  :src="user.data.avatar"
+                  alt=""
+                  width="30"
+                  height="30"
+                  style="border-radius: 50%"
+                />
+                <span>
+                  {{ user.data.first_name }}
+                </span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <router-link class="dropdown-item d-flex" to="/profile">
+                    <div class="drop-image">
+                      <i class="fa-regular fa-user"></i>
+                    </div>
+                    <span class="mx-2"> {{ $t("pofile") }} </span>
+                  </router-link>
+                </li>
+                <li>
+                  <router-link class="dropdown-item d-flex" to="/laws">
+                    <div class="drop-image">
+                      <i class="fa-regular fa-square"></i>
+                    </div>
+                    <span class="mx-2"> {{ $t("lows") }} </span>
+                  </router-link>
+                </li>
+                <li>
+                  <router-link class="dropdown-item d-flex" to="/treaty">
+                    <div class="drop-image">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <span class="mx-2"> {{ $t("treat") }} </span>
+                  </router-link>
+                </li>
+                <li>
+                  <router-link class="dropdown-item d-flex" to="/usage-policy">
+                    <div class="drop-image">
+                      <i class="fa-solid fa-file"></i>
+                    </div>
+                    <span class="mx-2"> {{ $t("policy") }} </span>
+                  </router-link>
+                </li>
+                <li>
+                  <router-link class="dropdown-item d-flex" to="/favs">
+                    <div class="drop-image">
+                      <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <span class="mx-2"> {{ $t("rate") }} </span>
+                  </router-link>
+                </li>
+                <li>
+                  <div class="dropdown-item d-flex">
+                    <div class="drop-image">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                    <span
+                      class="mx-2"
+                      @click="signout"
+                      :disabled="disabled"
+                      style="cursor: pointer"
+                    >
+                      {{ $t("logout") }}
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div v-else>
             <button
-              class="btn dropdown-toggle"
               type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              class="global-button login-button"
+              data-bs-toggle="modal"
+              href="#exampleModalToggle"
+              role="button"
+              style="background-color: #000"
             >
-              <img
-                :src="user.data.avatar"
-                alt=""
-                width="30"
-                height="30"
-                style="border-radius: 50%"
-              />
-              <span>
-                {{ user.data.first_name }}
+              <i class="fa-regular fa-user"></i>
+              <span class="mx-2">
+                {{ $t("SignIn") }}
               </span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <router-link class="dropdown-item d-flex" to="/profile">
-                  <div class="drop-image">
-                    <i class="fa-regular fa-user"></i>
-                  </div>
-                  <span class="mx-2"> {{  $t('pofile')  }} </span>
-                </router-link>
-              </li>
-              <li>
-                <router-link class="dropdown-item d-flex" to="/laws">
-                  <div class="drop-image">
-                    <i class="fa-regular fa-square"></i>
-                  </div>
-                  <span class="mx-2"> {{  $t('lows')  }} </span>
-                </router-link>
-              </li>
-              <li>
-                <router-link class="dropdown-item d-flex" to="/treaty">
-                  <div class="drop-image">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  </div>
-                  <span class="mx-2"> {{  $t('treat')  }} </span>
-                </router-link>
-              </li>
-              <li>
-                <router-link class="dropdown-item d-flex" to="/usage-policy">
-                  <div class="drop-image">
-                    <i class="fa-solid fa-file"></i>
-                  </div>
-                  <span class="mx-2"> {{  $t('policy')  }} </span>
-                </router-link>
-              </li>
-              <li>
-                <router-link class="dropdown-item d-flex" to="/favs">
-                  <div class="drop-image">
-                    <i class="fa-regular fa-heart"></i>
-                  </div>
-                  <span class="mx-2"> {{  $t('rate')  }} </span>
-                </router-link>
-              </li>
-              <li>
-                <div class="dropdown-item d-flex">
-                  <div class="drop-image">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                  </div>
-                  <span
-                    class="mx-2"
-                    @click="signout"
-                    :disabled="disabled"
-                    style="cursor:pointer"
-                  >
-                    {{  $t('logout')  }}
-                  </span>
-                </div>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div v-else>
-          <button
-            type="button"
-            class="global-button login-button"
-            data-bs-toggle="modal"
-            href="#exampleModalToggle"
-            role="button"
-            style="background-color: #000;"
-          >
-            <i class="fa-regular fa-user"></i>
-            <span class="mx-2">
-              {{ $t("SignIn") }}
-            </span>
-          </button>
-        </div>
           <LangCom class="mx-2" />
 
-        <div  v-if="user">
-          <a  :href="'https://api.whatsapp.com/send?phone='+phone" target="_black" style="width:33px;height:33px;border-radius:50%" class="px-0 global-button drop-image mx-2 d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-comment-dots"></i>
-          </a>
-        </div>
+          <div v-if="user">
+            <a
+              :href="'https://api.whatsapp.com/send?phone=' + phone"
+              target="_black"
+              style="width: 33px; height: 33px; border-radius: 50%"
+              class="px-0 global-button drop-image mx-2 d-flex justify-content-center align-items-center"
+            >
+              <i class="fa-solid fa-comment-dots"></i>
+            </a>
+          </div>
 
-        <div  v-if="user">
-          <router-link @click="getNotification"  to="/notification" style="width:33px;height:33px" class="position-relative drop-image mx-2">
-            <i class="fa-regular fa-bell"></i>
-           <span class="notification_count" v-if="isNotGet">
-             {{ notification_count }}
-           </span>
-          </router-link>
-        </div>
+          <div v-if="user">
+            <router-link
+              @click="getNotification"
+              to="/notification"
+              style="width: 33px; height: 33px"
+              class="position-relative drop-image mx-2"
+            >
+              <i class="fa-regular fa-bell"></i>
+              <span class="notification_count" v-if="isNotGet">
+                {{ notification_count }}
+              </span>
+            </router-link>
+          </div>
 
-        <div>
-          <router-link to="/search" style="width:33px;height:33px" class="drop-image mx-2">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </router-link>
-        </div>
+          <div>
+            <router-link
+              to="/search"
+              style="width: 33px; height: 33px"
+              class="drop-image mx-2"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </router-link>
+          </div>
         </section>
       </div>
     </div>
@@ -225,37 +238,37 @@ import modalResetPassword from "./modal/modalResetPassword.vue";
 </script>
 <script>
 import Toast from "primevue/toast";
-import axios from 'axios'
+import axios from "axios";
 export default {
   data() {
     return {
       user: null,
       disabled: false,
-      notification_count: '',
+      notification_count: "",
       isNotGet: false,
-      phone : ''
+      phone: "",
     };
   },
   methods: {
-       // get notifications 
-        async getNotification(){
-            
-          setTimeout(() => {
-               axios.post('https://dashboard.mueadaat.info/test-mode/api/show-notification', {
-                 lang: localStorage.getItem('locale'),
-                 user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
-            } )
-            .then( (res)=>{
-                // if( res.data.key === 'success' ){
-                    console.log(res.data.data)
-                    // this.currentPage = res.data.data.pagination.current_page ;
-                    // this.totalPages = res.data.data.pagination.total_pages ;
-                    // this.per_page = res.data.data.pagination.per_page ;
-                // }
-            } )
-          }, 1000);
+    // get notifications
+    async getNotification() {
+      setTimeout(() => {
+        axios
+          .post("https://dashboard.mueadaat.info/admin/api/show-notification", {
+            lang: sessionStorage.getItem("locale"),
+            user_id: JSON.parse(sessionStorage.getItem("user")).data.id,
+          })
+          .then((res) => {
+            // if( res.data.key === 'success' ){
+            console.log(res.data.data);
+            // this.currentPage = res.data.data.pagination.current_page ;
+            // this.totalPages = res.data.data.pagination.total_pages ;
+            // this.per_page = res.data.data.pagination.per_page ;
+            // }
+          });
+      }, 1000);
     },
-        signout() {
+    signout() {
       this.disabled = true;
       setTimeout(() => {
         sessionStorage.removeItem("user");
@@ -274,12 +287,12 @@ export default {
       this.user = JSON.parse(savedUser);
     }
     var id = null;
-    if (sessionStorage.getItem('user')) {
-      id =  JSON.parse(sessionStorage.getItem("user")).data.id
+    if (sessionStorage.getItem("user")) {
+      id = JSON.parse(sessionStorage.getItem("user")).data.id;
     }
     axios
-      .post("https://dashboard.mueadaat.info/test-mode/api/home", {
-       user_id:  id,
+      .post("https://dashboard.mueadaat.info/admin/api/home", {
+        user_id: id,
       })
       .then((response) => {
         // handle success
@@ -293,7 +306,7 @@ export default {
       });
   },
   // methods: {
-    
+
   // },
   components: {
     Toast,
@@ -301,20 +314,19 @@ export default {
 };
 </script>
 <style>
-.notification_count{
-    background-color: red;
-    width: 20px;
-    height: 19px;
-    border-radius: 50%;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-    position: absolute;
-    left: -8px;
-    top: -6px;
-
+.notification_count {
+  background-color: red;
+  width: 20px;
+  height: 19px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  position: absolute;
+  left: -8px;
+  top: -6px;
 }
 .dropdown-menu {
   border: none !important;

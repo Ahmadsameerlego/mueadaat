@@ -113,7 +113,7 @@ export default defineComponent({
   mounted() {
     var lang = this.$i18n.locale;
     axios
-      .get("https://dashboard.mueadaat.info/test-mode/api/home?lang=" + lang)
+      .get("https://dashboard.mueadaat.info/admin/api/home?lang=" + lang)
       .then((response) => {
         // handle success
         this.reviews = response.data.data;
@@ -125,7 +125,7 @@ export default defineComponent({
   },
 });
 </script>
-<style >
+<style>
 .icon {
   margin-bottom: 32px;
 }
