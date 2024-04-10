@@ -3,7 +3,7 @@
     <section>
         <div class="container create-adv">
             <div class="choose">
-                <h2 class="choose-title">{{ $t('Create')}}</h2>
+                <h2 class="choose-title main-color">{{ $t('Create')}}</h2>
                 <p class="choose-description">{{ $t('chooseTypeAdv') }}</p>
                 <ul class="sections-items">
                     <li>
@@ -62,7 +62,7 @@ section{
 }
 @media(max-width: 468px){
     section{
-        padding: 20px;
+        padding: 0 !important;
     }
 }
 .sections-items{
@@ -72,6 +72,14 @@ section{
     list-style: none;
     margin-top: 16px !important;
 }
+@media(max-width: 486px){
+    .rtl .sections-items li:first-child{
+    margin-left: 32px !important;
+    }
+    .ltr .sections-items li:first-child{
+        margin-right: 32px !important;
+    }
+}
 .section-icon{
     background-color: #000;
     width: 100px;
@@ -80,6 +88,16 @@ section{
     border-radius: 50%;
     text-align: center;
     display: block;
+}
+@media(max-width: 486px){
+    .section-icon{
+        width: 70px;
+        height: 70px;
+        line-height: 65px;
+    }
+    .section-icon img{
+        width: 45px !important;
+    }
 }
 .section-icon.workers{
     background-color: #FCAC62;

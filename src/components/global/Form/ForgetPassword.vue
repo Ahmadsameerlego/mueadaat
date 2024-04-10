@@ -6,8 +6,7 @@
       <div class="form-heading">
         <h3>{{ $t("forgetPassword") }}</h3>
         <p class="text-body">
-          هلا لا يوجد أي مشكلة يمكنك ادخال رقم جوالك بالأدنى وسيتم ارسال لك بقية
-          الخطوات
+         {{$t('forgetDesc')}}
         </p>
       </div>
       <!-- End Heading -->
@@ -30,7 +29,7 @@
         {{ msg }}
 
         <div class="form-item">
-          <button type="submit" class="global-button" :disabled="disabled"> ارسال</button>
+          <button type="submit" class="global-button" :disabled="disabled"> {{$t('send')}}</button>
         </div>
       </form>
     </div>

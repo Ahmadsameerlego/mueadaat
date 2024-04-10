@@ -83,6 +83,19 @@
       </div>
 
       <!-- Start Form Item -->
+
+      <div class="form-item">
+        <label class="form-item-label">{{ $t('costSystem') }}</label>
+        <select name="" id="">
+          <option value="المدينة المنورة">المدينة المنورة</option>
+          <option value="الرياض">الرياض</option>
+          <option value="مكه">مكه</option>
+          <option value="جدة">جدة</option>
+        </select>
+        
+      </div>
+
+      <!-- Start Form Item -->
      
 
       <div class="form-item">
