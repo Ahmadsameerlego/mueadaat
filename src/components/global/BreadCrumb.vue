@@ -3,10 +3,10 @@
         <h2 class="bread-crumb-title">{{ title }}</h2>
         <nav class="breadcrum-nav">
             <ul class="bread-crumb-list">
-                <li class="bread-crumb-item text"><router-link class="home-link" to="/">
+                <li class="bread-crumb-item text" :class="{search: $route.fullPath.includes('search')||$route.fullPath.includes('notification')}"><router-link class="home-link" to="/">
                     {{ homePage }}
                 </router-link></li>
-                <li class="bread-crumb-item " :class="{search: $route.fullPath.includes('search')}">{{ pageTitle }}</li>
+                <li class="bread-crumb-item " >{{ pageTitle }}</li>
                 
             </ul>
         </nav>

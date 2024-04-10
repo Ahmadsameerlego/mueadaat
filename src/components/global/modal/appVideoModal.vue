@@ -4,18 +4,38 @@
       <div class="modal-content">
   
         <div class="modal-body">
-          <video controls>
-            <source src="https://www.youtube.com/watch?v=qEXxnyty340" type="video/mp4">
-            <source src="https://www.youtube.com/watch?v=qEXxnyty340" type="video/ogg">
-            Your browser does not support HTML video.
-        </video>
+          <iframe :src="about_video" height="400"></iframe>
         </div>
   
       </div>
     </div>
   </div>
 </template>
-<script setup>
+<script >
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      about_video: '',
+      about_video_photo : ''
+        
+      }
+  },
+  mounted() {
+    var lang = this.$i18n.locale;
+    axios
+      .get("https://dashboard.mueadaat.info/admin/api/home?lang=" + lang)
+      .then((response) => {
+        // handle success
+        this.about_video = response.data.about_video;
+        this.about_video_photo = response.data.about_video_photo;
+      })
+      .catch((error) => {
+        // handle error
+        console.error("Error fetching data:", error);
+      });
+  },
+}
 </script>
 <style scoped>
 video{

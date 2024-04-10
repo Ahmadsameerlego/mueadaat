@@ -25,7 +25,7 @@
               href="#appVideo"
               role="button"
             ></button>
-            <img src="../../assets/about-img.png" />
+            <img :src="about_video_photo" />
           </div>
         </div>
       </div>
@@ -44,6 +44,7 @@ export default {
   },
   data: () => ({
     about_us: {},
+    about_video_photo : ''
   }),
   mounted() {
     var lang = this.$i18n.locale;
@@ -52,6 +53,8 @@ export default {
       .then((response) => {
         // handle success
         this.about_us = response.data.data.about_us;
+                this.about_video_photo = response.data.about_video_photo;
+
         console.log("success", response.data.data);
       })
       .catch((error) => {

@@ -9,33 +9,31 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-body confirm-before">
-          <h4 class="confirm-title main-color">اتفاقية الرسوم</h4>
+          <h4 class="confirm-title main-color"> {{  $t('treatTitlte')  }} </h4>
 
           <div class="aya">
-            <p class="aya-bism">بسم الله الرحمن الرحيم</p>
+            <p class="aya-bism"> {{  $t('treatBSm')  }} </p>
             <p class="aya-content">
-              قال الله تعالى : وَأَوْفُوا بِعَهْدِ اللَّهِ اذَا عَاهَدْتُمْ
-              وَلَا تَنْقَضو اَلْايمانُ بَعْدَ تَوْكيدِها وَقَدْ جَعَلْتُمْ
-              اللَّهُ عَلَيْكُمْ كَفيلًا
+              {{ $t('treatQua')  }}
             </p>
-            <p class="finsh-aya">صدق الله العظيم</p>
+            <p class="finsh-aya"> {{ $t('treatEnd') }} </p>
           </div>
         </div>
         <div class="form-check">
           <input type="checkbox" v-model="isTreat" />
           <label
-            >اتعهد واقسم بالله انا المعلن أن أدفع رسوم الموقع وهي 1% من قيمة
-            البيع سواء تم البيع عن طريق الموقع أو بسببه</label
+            >
+            {{  $t('treatText')  }}
+            </label
           >
         </div>
         <!-- Start Confirm Details -->
         <div class="confirm-details">
           <p>
-            * كما أتعهد بدفع الرسوم خلال 10 أيام من استلام كامل مبلغ المبايعة
+             {{ $t('treatDays') }}
           </p>
           <p class="note">
-            ملاحظة : رسوم الموقع هي على المعلن ولا تبرأ ذمة المعلن من الرسوم الا
-            في حالة دفعها
+            {{  $t('treatDesc')  }}
           </p>
 
           <router-link v-if="isTreat==true" to="/steps" class="global-button" @click="removePopUp">{{

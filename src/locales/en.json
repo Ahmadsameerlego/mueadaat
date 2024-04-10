@@ -128,7 +128,14 @@
   "registerDesc": "Hello, you can now obtain a new registration with us on the Workers and Equipments application and website",
   "Notifications": "Notifications",
   "noNotifications": "There are no notifications yet",
-  "forgetDesc": "Please enter your mobile number below and the rest of the steps will be sent to you"
+  "forgetDesc": "Please enter your mobile number below and the rest of the steps will be sent to you",
+      "treatDesc": "Note: Site fees are the responsibility of the advertiser and do not exempt the advertiser from paying the fees in the event of payment.",
+    "treatDays": "  * I also undertake to pay the fees within 10 days of receiving the full amount of the sale.",
+    "treatText": "I pledge and swear by Allah that I, the advertiser, will pay the website fees, which are 1% of the selling price, whether the sale is made through the website or because of it.",
+    "treatEnd": "In the name of Allah, the Most Gracious, the Most Merciful.",
+    "treatQua": "Allah Almighty said: \"And fulfill the covenant of Allah when you have taken it, [O believers], and do not break oaths after their confirmation while you have made Allah, over you, a guardian.\"",
+    "treatBSm": "In the name of Allah, the Most Gracious, the Most Merciful.",
+    "treatTitlte": "Fee Agreement"
 
 
 }
