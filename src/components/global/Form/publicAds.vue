@@ -18,6 +18,25 @@
     </svg>
   </div>
   <div class="main_submit">
+    <button
+      class="global-button"
+      @click.prevent="submitAdd"
+      :disabled="disabled"
+      v-if="!$route.fullPath.includes('edit')"
+    >
+      {{ $t('PostAd') }}
+    </button>
+    <button
+      v-else
+      class="global-button"
+      @click.prevent="updateAdd"
+      :disabled="disabled"
+    >
+      {{$t('EditAd')}}
+    </button>
+  </div>
+  
+  <div class="main_submit">
     <button class="global-button" @click.prevent="submitAdd">
       <router-link to="/"> {{ $t('backHome') }} </router-link>
     </button>

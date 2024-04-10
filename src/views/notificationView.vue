@@ -1,14 +1,14 @@
 <template>
-     <BreadCrumb
-    title="الاشعارات"
-    :pageTitle="الاشعارت"
-    :homePage="الرئيسية"
-  />
+    <BreadCrumb
+    :title="$t('Notifications')"
+    :pageTitle="$t('Notifications')"
+    :homePage="$t('Home')"
+    />
     <div class="container mt-5 mb-5" style="min-height:302px">
         <!-- breadcrumb  -->
 
         <div class="row">
-            <h5 class="fw-bold red mb-3"> الاشعارات </h5>
+            <h5 class="fw-bold red mb-3"> {{$t('Notifications')}} </h5>
 
             <section v-if="notifications.length>0">
                 <!-- single not  -->
@@ -54,7 +54,7 @@
             </section>
 
             <section v-else class="text-center text-danger">
-                لا توجد اشعارات الى الان
+                {{ $t('noNotifications') }}
             </section>
 <!-- 
             <div class="d-flex justify-content-end">
@@ -163,8 +163,13 @@ export default {
 }
     .delete_not{
         position:absolute;
-        left: 20px;
         top: 10px;
+    }
+    .ltr .delete_not{
+        right: 20px;
+    }
+    .rtl .delete_not{
+        left: 20px;
     }
     .page-link{
         font-size: 11px !important;
@@ -180,6 +185,9 @@ export default {
             border: 1px solid #2a3255 !important;
             color: #fff !important;
         }
+    }
+    .align-items-center{
+        margin-bottom: 10px !important;
     }
 </style>
 <style  scoped >
