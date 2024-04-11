@@ -22,4 +22,12 @@
   .section-heading{
     margin-bottom: 10px !important;
   }
+  @media(max-width: 468px){
+    .ltr .section-heading{
+      padding-right: 50px !important
+    }
+    .ltr .section-heading .section-description{
+      font-size: 30px;
+    }
+  }
   </style>

@@ -4,11 +4,8 @@
     <div class="form-content">
       <!-- Start Heading -->
       <div class="form-heading">
-        <h3>{{ $t("forgetPassword") }}</h3>
-        <p class="text-body">
-          هلا لا يوجد أي مشكلة يمكنك ادخال رقم جوالك بالأدنى وسيتم ارسال لك بقية
-          الخطوات
-        </p>
+        <h3>{{ $t("newPasswordTitle") }}</h3>
+        <p class="text-body">{{ $t('changePasswordDesc') }}</p>
       </div>
       <!-- End Heading -->
       <form method="post" @submit.prevent="validateForm">
@@ -44,7 +41,7 @@
         {{ msg }}
 
         <div class="form-item">
-          <button class="global-button" :disabled="disabled">تغيير</button>
+          <button class="global-button" :disabled="disabled">{{$t('changePasswordNow')}}</button>
         </div>
       </form>
     </div>

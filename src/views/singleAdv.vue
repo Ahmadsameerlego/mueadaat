@@ -8,9 +8,9 @@
           </div>
 
           <div class="price">
-            تكلفة الساعة :
+            {{ $t('priceHour') }}
             <span class="author-name" style="color: #fcac62; font-weight: bold"
-              >{{ add.price }} ر.س</span
+              >{{ add.price }} {{ $t('RS') }}</span
             >
           </div>
           <p class="description text-body mb-3">
@@ -59,7 +59,7 @@
                   }}</span>
                   <fa icon="star" class="mx-2" style="color: #fcac62" />
                   <span class="author-rating-text"
-                    >{{ add.rate_count }} تقييم</span
+                    >{{ add.rate_count }} {{$t('rating')}}</span
                   >
                 </div>
               </div>
@@ -90,17 +90,17 @@
             <div class="buttons">
               <button @click="shareAdd">
                 <fa icon="star" />
-                <span class="text">مشاركة</span>
+                <span class="text">{{$t('share')}}</span>
               </button>
               <button @click="toggleFavorite">
                 <fa icon="heart" :class="{ favIcon: isAddFav }" />
-                <span class="text">أضف للمفضلة</span>
+                <span class="text">{{ $t('AddFavorites') }}</span>
               </button>
             </div>
           </div>
 
           <span class="desc-rate mt-4 d-block fw-bold" v-if="isAuthed"
-            >أضف تقييمك</span
+            >{{$t('addRating')}}</span
           >
 
           <div
@@ -115,7 +115,7 @@
                 cols="30"
                 rows="3"
                 class="form-control mb-2"
-                placeholder="اكتب تعليقك هنا"
+                :placeholder="$t('writeYourComment')"
                 v-model="rate"
               ></textarea>
               <div class="d-flex justify-content-center">
@@ -124,7 +124,7 @@
                   :disabled="disabled"
                   @click.prevent="rateAdd"
                 >
-                  ارسال التقييم
+                  {{$t('sendRating')}}
                 </button>
               </div>
             </div>

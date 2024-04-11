@@ -30,11 +30,16 @@
   margin-bottom: 32px;
 }
 
-.user-head svg {
+.rtl .user-head svg {
   margin-left: 10px;
 }
+.ltr .user-head svg {
+  margin-right: 10px;
+}
 .user-head .title {
-  font-size: 20px;
+  font-size: 19px;
+  position: relative;
+  top: 5px;
 }
 .dropdown-menu {
   position: absolute !important;
@@ -83,6 +88,11 @@ input::-webkit-inner-spin-button {
   background-repeat: repeat;
   background-color: #fcac62;
   padding: 60px 0;
+}
+@media(max-width: 486px){
+  .create-ads{
+    padding: 32px;
+  }
 }
 .create-container {
   background-color: #fff;
@@ -177,6 +187,9 @@ input::-webkit-inner-spin-button {
 @media (max-width: 480px) {
   .choose {
     width: 100% !important;
+  }
+  .global-button{
+    min-width: 10px !important;
   }
 }
 

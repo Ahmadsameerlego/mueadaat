@@ -71,6 +71,11 @@ export default {
   height: 400px;
   border-radius: 150px;
 }
+@media(max-width: 486px){
+  .about-media{
+    margin-top: 32px;
+  }
+}
 .about-text {
   margin-bottom: 32px;
 }
